@@ -2,10 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BURΔQ | Cyber River Fashion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     
-    <!-- FAVICON & APP ICONS -->
+    <!-- ====== ENHANCED SEO META TAGS ====== -->
+    <title>BURΔQ | Cyber River Fashion - Premium Phygital Fashion & NFT Wearables</title>
+    <meta name="description" content="BURΔQ - Cyberpunk fashion meets blockchain technology. Navigate digital rivers in our premium speedboat experience with exclusive NFT fashion drops. Experience the future of phygital fashion.">
+    <meta name="keywords" content="cyberpunk fashion, NFT wearables, blockchain fashion, phygital clothing, digital river, speedboat experience, crypto fashion, digital collectibles">
+    <meta name="author" content="BURΔQ Fashion">
+    <meta property="og:title" content="BURΔQ | Cyber River Fashion">
+    <meta property="og:description" content="Navigate the digital currents of cyberpunk fashion with BURΔQ. Exclusive NFT fashion drops and premium phygital experiences.">
+    <meta property="og:image" content="https://burq-fashion.com/preview.jpg">
+    <meta property="og:url" content="https://burq-fashion.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BURΔQ | Cyber River Fashion">
+    <meta name="twitter:description" content="Premium cyberpunk fashion meets blockchain technology. Exclusive NFT drops.">
+    <link rel="canonical" href="https://burq-fashion.com">
+    
+    <!-- ====== STRUCTURED DATA FOR SEO ====== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "BURΔQ Cyber River Fashion",
+        "description": "Cyberpunk phygital fashion with NFT integration",
+        "brand": {
+            "@type": "Brand",
+            "name": "BURΔQ"
+        },
+        "offers": {
+            "@type": "AggregateOffer",
+            "offerCount": "3",
+            "lowPrice": "0.08",
+            "highPrice": "0.25",
+            "priceCurrency": "ETH"
+        }
+    }
+    </script>
+    
+    <!-- ====== FAVICONS ====== -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -14,8 +49,13 @@
     <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
     <link rel="manifest" href="site.webmanifest">
     
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600&display=swap">
+    <!-- ====== FONTS & ICONS ====== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- ====== THREE.JS ====== -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.min.js"></script>
@@ -24,14 +64,16 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/FXAAShader.min.js"></script>
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { width: 100%; height: 100%; overflow: hidden; }
+        html, body { width: 100%; height: 100%; overflow: hidden; touch-action: manipulation; }
         body { 
             font-family: 'Rajdhani', sans-serif;
             background: #000;
             color: white;
             position: relative;
+            -webkit-tap-highlight-color: transparent;
         }
         
         /* CANVAS CONTAINER */
@@ -105,12 +147,12 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 2rem 5%;
+            padding: 1.5rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 10;
-            background: rgba(0,0,0,0.3);
+            z-index: 20;
+            background: rgba(0,0,0,0.7);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0,240,255,0.2);
         }
@@ -169,13 +211,14 @@
             left: 5%;
             transform: translateY(-50%);
             max-width: 600px;
-            z-index: 3;
+            z-index: 15;
+            pointer-events: none;
         }
         
         .hero-badge {
             display: inline-block;
             padding: 1rem 2rem;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.5);
             border: 1px solid #00f0ff;
             border-radius: 50px;
             font-family: 'Orbitron', sans-serif;
@@ -183,6 +226,7 @@
             letter-spacing: 3px;
             margin-bottom: 3rem;
             backdrop-filter: blur(10px);
+            pointer-events: auto;
         }
         
         .hero-title {
@@ -209,6 +253,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
+            pointer-events: auto;
         }
         
         .btn {
@@ -245,16 +290,17 @@
             right: 5%;
             display: flex;
             gap: 2rem;
-            z-index: 3;
+            z-index: 15;
         }
         
         .stat-item {
             text-align: center;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.5);
             padding: 1.5rem 2rem;
             border-radius: 15px;
             border: 1px solid rgba(0,240,255,0.2);
             backdrop-filter: blur(10px);
+            min-width: 120px;
         }
         
         .stat-number {
@@ -277,39 +323,91 @@
             position: fixed;
             bottom: 5%;
             left: 5%;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.5);
             padding: 1rem 2rem;
             border-radius: 15px;
             border: 1px solid rgba(0,240,255,0.2);
             backdrop-filter: blur(10px);
             font-family: 'Orbitron', sans-serif;
             font-size: 0.9rem;
+            max-width: 300px;
+            z-index: 15;
         }
         
-        /* WEATHER CONTROL PANEL - MOVED TO LEFT TO PREVENT OVERLAP */
+        /* ====== EXPANDABLE/MINIMIZABLE WEATHER BOX ====== */
         .weather-control {
             position: fixed;
-            top: 20%;
+            top: 15%;
             left: 5%;
+            background: rgba(0,0,0,0.85);
+            border: 1px solid rgba(0,240,255,0.3);
+            backdrop-filter: blur(15px);
+            border-radius: 16px;
+            z-index: 15;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            min-width: 220px;
+            box-shadow: 0 8px 32px rgba(0, 240, 255, 0.1);
+        }
+        
+        .weather-control.minimized {
+            height: 50px;
+            width: 180px;
+        }
+        
+        .weather-control.minimized .weather-content {
+            opacity: 0;
+            height: 0;
+            padding: 0;
+            pointer-events: none;
+        }
+        
+        .weather-header {
+            padding: 1rem 1.5rem;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            gap: 1rem;
-            background: rgba(0,0,0,0.3);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(0,240,255,0.2);
-            backdrop-filter: blur(10px);
-            z-index: 5;
+            cursor: pointer;
+            background: linear-gradient(90deg, rgba(0,240,255,0.1), rgba(157,0,255,0.1));
+            border-bottom: 1px solid rgba(0,240,255,0.2);
+        }
+        
+        .weather-header h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            color: #00f0ff;
+            margin: 0;
+        }
+        
+        .weather-toggle {
+            background: none;
+            border: none;
+            color: #00f0ff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            padding: 4px;
+            border-radius: 4px;
+        }
+        
+        .weather-toggle:hover {
+            background: rgba(0,240,255,0.1);
+            transform: rotate(90deg);
+        }
+        
+        .weather-content {
+            padding: 1.5rem;
+            transition: all 0.3s ease;
         }
         
         .weather-slider {
             -webkit-appearance: none;
-            width: 200px;
+            width: 100%;
             height: 5px;
             background: rgba(255,255,255,0.1);
             border-radius: 5px;
             outline: none;
+            margin: 10px 0;
         }
         
         .weather-slider::-webkit-slider-thumb {
@@ -325,6 +423,8 @@
             display: flex;
             gap: 10px;
             margin-top: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
         .weather-btn {
@@ -335,6 +435,8 @@
             color: white;
             cursor: pointer;
             transition: all 0.3s;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
         }
         
         .weather-btn.active {
@@ -342,13 +444,13 @@
             color: black;
         }
         
-        /* BOAT CONTROL PANEL - STAYS ON RIGHT */
+        /* BOAT CONTROL PANEL */
         .boat-control {
             position: fixed;
-            top: 20%;
+            top: 15%;
             right: 5%;
-            background: rgba(0,0,0,0.3);
-            padding: 1.5rem 2rem;
+            background: rgba(0,0,0,0.7);
+            padding: 1.5rem;
             border-radius: 15px;
             border: 1px solid rgba(0,240,255,0.2);
             backdrop-filter: blur(10px);
@@ -356,7 +458,8 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
-            z-index: 5;
+            z-index: 15;
+            width: 220px;
         }
         
         .control-buttons {
@@ -366,21 +469,24 @@
         }
         
         .control-btn {
-            width: 40px;
-            height: 40px;
-            background: rgba(0,0,0,0.5);
+            width: 50px;
+            height: 50px;
+            background: rgba(0,0,0,0.7);
             border: 1px solid rgba(0,240,255,0.3);
-            border-radius: 5px;
+            border-radius: 10px;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.2s;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
         }
         
-        .control-btn:hover {
+        .control-btn:hover, .control-btn:active {
             background: rgba(0,240,255,0.2);
         }
         
@@ -401,10 +507,10 @@
         /* DIRECTION INDICATOR */
         .direction-indicator {
             position: fixed;
-            top: 15%;
+            top: 12%;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.7);
             padding: 1rem 2rem;
             border-radius: 15px;
             border: 1px solid rgba(0,240,255,0.2);
@@ -415,11 +521,105 @@
             display: flex;
             flex-direction: column;
             gap: 5px;
+            z-index: 15;
         }
         
         .direction-arrow {
             font-size: 2rem;
             color: #00f0ff;
+        }
+        
+        /* TOUCH JOYSTICK FOR MOBILE */
+        .touch-joystick-container {
+            position: fixed;
+            bottom: 120px;
+            left: 30px;
+            width: 120px;
+            height: 120px;
+            z-index: 15;
+            display: none;
+            touch-action: none;
+        }
+        
+        .touch-joystick-base {
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            border: 2px solid rgba(0,240,255,0.3);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        
+        .touch-joystick-handle {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #00f0ff, #9d00ff);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 20px rgba(0,240,255,0.5);
+        }
+        
+        /* SPEED TOUCH CONTROL FOR MOBILE */
+        .touch-speed-control {
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            width: 80px;
+            height: 180px;
+            z-index: 15;
+            display: none;
+            touch-action: none;
+        }
+        
+        .touch-speed-track {
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            border-radius: 40px;
+            border: 2px solid rgba(0,240,255,0.3);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        
+        .touch-speed-slider {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, #00f0ff, #9d00ff);
+            border-radius: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 10px;
+            box-shadow: 0 0 20px rgba(0,240,255,0.5);
+        }
+        
+        /* GESTURE HINT */
+        .gesture-hint {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 1px solid rgba(0,240,255,0.3);
+            backdrop-filter: blur(10px);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: #00f0ff;
+            text-align: center;
+            z-index: 15;
+            display: none;
+            animation: pulseHint 2s infinite;
+        }
+        
+        @keyframes pulseHint {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
         }
         
         /* NFT SHOP WINDOW */
@@ -429,12 +629,12 @@
             right: -400px;
             transform: translateY(-50%);
             width: 350px;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.9);
             padding: 2rem;
             border-radius: 20px;
             border: 1px solid #00f0ff;
             backdrop-filter: blur(20px);
-            z-index: 10;
+            z-index: 20;
             transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
         
@@ -454,11 +654,11 @@
             cursor: pointer;
             font-family: 'Orbitron', sans-serif;
             font-weight: 600;
-            z-index: 9;
+            z-index: 19;
         }
         
         .nft-item {
-            background: rgba(20,20,30,0.6);
+            background: rgba(20,20,30,0.8);
             border-radius: 10px;
             padding: 1rem;
             margin-bottom: 1rem;
@@ -497,60 +697,117 @@
             filter: blur(0.5px);
         }
         
-        /* RESPONSIVE - Simple fix for mobile */
+        /* RESPONSIVE DESIGN */
         @media (max-width: 1200px) {
-            /* Move weather control lower on medium screens */
-            .weather-control {
-                top: 30%;
-            }
+            .hero-title { font-size: 4rem; }
+            .stats-overlay { gap: 1rem; }
+            .stat-item { padding: 1rem 1.5rem; }
         }
         
         @media (max-width: 1024px) {
-            /* Stack boat control below weather control */
-            .weather-control {
-                top: 20%;
-                left: 5%;
-            }
+            .hero { max-width: 500px; }
+            .hero-title { font-size: 3.5rem; }
+            .hero-subtitle { font-size: 1.3rem; }
             
-            .boat-control {
-                top: 35%;
-                right: 5%;
+            .weather-control, .boat-control {
+                width: 200px;
+                padding: 1rem;
             }
         }
         
-        @media (max-width: 768px) {
+        /* TABLET STYLES */
+        @media (max-width: 900px) and (min-width: 769px) {
+            .hero {
+                left: 2%;
+                max-width: 400px;
+            }
+            
             .hero-title { font-size: 3rem; }
-            .hero { left: 2%; right: 2%; }
-            .stats-overlay { 
-                flex-direction: column; 
-                bottom: 15%;
-                right: 5%;
+            .hero-subtitle { font-size: 1.2rem; margin-bottom: 3rem; }
+            
+            .stats-overlay {
+                bottom: 10%;
+                right: 2%;
+            }
+            
+            .controls-info {
+                left: 2%;
+                bottom: 10%;
+                font-size: 0.8rem;
+                padding: 0.8rem 1.5rem;
+            }
+            
+            .weather-control, .boat-control {
+                top: 20%;
+                width: 180px;
+            }
+            
+            .touch-joystick-container, .touch-speed-control, .gesture-hint {
+                display: block;
+            }
+        }
+        
+        /* MOBILE STYLES */
+        @media (max-width: 768px) {
+            .hero {
+                top: 40%;
                 left: 5%;
-                align-items: center;
-            }
-            
-            /* Hide weather and boat controls on mobile */
-            .weather-control, .boat-control { 
-                display: none; 
-            }
-            
-            .controls-info { 
-                font-size: 0.7rem; 
-                padding: 0.5rem 1rem;
-                bottom: 5%;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 90%;
+                right: 5%;
+                max-width: 100%;
                 text-align: center;
             }
             
-            .direction-indicator { 
-                top: 12%; 
-                padding: 0.5rem 1rem; 
+            .hero-title { 
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
             }
             
-            .nav-links {
-                gap: 1rem;
+            .hero-subtitle { 
+                font-size: 1.1rem;
+                margin-bottom: 2.5rem;
+            }
+            
+            .hero-badge {
+                font-size: 0.8rem;
+                padding: 0.8rem 1.5rem;
+                margin-bottom: 2rem;
+            }
+            
+            .button-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+            
+            /* Hide desktop controls */
+            .controls-info, .weather-control, .boat-control, .direction-indicator {
+                display: none;
+            }
+            
+            /* Show mobile controls */
+            .touch-joystick-container, .touch-speed-control, .gesture-hint {
+                display: block;
+            }
+            
+            .stats-overlay {
+                bottom: 20%;
+                right: 5%;
+                left: 5%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .stat-item {
+                padding: 1rem;
+                min-width: 100px;
+            }
+            
+            .stat-number {
+                font-size: 1.8rem;
             }
             
             .nav {
@@ -561,19 +818,37 @@
                 font-size: 1.5rem;
             }
             
+            .nav-links {
+                display: none;
+            }
+            
             .wallet-btn {
-                padding: 0.5rem 1rem;
+                padding: 0.6rem 1.2rem;
                 font-size: 0.9rem;
             }
             
             .shop-window {
                 width: 90%;
                 right: -100%;
+                padding: 1.5rem;
             }
             
             .shop-window.active {
                 right: 5%;
             }
+            
+            .shop-toggle {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title { font-size: 2rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .touch-joystick-container { left: 15px; bottom: 100px; }
+            .touch-speed-control { right: 15px; bottom: 100px; }
+            .gesture-hint { font-size: 0.8rem; padding: 8px 16px; }
         }
         
         /* SCROLLBAR */
@@ -670,19 +945,45 @@
         <div>SCROLL: ZOOM IN/OUT</div>
     </div>
     
-    <!-- WEATHER CONTROL - MOVED TO LEFT SIDE -->
-    <div class="weather-control">
-        <div>WEATHER INTENSITY</div>
-        <input type="range" min="0" max="100" value="50" class="weather-slider" id="weatherSlider">
-        <div>WEATHER TYPE: <span id="weatherType">SNOW</span></div>
-        <div class="weather-buttons">
-            <button class="weather-btn active" data-weather="snow">SNOW</button>
-            <button class="weather-btn" data-weather="rain">RAIN</button>
-            <button class="weather-btn" data-weather="fog">FOG</button>
+    <!-- MOBILE TOUCH CONTROLS -->
+    <div class="touch-joystick-container" id="touchJoystick">
+        <div class="touch-joystick-base">
+            <div class="touch-joystick-handle" id="joystickHandle"></div>
         </div>
     </div>
     
-    <!-- BOAT CONTROL PANEL - STAYS ON RIGHT -->
+    <div class="touch-speed-control" id="touchSpeedControl">
+        <div class="touch-speed-track">
+            <div class="touch-speed-slider" id="speedSlider"></div>
+        </div>
+    </div>
+    
+    <div class="gesture-hint" id="gestureHint">
+        <i class="fas fa-hand-point-up"></i> Use joystick to steer, slider for speed
+    </div>
+    
+    <!-- WEATHER CONTROL - EXPANDABLE/MINIMIZABLE -->
+    <div class="weather-control" id="weatherControl">
+        <div class="weather-header" id="weatherToggle">
+            <h3><i class="fas fa-cloud-sun"></i> WEATHER CONTROL</h3>
+            <button class="weather-toggle" id="weatherToggleBtn">
+                <i class="fas fa-chevron-up"></i>
+            </button>
+        </div>
+        <div class="weather-content">
+            <div>INTENSITY</div>
+            <input type="range" min="0" max="100" value="50" class="weather-slider" id="weatherSlider">
+            <div>TYPE: <span id="weatherType">SNOW</span></div>
+            <div class="weather-buttons">
+                <button class="weather-btn active" data-weather="snow">SNOW</button>
+                <button class="weather-btn" data-weather="rain">RAIN</button>
+                <button class="weather-btn" data-weather="fog">FOG</button>
+                <button class="weather-btn" data-weather="storm">STORM</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- BOAT CONTROL PANEL -->
     <div class="boat-control">
         <div>BOAT CONTROL</div>
         <div class="control-buttons">
@@ -741,6 +1042,8 @@
                     document.getElementById('preloader').style.display = 'none';
                     initScene();
                     createSnowflakes();
+                    setupTouchControls();
+                    setupWeatherToggle();
                 }, 500);
             }, 3000);
         });
@@ -755,7 +1058,7 @@
         let riverWidth = 100;
         let riverLength = 500;
         let boatPositionX = 0;
-        let boatPositionZ = 0; // NEW: Boat position along the river (Z-axis)
+        let boatPositionZ = 0;
         let boatHeight = -3;
         let clock = new THREE.Clock();
         let riverMaterial, waterTexture;
@@ -768,37 +1071,56 @@
         let weatherType = 'snow';
         let weatherIntensity = 0.5;
         let buildings = [];
-        let riverDirection = 1; // 1 for downstream, -1 for upstream
+        let riverDirection = 1;
         let boatVelocity = 0;
+        let isMobile = false;
+        let touchJoystickActive = false;
+        let joystickX = 0, joystickY = 0;
+        let touchSpeedActive = false;
+        let speedValue = 0.5;
 
         function initScene() {
+            // Detect mobile device
+            isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
             // SCENE SETUP
             scene = new THREE.Scene();
             scene.fog = new THREE.Fog(0x001133, 50, 300);
             
-            // CAMERA
-            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 2000);
+            // CAMERA - adjusted for mobile
+            camera = new THREE.PerspectiveCamera(
+                isMobile ? 70 : 60, 
+                window.innerWidth / window.innerHeight, 
+                0.1, 
+                2000
+            );
             camera.position.set(0, 30, 60);
             camera.lookAt(0, 0, 0);
             
             // RENDERER
-            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer = new THREE.WebGLRenderer({ 
+                antialias: true, 
+                alpha: true,
+                powerPreference: "high-performance"
+            });
             renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
             renderer.shadowMap.enabled = true;
             renderer.shadowMap.type = THREE.PCFSoftShadowMap;
             renderer.toneMapping = THREE.ACESFilmicToneMapping;
             renderer.toneMappingExposure = 1.2;
             document.getElementById('canvas-container').appendChild(renderer.domElement);
             
-            // POST-PROCESSING
-            composer = new THREE.EffectComposer(renderer);
-            const renderPass = new THREE.RenderPass(scene, camera);
-            composer.addPass(renderPass);
-            
-            const fxaaPass = new THREE.ShaderPass(THREE.FXAAShader);
-            fxaaPass.uniforms['resolution'].value.set(1 / window.innerWidth, 1 / window.innerHeight);
-            composer.addPass(fxaaPass);
+            // POST-PROCESSING - disable on mobile for performance
+            if (!isMobile) {
+                composer = new THREE.EffectComposer(renderer);
+                const renderPass = new THREE.RenderPass(scene, camera);
+                composer.addPass(renderPass);
+                
+                const fxaaPass = new THREE.ShaderPass(THREE.FXAAShader);
+                fxaaPass.uniforms['resolution'].value.set(1 / window.innerWidth, 1 / window.innerHeight);
+                composer.addPass(fxaaPass);
+            }
             
             // CONTROLS
             controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -808,6 +1130,13 @@
             controls.maxDistance = 200;
             controls.maxPolarAngle = Math.PI / 2.5;
             
+            // Disable orbit controls on mobile touch
+            if (isMobile) {
+                controls.enableZoom = false;
+                controls.enablePan = false;
+                controls.enableRotate = false;
+            }
+            
             // LIGHTING
             const ambientLight = new THREE.AmbientLight(0x334466, 0.6);
             scene.add(ambientLight);
@@ -815,8 +1144,8 @@
             const directionalLight = new THREE.DirectionalLight(0x88aaff, 0.9);
             directionalLight.position.set(50, 100, 50);
             directionalLight.castShadow = true;
-            directionalLight.shadow.mapSize.width = 2048;
-            directionalLight.shadow.mapSize.height = 2048;
+            directionalLight.shadow.mapSize.width = 1024;
+            directionalLight.shadow.mapSize.height = 1024;
             directionalLight.shadow.camera.left = -100;
             directionalLight.shadow.camera.right = 100;
             directionalLight.shadow.camera.top = 100;
@@ -827,32 +1156,19 @@
             pointLight.position.set(0, 20, 0);
             scene.add(pointLight);
             
-            // HEMISPHERE LIGHT FOR SNOWY ENVIRONMENT
             const hemisphereLight = new THREE.HemisphereLight(0x4488ff, 0x002266, 0.5);
             scene.add(hemisphereLight);
             
-            // CREATE RIVER WITH ICE EFFECT
+            // CREATE SCENE ELEMENTS
             createRiver();
-            
-            // CREATE ENHANCED BOAT
-            createBoat();
-            
-            // CREATE WEATHER PARTICLES
+            createPremiumSpeedBoat();
             createWeatherParticles();
-            
-            // CREATE POLISHED CITY BUILDINGS WITH SNOW
             createCity();
-            
-            // CREATE LIGHT PARTICLES
             createLightParticles();
-            
-            // CREATE FOG PARTICLES
             createFogParticles();
             
-            // KEYBOARD CONTROLS
+            // SETUP CONTROLS
             setupControls();
-            
-            // UI CONTROLS
             setupUIControls();
             
             // START ANIMATION
@@ -862,10 +1178,219 @@
             window.addEventListener('resize', onWindowResize);
         }
 
+        // ====== PREMIUM SPEED BOAT WITH REAL ENGINE ======
+        function createPremiumSpeedBoat() {
+            const boatGroup = new THREE.Group();
+            
+            // Main hull - aerodynamic speedboat design
+            const hullGeometry = new THREE.CylinderGeometry(2, 3, 12, 16, 1, false, 0, Math.PI);
+            const hullMaterial = new THREE.MeshPhysicalMaterial({ 
+                color: 0x001a33,
+                emissive: 0x002244,
+                emissiveIntensity: 0.8,
+                metalness: 0.95,
+                roughness: 0.05,
+                clearcoat: 1.0,
+                clearcoatRoughness: 0.1,
+                reflectivity: 1.0
+            });
+            const hull = new THREE.Mesh(hullGeometry, hullMaterial);
+            hull.rotation.z = Math.PI / 2;
+            hull.rotation.x = Math.PI / 2;
+            hull.castShadow = true;
+            boatGroup.add(hull);
+            
+            // Sleek deck
+            const deckGeometry = new THREE.BoxGeometry(10, 0.8, 5);
+            const deckMaterial = new THREE.MeshPhysicalMaterial({ 
+                color: 0x111122,
+                metalness: 0.95,
+                roughness: 0.05,
+                clearcoat: 1.0
+            });
+            const deck = new THREE.Mesh(deckGeometry, deckMaterial);
+            deck.position.set(0, 1.5, 0);
+            deck.castShadow = true;
+            boatGroup.add(deck);
+            
+            // Cockpit with futuristic glass
+            const cockpitGeometry = new THREE.BoxGeometry(4, 2.5, 3.5);
+            const cockpitMaterial = new THREE.MeshPhysicalMaterial({ 
+                color: 0x001122,
+                transparent: true,
+                opacity: 0.3,
+                transmission: 0.8,
+                roughness: 0.1,
+                metalness: 0.9,
+                clearcoat: 1.0,
+                clearcoatRoughness: 0.1
+            });
+            const cockpit = new THREE.Mesh(cockpitGeometry, cockpitMaterial);
+            cockpit.position.set(0, 3, 1.5);
+            cockpit.castShadow = true;
+            boatGroup.add(cockpit);
+            
+            // ====== REALISTIC ENGINE SYSTEM ======
+            const engineGroup = new THREE.Group();
+            
+            // Engine block
+            const engineGeometry = new THREE.CylinderGeometry(1.2, 1.5, 5, 12);
+            const engineMaterial = new THREE.MeshPhysicalMaterial({ 
+                color: 0x222222,
+                emissive: 0x333333,
+                emissiveIntensity: 0.5,
+                metalness: 0.95,
+                roughness: 0.1,
+                clearcoat: 1.0
+            });
+            const engine = new THREE.Mesh(engineGeometry, engineMaterial);
+            engine.position.set(0, 2, -4);
+            engineGroup.add(engine);
+            
+            // Engine exhaust pipes
+            const exhaustGeometry = new THREE.CylinderGeometry(0.2, 0.3, 2, 8);
+            const exhaustMaterial = new THREE.MeshStandardMaterial({ 
+                color: 0x444444,
+                emissive: 0xff3300,
+                emissiveIntensity: 0.3,
+                metalness: 0.9,
+                roughness: 0.2
+            });
+            
+            for(let i = 0; i < 2; i++) {
+                const exhaust = new THREE.Mesh(exhaustGeometry, exhaustMaterial);
+                exhaust.position.set(-0.5 + i * 1, 2.5, -5.5);
+                exhaust.rotation.x = Math.PI / 4;
+                engineGroup.add(exhaust);
+            }
+            
+            // Cooling fins
+            const finGeometry = new THREE.BoxGeometry(2, 0.1, 0.8);
+            const finMaterial = new THREE.MeshStandardMaterial({ 
+                color: 0x555555,
+                metalness: 0.8,
+                roughness: 0.3
+            });
+            
+            for(let i = 0; i < 4; i++) {
+                const fin = new THREE.Mesh(finGeometry, finMaterial);
+                fin.position.set(0, 2.2 + i * 0.2, -4);
+                engineGroup.add(fin);
+            }
+            
+            // Propeller system
+            const propellerGroup = new THREE.Group();
+            
+            // Propeller hub
+            const hubGeometry = new THREE.CylinderGeometry(0.5, 0.5, 0.8, 8);
+            const hubMaterial = new THREE.MeshStandardMaterial({ 
+                color: 0x888888,
+                metalness: 0.9,
+                roughness: 0.1
+            });
+            const hub = new THREE.Mesh(hubGeometry, hubMaterial);
+            hub.position.set(0, 2, -6);
+            propellerGroup.add(hub);
+            
+            // Propeller blades
+            const bladeGeometry = new THREE.BoxGeometry(0.1, 2, 0.3);
+            const bladeMaterial = new THREE.MeshStandardMaterial({ 
+                color: 0xaaaaaa,
+                metalness: 0.8,
+                roughness: 0.2
+            });
+            
+            for(let i = 0; i < 3; i++) {
+                const blade = new THREE.Mesh(bladeGeometry, bladeMaterial);
+                blade.rotation.z = (Math.PI * 2 / 3) * i;
+                blade.position.set(0, 2, -6);
+                propellerGroup.add(blade);
+            }
+            
+            engineGroup.add(propellerGroup);
+            boatGroup.add(engineGroup);
+            
+            // Engine glow effects
+            const engineGlow = new THREE.PointLight(0xff3300, 3, 40);
+            engineGlow.position.set(0, 2, -5);
+            boatGroup.add(engineGlow);
+            
+            // Engine exhaust particles light
+            const exhaustLight = new THREE.PointLight(0xff5500, 2, 25);
+            exhaustLight.position.set(0, 2, -6);
+            boatGroup.add(exhaustLight);
+            
+            // Navigation lights
+            const leftLight = new THREE.PointLight(0x00ff00, 2, 20);
+            leftLight.position.set(-2.5, 2.5, 4);
+            boatGroup.add(leftLight);
+            
+            const rightLight = new THREE.PointLight(0xff0000, 2, 20);
+            rightLight.position.set(2.5, 2.5, 4);
+            boatGroup.add(rightLight);
+            
+            // Neon accents
+            const neonGeometry = new THREE.BoxGeometry(8, 0.1, 0.3);
+            const neonMaterial = new THREE.MeshStandardMaterial({ 
+                color: 0x9d00ff,
+                emissive: 0x9d00ff,
+                emissiveIntensity: 2,
+                transparent: true,
+                opacity: 0.8
+            });
+            
+            const neonStrip = new THREE.Mesh(neonGeometry, neonMaterial);
+            neonStrip.position.set(0, 1.6, 2);
+            boatGroup.add(neonStrip);
+            
+            // Hydrofoils/wings
+            const wingGeometry = new THREE.BoxGeometry(6, 0.4, 2);
+            const wingMaterial = new THREE.MeshPhysicalMaterial({ 
+                color: 0x00aaff,
+                metalness: 0.9,
+                roughness: 0.1,
+                clearcoat: 1.0
+            });
+            
+            const leftWing = new THREE.Mesh(wingGeometry, wingMaterial);
+            leftWing.position.set(-4, 0, 0);
+            leftWing.rotation.z = -0.3;
+            boatGroup.add(leftWing);
+            
+            const rightWing = new THREE.Mesh(wingGeometry, wingMaterial);
+            rightWing.position.set(4, 0, 0);
+            rightWing.rotation.z = 0.3;
+            boatGroup.add(rightWing);
+            
+            // Rudder
+            const rudderGeometry = new THREE.BoxGeometry(0.4, 2, 1.5);
+            const rudderMaterial = new THREE.MeshStandardMaterial({ 
+                color: 0x333333,
+                metalness: 0.8,
+                roughness: 0.2
+            });
+            
+            const rudder = new THREE.Mesh(rudderGeometry, rudderMaterial);
+            rudder.position.set(0, 0.5, -5);
+            boatGroup.add(rudder);
+            
+            boat = boatGroup;
+            boat.position.set(0, boatHeight, 0);
+            boat.castShadow = true;
+            scene.add(boat);
+            
+            // Add propeller animation property
+            boat.userData = {
+                propellerRotation: 0
+            };
+            
+            console.log("⚡ Premium Speed Boat created with realistic engine system");
+        }
+
         function createRiver() {
             const riverGeometry = new THREE.PlaneGeometry(riverWidth, riverLength, 100, 200);
             
-            // Create advanced water material with ice/snow effect
+            // Advanced water material
             waterTexture = new THREE.TextureLoader().load('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');
             waterTexture.wrapS = waterTexture.wrapT = THREE.RepeatWrapping;
             waterTexture.repeat.set(10, 20);
@@ -888,7 +1413,6 @@
                         vUv = uv;
                         vPosition = position;
                         vec3 pos = position;
-                        // Wave animation
                         pos.x += sin(pos.y * 0.5 + time) * 0.5;
                         pos.z += cos(pos.x * 0.3 + time * 0.7) * 0.3;
                         gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
@@ -906,28 +1430,22 @@
                     varying vec3 vPosition;
                     
                     void main() {
-                        // Base water color with waves
                         float wave = sin(vUv.x * 10.0 + time * speed) * 0.5 + 0.5;
                         vec3 waterColor = mix(color1, color2, wave);
                         
-                        // Ice/snow effect at edges
                         float edgeFactor = 1.0 - abs(vUv.x - 0.5) * 2.0;
                         float iceFactor = smoothstep(0.7, 1.0, edgeFactor) * snowAmount;
                         
-                        // Snow on top of ice
                         float snowPattern = sin(vUv.x * 50.0 + time) * 0.5 + 0.5;
                         snowPattern *= sin(vUv.y * 30.0 + time * 0.5) * 0.5 + 0.5;
                         float snowFactor = iceFactor * snowPattern * 0.3;
                         
-                        // Combine colors
                         vec3 finalColor = mix(waterColor, iceColor, iceFactor);
                         finalColor = mix(finalColor, vec3(1.0, 1.0, 1.0), snowFactor);
                         
-                        // Texture blending
                         vec4 texColor = texture2D(waterTexture, vUv * 2.0 + time * 0.01);
                         finalColor = mix(finalColor, finalColor * texColor.rgb, 0.3);
                         
-                        // Transparency
                         float alpha = 0.9 - abs(vUv.x - 0.5) * 0.5;
                         alpha = min(alpha, 1.0 - iceFactor * 0.3);
                         
@@ -943,7 +1461,7 @@
             river.position.y = -5;
             scene.add(river);
             
-            // Create snowy river banks
+            // Create river banks
             const bankGeometry = new THREE.BoxGeometry(riverWidth + 20, 6, riverLength);
             const bankMaterial = new THREE.MeshStandardMaterial({ 
                 color: 0x334455,
@@ -953,133 +1471,38 @@
             
             const leftBank = new THREE.Mesh(bankGeometry, bankMaterial);
             leftBank.position.set(-(riverWidth/2 + 10), -8, 0);
+            leftBank.receiveShadow = true;
             scene.add(leftBank);
             
             const rightBank = new THREE.Mesh(bankGeometry, bankMaterial);
             rightBank.position.set(riverWidth/2 + 10, -8, 0);
+            rightBank.receiveShadow = true;
             scene.add(rightBank);
-            
-            // Add snow to banks
-            for(let i = 0; i < 200; i++) {
-                const snowGeometry = new THREE.SphereGeometry(Math.random() * 1.5 + 0.5, 6, 6);
-                const snowMaterial = new THREE.MeshBasicMaterial({ 
-                    color: 0xffffff,
-                    transparent: true,
-                    opacity: 0.9
-                });
-                const snow = new THREE.Mesh(snowGeometry, snowMaterial);
-                
-                const side = Math.random() > 0.5 ? 1 : -1;
-                const bankPos = (riverWidth/2 + 8) * side;
-                snow.position.set(
-                    bankPos + (Math.random() - 0.5) * 8 * side,
-                    -5 + Math.random() * 3,
-                    (Math.random() - 0.5) * riverLength
-                );
-                scene.add(snow);
-            }
-        }
-
-        function createBoat() {
-            const boatGroup = new THREE.Group();
-            
-            // Advanced hull with cyberpunk design
-            const hullGeometry = new THREE.CylinderGeometry(2, 3, 12, 12, 1, false, 0, Math.PI);
-            const hullMaterial = new THREE.MeshStandardMaterial({ 
-                color: 0x00ffff,
-                emissive: 0x003333,
-                emissiveIntensity: 0.5,
-                metalness: 0.9,
-                roughness: 0.1
-            });
-            const hull = new THREE.Mesh(hullGeometry, hullMaterial);
-            hull.rotation.z = Math.PI / 2;
-            hull.rotation.x = Math.PI / 2;
-            boatGroup.add(hull);
-            
-            // Cockpit with glass effect
-            const cockpitGeometry = new THREE.BoxGeometry(5, 3, 4);
-            const cockpitMaterial = new THREE.MeshPhysicalMaterial({ 
-                color: 0x111111,
-                transparent: true,
-                opacity: 0.3,
-                transmission: 0.5,
-                roughness: 0.1,
-                metalness: 0.9,
-                clearcoat: 1.0,
-                clearcoatRoughness: 0.1
-            });
-            const cockpit = new THREE.Mesh(cockpitGeometry, cockpitMaterial);
-            cockpit.position.set(0, 2, 0);
-            boatGroup.add(cockpit);
-            
-            // Engine with glow effect
-            const engineGeometry = new THREE.CylinderGeometry(1.2, 1.8, 5, 12);
-            const engineMaterial = new THREE.MeshStandardMaterial({ 
-                color: 0xff3300,
-                emissive: 0x331100,
-                emissiveIntensity: 1.5,
-                metalness: 0.9,
-                roughness: 0.1
-            });
-            const engine = new THREE.Mesh(engineGeometry, engineMaterial);
-            engine.position.set(0, 1, -5);
-            boatGroup.add(engine);
-            
-            // Engine glow light
-            const engineLight = new THREE.PointLight(0xff3300, 3, 30);
-            engineLight.position.set(0, 1, -6);
-            boatGroup.add(engineLight);
-            
-            // Navigation lights
-            const leftLight = new THREE.PointLight(0x00ff00, 1.5, 15);
-            leftLight.position.set(-2.5, 1.5, 5);
-            boatGroup.add(leftLight);
-            
-            const rightLight = new THREE.PointLight(0xff0000, 1.5, 15);
-            rightLight.position.set(2.5, 1.5, 5);
-            boatGroup.add(rightLight);
-            
-            // Neon accents
-            const neonGeometry = new THREE.TorusGeometry(1.5, 0.2, 8, 20);
-            const neonMaterial = new THREE.MeshStandardMaterial({ 
-                color: 0x9d00ff,
-                emissive: 0x9d00ff,
-                emissiveIntensity: 2,
-                metalness: 0.9,
-                roughness: 0.1
-            });
-            const neonRing = new THREE.Mesh(neonGeometry, neonMaterial);
-            neonRing.position.set(0, 0.5, 0);
-            neonRing.rotation.x = Math.PI / 2;
-            boatGroup.add(neonRing);
-            
-            boat = boatGroup;
-            boat.position.set(0, boatHeight, 0);
-            scene.add(boat);
         }
 
         function createWeatherParticles() {
-            particleGeometry = new THREE.BufferGeometry();
-            const positions = new Float32Array(particleCount * 3);
-            const colors = new Float32Array(particleCount * 3);
+            // Reduce particle count on mobile
+            const count = isMobile ? 1000 : particleCount;
             
-            for(let i = 0; i < particleCount; i++) {
+            particleGeometry = new THREE.BufferGeometry();
+            const positions = new Float32Array(count * 3);
+            const colors = new Float32Array(count * 3);
+            
+            for(let i = 0; i < count; i++) {
                 positions[i * 3] = (Math.random() - 0.5) * 200;
                 positions[i * 3 + 1] = Math.random() * 100 + 50;
                 positions[i * 3 + 2] = (Math.random() - 0.5) * 500;
                 
-                // White color for snow
-                colors[i * 3] = 1.0; // R
-                colors[i * 3 + 1] = 1.0; // G
-                colors[i * 3 + 2] = 1.0; // B
+                colors[i * 3] = 1.0;
+                colors[i * 3 + 1] = 1.0;
+                colors[i * 3 + 2] = 1.0;
             }
             
             particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
             particleGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
             
             particleMaterial = new THREE.PointsMaterial({
-                size: 0.8,
+                size: isMobile ? 0.5 : 0.8,
                 vertexColors: true,
                 transparent: true,
                 opacity: 0.8,
@@ -1091,17 +1514,16 @@
         }
 
         function createCity() {
-            // Create detailed cyberpunk city with snow
-            for(let i = 0; i < 80; i++) {
+            // Reduce building count on mobile
+            const buildingCount = isMobile ? 40 : 80;
+            
+            for(let i = 0; i < buildingCount; i++) {
                 const buildingGroup = new THREE.Group();
                 
-                // Random building parameters
                 const buildingHeight = Math.random() * 40 + 20;
                 const buildingWidth = Math.random() * 8 + 5;
                 const buildingDepth = Math.random() * 8 + 5;
-                const floors = Math.floor(buildingHeight / 4);
                 
-                // Main building structure
                 const buildingGeometry = new THREE.BoxGeometry(buildingWidth, buildingHeight, buildingDepth);
                 const buildingMaterial = new THREE.MeshStandardMaterial({ 
                     color: 0x112244,
@@ -1116,64 +1538,7 @@
                 building.receiveShadow = true;
                 buildingGroup.add(building);
                 
-                // Snow on roof
-                const snowGeometry = new THREE.BoxGeometry(buildingWidth + 2, 1, buildingDepth + 2);
-                const snowMaterial = new THREE.MeshStandardMaterial({ 
-                    color: 0xffffff,
-                    roughness: 0.9,
-                    metalness: 0.1
-                });
-                const snow = new THREE.Mesh(snowGeometry, snowMaterial);
-                snow.position.y = buildingHeight/2 + 0.5;
-                buildingGroup.add(snow);
-                
-                // Windows with neon lights
-                for(let j = 0; j < floors; j++) {
-                    for(let k = 0; k < 4; k++) {
-                        const windowWidth = 1;
-                        const windowHeight = 1.5;
-                        const windowGeometry = new THREE.BoxGeometry(windowWidth, windowHeight, 0.2);
-                        
-                        // Random neon colors
-                        const neonColors = [0x00ffff, 0xff00ff, 0xffff00, 0xff3300];
-                        const neonColor = neonColors[Math.floor(Math.random() * neonColors.length)];
-                        
-                        const windowMaterial = new THREE.MeshStandardMaterial({ 
-                            color: neonColor,
-                            emissive: neonColor,
-                            emissiveIntensity: 2,
-                            metalness: 0.9,
-                            roughness: 0.1
-                        });
-                        
-                        const window = new THREE.Mesh(windowGeometry, windowMaterial);
-                        
-                        // Position windows on all sides
-                        const side = k;
-                        const windowY = -buildingHeight/2 + j * 4 + 2.5;
-                        
-                        switch(side) {
-                            case 0: // Front
-                                window.position.set(0, windowY, buildingDepth/2 + 0.1);
-                                break;
-                            case 1: // Back
-                                window.position.set(0, windowY, -buildingDepth/2 - 0.1);
-                                break;
-                            case 2: // Right
-                                window.position.set(buildingWidth/2 + 0.1, windowY, 0);
-                                window.rotation.y = Math.PI / 2;
-                                break;
-                            case 3: // Left
-                                window.position.set(-buildingWidth/2 - 0.1, windowY, 0);
-                                window.rotation.y = Math.PI / 2;
-                                break;
-                        }
-                        
-                        buildingGroup.add(window);
-                    }
-                }
-                
-                // Place building
+                // Position building
                 const side = Math.random() > 0.5 ? 1 : -1;
                 buildingGroup.position.set(
                     (riverWidth/2 + 40 + Math.random() * 60) * side,
@@ -1181,70 +1546,32 @@
                     (Math.random() - 0.5) * riverLength
                 );
                 
-                // Add some rotation for variety
-                buildingGroup.rotation.y = Math.random() * 0.1;
-                
                 scene.add(buildingGroup);
                 buildings.push(buildingGroup);
-            }
-            
-            // Add distant mountains with snow
-            for(let i = 0; i < 12; i++) {
-                const mountainHeight = Math.random() * 100 + 80;
-                const mountainGeometry = new THREE.ConeGeometry(100, mountainHeight, 10);
-                const mountainMaterial = new THREE.MeshStandardMaterial({ 
-                    color: 0x223355,
-                    roughness: 0.9,
-                    metalness: 0.1
-                });
-                
-                const mountain = new THREE.Mesh(mountainGeometry, mountainMaterial);
-                mountain.position.set(
-                    (Math.random() - 0.5) * 400,
-                    -100,
-                    -300 + i * 80
-                );
-                scene.add(mountain);
-                
-                // Snow on mountain peaks
-                const snowPeakGeometry = new THREE.ConeGeometry(90, 20, 10);
-                const snowPeakMaterial = new THREE.MeshStandardMaterial({ 
-                    color: 0xffffff,
-                    roughness: 0.8
-                });
-                
-                const snowPeak = new THREE.Mesh(snowPeakGeometry, snowPeakMaterial);
-                snowPeak.position.set(
-                    mountain.position.x,
-                    mountain.position.y + mountainHeight/2 - 5,
-                    mountain.position.z
-                );
-                scene.add(snowPeak);
             }
         }
 
         function createLightParticles() {
-            const particleCount = 1500;
+            const count = isMobile ? 800 : 1500;
             const geometry = new THREE.BufferGeometry();
-            const positions = new Float32Array(particleCount * 3);
-            const colors = new Float32Array(particleCount * 3);
+            const positions = new Float32Array(count * 3);
+            const colors = new Float32Array(count * 3);
             
-            for(let i = 0; i < particleCount; i++) {
+            for(let i = 0; i < count; i++) {
                 positions[i * 3] = (Math.random() - 0.5) * 200;
                 positions[i * 3 + 1] = Math.random() * 50;
                 positions[i * 3 + 2] = (Math.random() - 0.5) * 500;
                 
-                // Blue/cyan colors for cyberpunk atmosphere
-                colors[i * 3] = 0.2 + Math.random() * 0.3; // R
-                colors[i * 3 + 1] = 0.5 + Math.random() * 0.5; // G
-                colors[i * 3 + 2] = 1.0; // B
+                colors[i * 3] = 0.2 + Math.random() * 0.3;
+                colors[i * 3 + 1] = 0.5 + Math.random() * 0.5;
+                colors[i * 3 + 2] = 1.0;
             }
             
             geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
             geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
             
             const material = new THREE.PointsMaterial({
-                size: 0.6,
+                size: isMobile ? 0.4 : 0.6,
                 vertexColors: true,
                 transparent: true,
                 opacity: 0.4,
@@ -1257,8 +1584,8 @@
         }
 
         function createFogParticles() {
+            const fogCount = isMobile ? 400 : 800;
             const fogGeometry = new THREE.BufferGeometry();
-            const fogCount = 800;
             const positions = new Float32Array(fogCount * 3);
             
             for(let i = 0; i < fogCount; i++) {
@@ -1271,7 +1598,7 @@
             
             const fogMaterial = new THREE.PointsMaterial({
                 color: 0xaaccff,
-                size: 8,
+                size: isMobile ? 6 : 8,
                 transparent: true,
                 opacity: 0.08,
                 blending: THREE.AdditiveBlending
@@ -1285,16 +1612,12 @@
         function setupControls() {
             const keys = {};
             
+            // Keyboard controls
             document.addEventListener('keydown', (e) => {
                 keys[e.code] = true;
                 
                 if(e.code === 'Space') {
-                    nitroActive = true;
-                    speedBoost = 2.5;
-                    setTimeout(() => {
-                        nitroActive = false;
-                        speedBoost = 1;
-                    }, 2000);
+                    activateNitro();
                 }
             });
             
@@ -1302,9 +1625,9 @@
                 keys[e.code] = false;
             });
             
-            // Update boat position based on keys
-            function updateBoatPosition() {
-                // Left/Right movement
+            // Update boat based on keys
+            function updateBoatFromKeys() {
+                // Left/Right
                 if(keys['ArrowLeft'] || keys['KeyA']) {
                     boatPositionX = Math.max(boatPositionX - 0.8, -riverWidth/2 + 5);
                 }
@@ -1312,18 +1635,16 @@
                     boatPositionX = Math.min(boatPositionX + 0.8, riverWidth/2 - 5);
                 }
                 
-                // Up/Down river movement (Forward/Backward along Z-axis)
+                // Forward/Backward
                 if(keys['ArrowUp'] || keys['KeyW']) {
-                    // Move UP river (negative Z direction)
                     boatPositionZ -= boatSpeed * 0.02 * speedBoost;
                     boatVelocity = -boatSpeed * speedBoost;
-                    riverDirection = -1; // Upstream
+                    riverDirection = -1;
                 }
                 if(keys['ArrowDown'] || keys['KeyS']) {
-                    // Move DOWN river (positive Z direction)
                     boatPositionZ += boatSpeed * 0.02 * speedBoost;
                     boatVelocity = boatSpeed * speedBoost;
-                    riverDirection = 1; // Downstream
+                    riverDirection = 1;
                 }
                 
                 // Speed adjustment
@@ -1334,71 +1655,45 @@
                     boatSpeed = Math.max(boatSpeed - 2, 10);
                 }
                 
-                // Update UI
-                document.getElementById('boatSpeed').textContent = Math.floor(boatSpeed);
-                document.getElementById('currentSpeed').textContent = Math.floor(boatSpeed * speedBoost);
-                document.getElementById('riverPosition').textContent = `Z: ${boatPositionZ.toFixed(1)}`;
-                
-                // Update direction arrow
-                const directionArrow = document.getElementById('directionArrow');
-                if(riverDirection === -1) {
-                    directionArrow.textContent = '↑';
-                    directionArrow.style.color = '#00ff9d';
-                } else {
-                    directionArrow.textContent = '↓';
-                    directionArrow.style.color = '#00f0ff';
-                }
+                updateUI();
             }
             
-            // Add update to animation loop
-            const originalAnimate = animate;
-            window.animate = function() {
-                updateBoatPosition();
-                originalAnimate();
+            // Integrate into animation loop
+            window.updateControls = function() {
+                updateBoatFromKeys();
+                
+                // Update from touch joystick if active
+                if (touchJoystickActive) {
+                    boatPositionX += joystickX * 2;
+                    boatPositionX = Math.max(-riverWidth/2 + 5, Math.min(riverWidth/2 - 5, boatPositionX));
+                    
+                    boatPositionZ -= joystickY * boatSpeed * 0.03 * speedBoost;
+                    boatVelocity = -joystickY * boatSpeed * speedBoost;
+                    riverDirection = joystickY > 0 ? -1 : 1;
+                }
+                
+                // Update from touch speed control
+                if (touchSpeedActive) {
+                    boatSpeed = 10 + speedValue * 190;
+                }
             };
         }
 
         function setupUIControls() {
             // Boat control buttons
-            document.getElementById('boatForward').addEventListener('click', () => {
-                boatPositionZ -= boatSpeed * 0.05 * speedBoost;
-                boatVelocity = -boatSpeed * speedBoost;
-                riverDirection = -1;
-            });
+            document.getElementById('boatForward').addEventListener('click', () => moveBoatForward());
+            document.getElementById('boatBackward').addEventListener('click', () => moveBoatBackward());
+            document.getElementById('boatLeft').addEventListener('click', () => moveBoatLeft());
+            document.getElementById('boatRight').addEventListener('click', () => moveBoatRight());
+            document.getElementById('boatCenter').addEventListener('click', () => centerBoat());
+            document.getElementById('boatBoost').addEventListener('click', () => activateNitro());
             
-            document.getElementById('boatBackward').addEventListener('click', () => {
-                boatPositionZ += boatSpeed * 0.05 * speedBoost;
-                boatVelocity = boatSpeed * speedBoost;
-                riverDirection = 1;
-            });
-            
-            document.getElementById('boatLeft').addEventListener('click', () => {
-                boatPositionX = Math.max(boatPositionX - 10, -riverWidth/2 + 5);
-            });
-            
-            document.getElementById('boatRight').addEventListener('click', () => {
-                boatPositionX = Math.min(boatPositionX + 10, riverWidth/2 + 5);
-            });
-            
-            document.getElementById('boatCenter').addEventListener('click', () => {
-                boatPositionX = 0;
-                boatPositionZ = 0;
-            });
-            
-            document.getElementById('boatBoost').addEventListener('click', () => {
-                nitroActive = true;
-                speedBoost = 2.5;
-                setTimeout(() => {
-                    nitroActive = false;
-                    speedBoost = 1;
-                }, 2000);
-            });
-            
-            // Speed controls
+            // Speed control
             document.getElementById('speedUp').addEventListener('click', () => {
                 boatSpeed = Math.min(boatSpeed + 25, 200);
                 speedBoost = 1.5;
                 setTimeout(() => speedBoost = 1, 1000);
+                updateUI();
             });
             
             // Weather controls
@@ -1420,7 +1715,6 @@
                     weatherType = this.dataset.weather;
                     document.getElementById('weatherType').textContent = weatherType.toUpperCase();
                     
-                    // Change particle color based on weather
                     if(particleMaterial) {
                         if(weatherType === 'snow') {
                             particleMaterial.color.set(0xffffff);
@@ -1428,10 +1722,240 @@
                             particleMaterial.color.set(0x00aaff);
                         } else if(weatherType === 'fog') {
                             particleMaterial.color.set(0xaaccff);
+                        } else if(weatherType === 'storm') {
+                            particleMaterial.color.set(0x666666);
                         }
                     }
                 });
             });
+        }
+
+        function setupWeatherToggle() {
+            const weatherControl = document.getElementById('weatherControl');
+            const weatherToggleBtn = document.getElementById('weatherToggleBtn');
+            const weatherToggleIcon = weatherToggleBtn.querySelector('i');
+            
+            weatherToggleBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                weatherControl.classList.toggle('minimized');
+                
+                if (weatherControl.classList.contains('minimized')) {
+                    weatherToggleIcon.className = 'fas fa-chevron-down';
+                } else {
+                    weatherToggleIcon.className = 'fas fa-chevron-up';
+                }
+            });
+            
+            // Also allow clicking header to toggle
+            document.getElementById('weatherToggle').addEventListener('click', () => {
+                weatherControl.classList.toggle('minimized');
+                
+                if (weatherControl.classList.contains('minimized')) {
+                    weatherToggleIcon.className = 'fas fa-chevron-down';
+                } else {
+                    weatherToggleIcon.className = 'fas fa-chevron-up';
+                }
+            });
+        }
+
+        function setupTouchControls() {
+            const joystick = document.getElementById('touchJoystick');
+            const joystickHandle = document.getElementById('joystickHandle');
+            const speedControl = document.getElementById('touchSpeedControl');
+            const speedSlider = document.getElementById('speedSlider');
+            
+            let joystickRect, speedRect;
+            let joystickCenterX, joystickCenterY;
+            let speedMinY, speedMaxY;
+            
+            function updateJoystickPosition() {
+                joystickRect = joystick.getBoundingClientRect();
+                joystickCenterX = joystickRect.left + joystickRect.width / 2;
+                joystickCenterY = joystickRect.top + joystickRect.height / 2;
+            }
+            
+            function updateSpeedControlPosition() {
+                speedRect = speedControl.getBoundingClientRect();
+                speedMinY = speedRect.top + 35;
+                speedMaxY = speedRect.bottom - 35;
+            }
+            
+            // Update positions on load and resize
+            updateJoystickPosition();
+            updateSpeedControlPosition();
+            window.addEventListener('resize', () => {
+                updateJoystickPosition();
+                updateSpeedControlPosition();
+            });
+            
+            // Touch events for joystick
+            joystick.addEventListener('touchstart', handleJoystickStart);
+            document.addEventListener('touchmove', handleJoystickMove);
+            document.addEventListener('touchend', handleJoystickEnd);
+            
+            // Mouse events for testing
+            joystick.addEventListener('mousedown', handleJoystickStart);
+            document.addEventListener('mousemove', handleJoystickMove);
+            document.addEventListener('mouseup', handleJoystickEnd);
+            
+            // Speed control touch events
+            speedControl.addEventListener('touchstart', handleSpeedStart);
+            document.addEventListener('touchmove', handleSpeedMove);
+            document.addEventListener('touchend', handleSpeedEnd);
+            
+            // Mouse events for speed control
+            speedControl.addEventListener('mousedown', handleSpeedStart);
+            document.addEventListener('mousemove', handleSpeedMove);
+            document.addEventListener('mouseup', handleSpeedEnd);
+            
+            function handleJoystickStart(e) {
+                e.preventDefault();
+                touchJoystickActive = true;
+                updateJoystickPosition();
+                handleJoystickMove(e);
+            }
+            
+            function handleJoystickMove(e) {
+                if (!touchJoystickActive) return;
+                
+                let clientX, clientY;
+                
+                if (e.type.includes('touch')) {
+                    clientX = e.touches[0].clientX;
+                    clientY = e.touches[0].clientY;
+                } else {
+                    clientX = e.clientX;
+                    clientY = e.clientY;
+                }
+                
+                // Calculate joystick position
+                const deltaX = clientX - joystickCenterX;
+                const deltaY = clientY - joystickCenterY;
+                
+                // Limit joystick movement to circle
+                const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                const maxDistance = 50;
+                
+                if (distance > maxDistance) {
+                    joystickX = (deltaX / distance) * maxDistance;
+                    joystickY = (deltaY / distance) * maxDistance;
+                } else {
+                    joystickX = deltaX;
+                    joystickY = deltaY;
+                }
+                
+                // Normalize values
+                joystickX = joystickX / maxDistance;
+                joystickY = joystickY / maxDistance;
+                
+                // Update joystick visual position
+                joystickHandle.style.transform = `translate(calc(-50% + ${joystickX * maxDistance}px), calc(-50% + ${joystickY * maxDistance}px))`;
+            }
+            
+            function handleJoystickEnd() {
+                touchJoystickActive = false;
+                joystickX = 0;
+                joystickY = 0;
+                joystickHandle.style.transform = 'translate(-50%, -50%)';
+            }
+            
+            function handleSpeedStart(e) {
+                e.preventDefault();
+                touchSpeedActive = true;
+                updateSpeedControlPosition();
+                handleSpeedMove(e);
+            }
+            
+            function handleSpeedMove(e) {
+                if (!touchSpeedActive) return;
+                
+                let clientY;
+                
+                if (e.type.includes('touch')) {
+                    clientY = e.touches[0].clientY;
+                } else {
+                    clientY = e.clientY;
+                }
+                
+                // Calculate speed based on slider position
+                const sliderY = Math.max(speedMinY, Math.min(speedMaxY, clientY));
+                const speedPercent = 1 - (sliderY - speedMinY) / (speedMaxY - speedMinY);
+                
+                // Set boat speed (10-200 range)
+                speedValue = speedPercent;
+                boatSpeed = 10 + speedPercent * 190;
+                
+                // Update slider position
+                speedSlider.style.top = `${10 + speedPercent * 100}px`;
+                
+                updateUI();
+            }
+            
+            function handleSpeedEnd() {
+                touchSpeedActive = false;
+            }
+            
+            // Gesture hints
+            setTimeout(() => {
+                document.getElementById('gestureHint').style.opacity = '0.7';
+                setTimeout(() => {
+                    document.getElementById('gestureHint').style.opacity = '0.3';
+                }, 5000);
+            }, 2000);
+        }
+
+        function moveBoatForward() {
+            boatPositionZ -= boatSpeed * 0.05 * speedBoost;
+            boatVelocity = -boatSpeed * speedBoost;
+            riverDirection = -1;
+            updateUI();
+        }
+        
+        function moveBoatBackward() {
+            boatPositionZ += boatSpeed * 0.05 * speedBoost;
+            boatVelocity = boatSpeed * speedBoost;
+            riverDirection = 1;
+            updateUI();
+        }
+        
+        function moveBoatLeft() {
+            boatPositionX = Math.max(boatPositionX - 10, -riverWidth/2 + 5);
+            updateUI();
+        }
+        
+        function moveBoatRight() {
+            boatPositionX = Math.min(boatPositionX + 10, riverWidth/2 + 5);
+            updateUI();
+        }
+        
+        function centerBoat() {
+            boatPositionX = 0;
+            updateUI();
+        }
+        
+        function activateNitro() {
+            nitroActive = true;
+            speedBoost = 2.5;
+            setTimeout(() => {
+                nitroActive = false;
+                speedBoost = 1;
+            }, 2000);
+            updateUI();
+        }
+        
+        function updateUI() {
+            document.getElementById('boatSpeed').textContent = Math.floor(boatSpeed);
+            document.getElementById('currentSpeed').textContent = Math.floor(boatSpeed * speedBoost);
+            document.getElementById('riverPosition').textContent = `Z: ${boatPositionZ.toFixed(1)}`;
+            
+            const directionArrow = document.getElementById('directionArrow');
+            if(riverDirection === -1) {
+                directionArrow.textContent = '↑';
+                directionArrow.style.color = '#00ff9d';
+            } else {
+                directionArrow.textContent = '↓';
+                directionArrow.style.color = '#00f0ff';
+            }
         }
 
         function animate() {
@@ -1440,7 +1964,10 @@
             const delta = clock.getDelta();
             const time = clock.getElapsedTime();
             
-            // Update river material uniform
+            // Update controls
+            if (window.updateControls) updateControls();
+            
+            // Update river material
             if(riverMaterial && riverMaterial.uniforms) {
                 riverMaterial.uniforms.time.value = time;
                 riverMaterial.uniforms.speed.value = Math.abs(boatVelocity) * 0.01;
@@ -1452,7 +1979,6 @@
                 const positions = particleSystem.geometry.attributes.position.array;
                 
                 for(let i = 0; i < positions.length; i += 3) {
-                    // Different movement based on weather type
                     if(weatherType === 'snow') {
                         positions[i + 1] -= 1.5 * weatherIntensity;
                         positions[i] += Math.sin(time + positions[i + 2] * 0.01) * 0.1;
@@ -1461,9 +1987,11 @@
                     } else if(weatherType === 'fog') {
                         positions[i + 1] -= 0.5 * weatherIntensity;
                         positions[i] += Math.sin(time * 0.5 + positions[i + 2] * 0.01) * 0.05;
+                    } else if(weatherType === 'storm') {
+                        positions[i + 1] -= 3 * weatherIntensity;
+                        positions[i] += Math.sin(time * 2 + positions[i + 2] * 0.01) * 0.2;
                     }
                     
-                    // Reset particle if it falls too low
                     if(positions[i + 1] < -50) {
                         positions[i] = (Math.random() - 0.5) * 200;
                         positions[i + 1] = Math.random() * 100 + 50;
@@ -1476,74 +2004,50 @@
             
             // Update boat animation
             if(boat) {
-                // Smooth boat movement
                 boat.position.x += (boatPositionX - boat.position.x) * 0.1;
                 boat.position.z += (boatPositionZ - boat.position.z) * 0.1;
                 
-                // Boat height animation with waves
                 boat.position.y = boatHeight + Math.sin(time * 2 + boat.position.z * 0.01) * 0.5;
                 
-                // Boat rotation based on movement
                 boat.rotation.z = (boatPositionX - boat.position.x) * 0.03;
                 boat.rotation.x = Math.sin(time) * 0.05 + (boatVelocity / 200) * 0.2;
-                
-                // Boat rotation based on river direction
                 boat.rotation.y = riverDirection * 0.05;
                 
-                // Update distance traveled
+                // Animate propeller
+                if (boat.userData) {
+                    boat.userData.propellerRotation += boatSpeed * 0.1;
+                    const propeller = boat.children.find(child => child.name === 'engineSystem');
+                    if (propeller) {
+                        const propellerPart = propeller.children.find(child => child.type === 'Group');
+                        if (propellerPart) {
+                            propellerPart.rotation.y = boat.userData.propellerRotation;
+                        }
+                    }
+                }
+                
                 distanceTraveled += Math.abs(boatVelocity) * delta * 0.001;
                 document.getElementById('distance').textContent = distanceTraveled.toFixed(1);
                 
-                // Create wake effect when moving
                 if(Math.abs(boatVelocity) > 10 && time % 0.3 < 0.1) {
                     createWakeParticle();
                 }
-                
-                // Engine glow effect when nitro is active
-                if(nitroActive) {
-                    const engineLight = boat.children.find(child => child.type === 'PointLight' && child.color.getHex() === 0xff3300);
-                    if(engineLight) {
-                        engineLight.intensity = 5 + Math.sin(time * 20) * 2;
-                    }
-                }
             }
-            
-            // Animate buildings (subtle movement for holographic effect)
-            buildings.forEach((building, index) => {
-                if(building.children && building.children.length > 0) {
-                    // Find windows and animate their emissive intensity
-                    building.children.forEach(child => {
-                        if(child.material && child.material.emissive) {
-                            child.material.emissiveIntensity = 1.5 + Math.sin(time * 2 + index) * 0.5;
-                        }
-                    });
-                }
-            });
-            
-            // Update light particles
-            lightParticles.forEach(particles => {
-                const positions = particles.geometry.attributes.position.array;
-                for(let i = 0; i < positions.length; i += 3) {
-                    positions[i + 1] -= 0.2;
-                    if(positions[i + 1] < -50) {
-                        positions[i + 1] = 50;
-                    }
-                    // Gentle horizontal movement
-                    positions[i] += Math.sin(time + i * 0.01) * 0.05;
-                }
-                particles.geometry.attributes.position.needsUpdate = true;
-            });
             
             // Update camera to follow boat
             camera.position.x += (boat.position.x * 0.5 - camera.position.x) * 0.05;
-            camera.position.z = boat.position.z + 60;
-            camera.position.y = 30 + Math.sin(time) * 2;
+            camera.position.z = boat.position.z + (isMobile ? 40 : 60);
+            camera.position.y = (isMobile ? 25 : 30) + Math.sin(time) * 2;
             
-            // Make camera look at boat
             camera.lookAt(boat.position.x, boat.position.y + 5, boat.position.z);
             
             controls.update();
-            composer.render();
+            
+            // Render with or without post-processing
+            if (composer && !isMobile) {
+                composer.render();
+            } else {
+                renderer.render(scene, camera);
+            }
         }
 
         function createWakeParticle() {
@@ -1560,7 +2064,6 @@
             wake.rotation.x = -Math.PI / 2;
             scene.add(wake);
             
-            // Animate and remove wake
             let scale = 1;
             let opacity = 0.4;
             
@@ -1585,31 +2088,26 @@
 
         function createSnowflakes() {
             const snowflakesContainer = document.getElementById('snowflakes');
-            const snowflakeCount = 150;
+            const snowflakeCount = isMobile ? 50 : 150;
             
             for(let i = 0; i < snowflakeCount; i++) {
                 const snowflake = document.createElement('div');
                 snowflake.className = 'snowflake';
                 
-                // Random size
                 const size = Math.random() * 5 + 2;
                 snowflake.style.width = `${size}px`;
                 snowflake.style.height = `${size}px`;
                 
-                // Random position
                 snowflake.style.left = `${Math.random() * 100}vw`;
                 snowflake.style.top = `${Math.random() * 100}vh`;
                 
-                // Random opacity
                 snowflake.style.opacity = Math.random() * 0.7 + 0.3;
                 
-                // Animation
                 const duration = Math.random() * 10 + 10;
                 const delay = Math.random() * 5;
                 
                 snowflake.style.animation = `fall ${duration}s linear ${delay}s infinite`;
                 
-                // Add CSS animation
                 const style = document.createElement('style');
                 style.textContent = `
                     @keyframes fall {
@@ -1633,7 +2131,10 @@
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
-            composer.setSize(window.innerWidth, window.innerHeight);
+            
+            if (composer) {
+                composer.setSize(window.innerWidth, window.innerHeight);
+            }
         }
 
         // UI CONTROLS
@@ -1665,6 +2166,81 @@
         function buyProduct(product) {
             alert(`Purchasing ${product.toUpperCase()}...\n\nRedirecting to checkout.`);
         }
+        
+        // ====== ENHANCED SEO FEATURES ======
+        // Update page title dynamically based on interaction
+        window.addEventListener('focus', () => {
+            document.title = "BURΔQ | Cyber River Fashion - Premium Phygital Fashion & NFT Wearables";
+        });
+        
+        window.addEventListener('blur', () => {
+            document.title = "Come back to BURΔQ | Cyber River Fashion";
+        });
+        
+        // Track user engagement for analytics
+        let engagementTime = 0;
+        setInterval(() => {
+            engagementTime++;
+            if (engagementTime === 30) {
+                console.log("User engaged for 30 seconds - high quality session");
+            }
+        }, 1000);
+        
+        // Performance monitoring
+        if ('performance' in window) {
+            setTimeout(() => {
+                const loadTime = performance.now();
+                console.log(`Page loaded in ${loadTime.toFixed(2)}ms`);
+                
+                if (loadTime > 3000) {
+                    console.warn("Load time exceeds 3 seconds - consider optimization");
+                }
+            }, 1000);
+        }
+        
+        // Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(() => {
+                    console.log('Service Worker registered');
+                }).catch(err => {
+                    console.log('Service Worker registration failed: ', err);
+                });
+            });
+        }
+        
+        // Web App Install Prompt
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            // Show install button after 10 seconds
+            setTimeout(() => {
+                const installBtn = document.createElement('button');
+                installBtn.innerHTML = '<i class="fas fa-download"></i> Install App';
+                installBtn.className = 'btn btn-primary';
+                installBtn.style.cssText = `
+                    position: fixed;
+                    bottom: 20px;
+                    right: 20px;
+                    z-index: 1000;
+                    animation: float 3s ease-in-out infinite;
+                `;
+                
+                installBtn.onclick = async () => {
+                    if (deferredPrompt) {
+                        deferredPrompt.prompt();
+                        const { outcome } = await deferredPrompt.userChoice;
+                        if (outcome === 'accepted') {
+                            installBtn.remove();
+                        }
+                    }
+                };
+                
+                document.body.appendChild(installBtn);
+            }, 10000);
+        });
     </script>
 </body>
 </html>
