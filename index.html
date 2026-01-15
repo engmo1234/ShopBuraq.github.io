@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BURΔQ | Cyber River Fashion</title>
+    
+    <!-- FAVICON & APP ICONS -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+    <link rel="manifest" href="site.webmanifest">
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -32,17 +42,6 @@
             width: 100%;
             height: 100%;
             z-index: 1;
-        }
-        
-        /* UI OVERLAY */
-        .ui-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            pointer-events: none;
         }
         
         /* PRELOADER */
@@ -110,7 +109,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 3;
+            z-index: 10;
             background: rgba(0,0,0,0.3);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0,240,255,0.2);
@@ -125,7 +124,6 @@
             background-clip: text;
             color: transparent;
             text-decoration: none;
-            pointer-events: all;
         }
         
         .nav-links {
@@ -140,7 +138,6 @@
             font-weight: 500;
             position: relative;
             padding: 0.5rem 0;
-            pointer-events: all;
             transition: color 0.3s;
         }
         
@@ -157,7 +154,6 @@
             font-family: 'Orbitron', sans-serif;
             font-weight: 600;
             cursor: pointer;
-            pointer-events: all;
             transition: transform 0.3s, box-shadow 0.3s;
         }
         
@@ -174,7 +170,6 @@
             transform: translateY(-50%);
             max-width: 600px;
             z-index: 3;
-            pointer-events: none;
         }
         
         .hero-badge {
@@ -188,7 +183,6 @@
             letter-spacing: 3px;
             margin-bottom: 3rem;
             backdrop-filter: blur(10px);
-            pointer-events: all;
         }
         
         .hero-title {
@@ -215,7 +209,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            pointer-events: all;
         }
         
         .btn {
@@ -232,7 +225,6 @@
             transition: all 0.3s;
             border: none;
             cursor: pointer;
-            pointer-events: all;
         }
         
         .btn-primary {
@@ -294,12 +286,11 @@
             font-size: 0.9rem;
         }
         
-        /* WEATHER CONTROL PANEL */
+        /* WEATHER CONTROL PANEL - MOVED TO LEFT TO PREVENT OVERLAP */
         .weather-control {
             position: fixed;
-            top: 50%;
-            right: 5%;
-            transform: translateY(-50%);
+            top: 20%;
+            left: 5%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -309,6 +300,7 @@
             border-radius: 15px;
             border: 1px solid rgba(0,240,255,0.2);
             backdrop-filter: blur(10px);
+            z-index: 5;
         }
         
         .weather-slider {
@@ -342,7 +334,6 @@
             border-radius: 5px;
             color: white;
             cursor: pointer;
-            pointer-events: all;
             transition: all 0.3s;
         }
         
@@ -351,7 +342,7 @@
             color: black;
         }
         
-        /* BOAT CONTROL PANEL */
+        /* BOAT CONTROL PANEL - STAYS ON RIGHT */
         .boat-control {
             position: fixed;
             top: 20%;
@@ -365,6 +356,7 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
+            z-index: 5;
         }
         
         .control-buttons {
@@ -385,7 +377,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            pointer-events: all;
             transition: all 0.2s;
         }
         
@@ -443,9 +434,8 @@
             border-radius: 20px;
             border: 1px solid #00f0ff;
             backdrop-filter: blur(20px);
-            z-index: 3;
+            z-index: 10;
             transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            pointer-events: all;
         }
         
         .shop-window.active {
@@ -464,8 +454,7 @@
             cursor: pointer;
             font-family: 'Orbitron', sans-serif;
             font-weight: 600;
-            z-index: 3;
-            pointer-events: all;
+            z-index: 9;
         }
         
         .nft-item {
@@ -508,14 +497,83 @@
             filter: blur(0.5px);
         }
         
-        /* RESPONSIVE */
+        /* RESPONSIVE - Simple fix for mobile */
+        @media (max-width: 1200px) {
+            /* Move weather control lower on medium screens */
+            .weather-control {
+                top: 30%;
+            }
+        }
+        
+        @media (max-width: 1024px) {
+            /* Stack boat control below weather control */
+            .weather-control {
+                top: 20%;
+                left: 5%;
+            }
+            
+            .boat-control {
+                top: 35%;
+                right: 5%;
+            }
+        }
+        
         @media (max-width: 768px) {
             .hero-title { font-size: 3rem; }
             .hero { left: 2%; right: 2%; }
-            .stats-overlay { flex-direction: column; }
-            .weather-control, .boat-control { display: none; }
-            .controls-info { font-size: 0.7rem; padding: 0.5rem 1rem; }
-            .direction-indicator { top: 10%; padding: 0.5rem 1rem; }
+            .stats-overlay { 
+                flex-direction: column; 
+                bottom: 15%;
+                right: 5%;
+                left: 5%;
+                align-items: center;
+            }
+            
+            /* Hide weather and boat controls on mobile */
+            .weather-control, .boat-control { 
+                display: none; 
+            }
+            
+            .controls-info { 
+                font-size: 0.7rem; 
+                padding: 0.5rem 1rem;
+                bottom: 5%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%;
+                text-align: center;
+            }
+            
+            .direction-indicator { 
+                top: 12%; 
+                padding: 0.5rem 1rem; 
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav {
+                padding: 1rem 5%;
+            }
+            
+            .nav-logo {
+                font-size: 1.5rem;
+            }
+            
+            .wallet-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .shop-window {
+                width: 90%;
+                right: -100%;
+            }
+            
+            .shop-window.active {
+                right: 5%;
+            }
         }
         
         /* SCROLLBAR */
@@ -537,143 +595,140 @@
     <!-- SNOWFLAKES OVERLAY -->
     <div class="snowflakes" id="snowflakes"></div>
     
-    <!-- UI OVERLAY -->
-    <div class="ui-overlay">
-        <!-- PRELOADER -->
-        <div class="preloader" id="preloader">
-            <div class="preloader-content">
-                <div class="preloader-logo">BURΔQ</div>
-                <div class="loading-bar">
-                    <div class="loading-progress"></div>
-                </div>
+    <!-- PRELOADER -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">BURΔQ</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
             </div>
         </div>
-        
-        <!-- NAVIGATION -->
-        <nav class="nav">
-            <a href="#" class="nav-logo">BURΔQ</a>
-            <div class="nav-links">
-                <a href="#shop" class="nav-link">SHOP</a>
-                <a href="#" class="nav-link">COLLECTION</a>
-                <a href="#" class="nav-link">ABOUT</a>
-                <a href="#" class="nav-link">CONTACT</a>
-            </div>
-            <button class="wallet-btn" id="connectWallet">
-                <i class="fas fa-wallet"></i> CONNECT WALLET
+    </div>
+    
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <a href="#" class="nav-logo">BURΔQ</a>
+        <div class="nav-links">
+            <a href="#shop" class="nav-link">SHOP</a>
+            <a href="#" class="nav-link">COLLECTION</a>
+            <a href="#" class="nav-link">ABOUT</a>
+            <a href="#" class="nav-link">CONTACT</a>
+        </div>
+        <button class="wallet-btn" id="connectWallet">
+            <i class="fas fa-wallet"></i> CONNECT WALLET
+        </button>
+    </nav>
+    
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-badge floating">PHYGITAL FASHION DROP #001</div>
+        <h1 class="hero-title">RIDE THE<br>DIGITAL RIVER</h1>
+        <p class="hero-subtitle">
+            Where cyberpunk fashion meets blockchain technology. 
+            Each garment is a token, each token tells a story. 
+            Navigate the digital currents with us.
+        </p>
+        <div class="button-grid">
+            <button class="btn btn-primary" id="shopToggle">
+                <i class="fas fa-store"></i> OPEN SHOP
             </button>
-        </nav>
+            <button class="btn btn-primary" id="speedUp">
+                <i class="fas fa-tachometer-alt"></i> INCREASE SPEED
+            </button>
+        </div>
+    </section>
+    
+    <!-- STATS -->
+    <div class="stats-overlay">
+        <div class="stat-item">
+            <div class="stat-number" id="boatSpeed">75</div>
+            <div class="stat-label">KM/H</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number" id="weatherIntensity">2500</div>
+            <div class="stat-label">PARTICLES</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number" id="distance">0.0</div>
+            <div class="stat-label">KM TRAVELED</div>
+        </div>
+    </div>
+    
+    <!-- DIRECTION INDICATOR -->
+    <div class="direction-indicator">
+        <div>BOAT POSITION</div>
+        <div class="direction-arrow" id="directionArrow">↓</div>
+        <div id="riverPosition">Z: 0.0</div>
+    </div>
+    
+    <!-- CONTROLS INFO -->
+    <div class="controls-info">
+        <div>←→ ARROW KEYS: STEER BOAT</div>
+        <div>↑↓ ARROW KEYS: MOVE UP/DOWN RIVER</div>
+        <div>SPACEBAR: NITRO BOOST</div>
+        <div>W/S: MOVE FORWARD/BACKWARD</div>
+        <div>SCROLL: ZOOM IN/OUT</div>
+    </div>
+    
+    <!-- WEATHER CONTROL - MOVED TO LEFT SIDE -->
+    <div class="weather-control">
+        <div>WEATHER INTENSITY</div>
+        <input type="range" min="0" max="100" value="50" class="weather-slider" id="weatherSlider">
+        <div>WEATHER TYPE: <span id="weatherType">SNOW</span></div>
+        <div class="weather-buttons">
+            <button class="weather-btn active" data-weather="snow">SNOW</button>
+            <button class="weather-btn" data-weather="rain">RAIN</button>
+            <button class="weather-btn" data-weather="fog">FOG</button>
+        </div>
+    </div>
+    
+    <!-- BOAT CONTROL PANEL - STAYS ON RIGHT -->
+    <div class="boat-control">
+        <div>BOAT CONTROL</div>
+        <div class="control-buttons">
+            <button class="control-btn" id="boatForward"><i class="fas fa-arrow-up"></i></button>
+            <button class="control-btn" id="boatBoost"><i class="fas fa-bolt"></i></button>
+            <button class="control-btn" id="boatBackward"><i class="fas fa-arrow-down"></i></button>
+            <button class="control-btn" id="boatLeft"><i class="fas fa-arrow-left"></i></button>
+            <button class="control-btn" id="boatCenter"><i class="fas fa-bullseye"></i></button>
+            <button class="control-btn" id="boatRight"><i class="fas fa-arrow-right"></i></button>
+        </div>
+        <div class="speed-value" id="currentSpeed">75</div>
+        <div>KM/H CURRENT</div>
+    </div>
+    
+    <!-- SHOP WINDOW -->
+    <div class="shop-toggle" id="shopToggleBtn">
+        <i class="fas fa-shopping-bag"></i> SHOP
+    </div>
+    <div class="shop-window" id="shopWindow">
+        <h2 style="font-family:'Orbitron';margin-bottom:1.5rem;color:#00f0ff">NFT FASHION</h2>
         
-        <!-- HERO -->
-        <section class="hero">
-            <div class="hero-badge floating">PHYGITAL FASHION DROP #001</div>
-            <h1 class="hero-title">RIDE THE<br>DIGITAL RIVER</h1>
-            <p class="hero-subtitle">
-                Where cyberpunk fashion meets blockchain technology. 
-                Each garment is a token, each token tells a story. 
-                Navigate the digital currents with us.
-            </p>
-            <div class="button-grid">
-                <button class="btn btn-primary" id="shopToggle">
-                    <i class="fas fa-store"></i> OPEN SHOP
-                </button>
-                <button class="btn btn-primary" id="speedUp">
-                    <i class="fas fa-tachometer-alt"></i> INCREASE SPEED
-                </button>
-            </div>
-        </section>
-        
-        <!-- STATS -->
-        <div class="stats-overlay">
-            <div class="stat-item">
-                <div class="stat-number" id="boatSpeed">75</div>
-                <div class="stat-label">KM/H</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" id="weatherIntensity">2500</div>
-                <div class="stat-label">PARTICLES</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number" id="distance">0.0</div>
-                <div class="stat-label">KM TRAVELED</div>
-            </div>
+        <div class="nft-item">
+            <h3 style="font-family:'Orbitron'">CYBER JACKET</h3>
+            <p>Limited edition with NFC chip</p>
+            <div class="nft-price">0.15 ETH</div>
+            <button class="btn btn-primary" style="width:100%" onclick="buyProduct('cyber-jacket')">
+                BUY NOW
+            </button>
         </div>
         
-        <!-- DIRECTION INDICATOR -->
-        <div class="direction-indicator">
-            <div>BOAT POSITION</div>
-            <div class="direction-arrow" id="directionArrow">↓</div>
-            <div id="riverPosition">Z: 0.0</div>
+        <div class="nft-item">
+            <h3 style="font-family:'Orbitron'">RIVER RUNNERS</h3>
+            <p>Water-resistant smart shoes</p>
+            <div class="nft-price">0.08 ETH</div>
+            <button class="btn btn-primary" style="width:100%" onclick="buyProduct('river-runners')">
+                BUY NOW
+            </button>
         </div>
         
-        <!-- CONTROLS INFO -->
-        <div class="controls-info">
-            <div>←→ ARROW KEYS: STEER BOAT</div>
-            <div>↑↓ ARROW KEYS: MOVE UP/DOWN RIVER</div>
-            <div>SPACEBAR: NITRO BOOST</div>
-            <div>W/S: MOVE FORWARD/BACKWARD</div>
-            <div>SCROLL: ZOOM IN/OUT</div>
-        </div>
-        
-        <!-- WEATHER CONTROL -->
-        <div class="weather-control">
-            <div>WEATHER INTENSITY</div>
-            <input type="range" min="0" max="100" value="50" class="weather-slider" id="weatherSlider">
-            <div>WEATHER TYPE: <span id="weatherType">SNOW</span></div>
-            <div class="weather-buttons">
-                <button class="weather-btn active" data-weather="snow">SNOW</button>
-                <button class="weather-btn" data-weather="rain">RAIN</button>
-                <button class="weather-btn" data-weather="fog">FOG</button>
-            </div>
-        </div>
-        
-        <!-- BOAT CONTROL PANEL -->
-        <div class="boat-control">
-            <div>BOAT CONTROL</div>
-            <div class="control-buttons">
-                <button class="control-btn" id="boatForward"><i class="fas fa-arrow-up"></i></button>
-                <button class="control-btn" id="boatBoost"><i class="fas fa-bolt"></i></button>
-                <button class="control-btn" id="boatBackward"><i class="fas fa-arrow-down"></i></button>
-                <button class="control-btn" id="boatLeft"><i class="fas fa-arrow-left"></i></button>
-                <button class="control-btn" id="boatCenter"><i class="fas fa-bullseye"></i></button>
-                <button class="control-btn" id="boatRight"><i class="fas fa-arrow-right"></i></button>
-            </div>
-            <div class="speed-value" id="currentSpeed">75</div>
-            <div>KM/H CURRENT</div>
-        </div>
-        
-        <!-- SHOP WINDOW -->
-        <div class="shop-toggle" id="shopToggleBtn">
-            <i class="fas fa-shopping-bag"></i> SHOP
-        </div>
-        <div class="shop-window" id="shopWindow">
-            <h2 style="font-family:'Orbitron';margin-bottom:1.5rem;color:#00f0ff">NFT FASHION</h2>
-            
-            <div class="nft-item">
-                <h3 style="font-family:'Orbitron'">CYBER JACKET</h3>
-                <p>Limited edition with NFC chip</p>
-                <div class="nft-price">0.15 ETH</div>
-                <button class="btn btn-primary" style="width:100%" onclick="buyProduct('cyber-jacket')">
-                    BUY NOW
-                </button>
-            </div>
-            
-            <div class="nft-item">
-                <h3 style="font-family:'Orbitron'">RIVER RUNNERS</h3>
-                <p>Water-resistant smart shoes</p>
-                <div class="nft-price">0.08 ETH</div>
-                <button class="btn btn-primary" style="width:100%" onclick="buyProduct('river-runners')">
-                    BUY NOW
-                </button>
-            </div>
-            
-            <div class="nft-item">
-                <h3 style="font-family:'Orbitron'">DIGITAL CAPE</h3>
-                <p>AR-enabled wearable</p>
-                <div class="nft-price">0.25 ETH</div>
-                <button class="btn btn-primary" style="width:100%" onclick="buyProduct('digital-cape')">
-                    BUY NOW
-                </button>
-            </div>
+        <div class="nft-item">
+            <h3 style="font-family:'Orbitron'">DIGITAL CAPE</h3>
+            <p>AR-enabled wearable</p>
+            <div class="nft-price">0.25 ETH</div>
+            <button class="btn btn-primary" style="width:100%" onclick="buyProduct('digital-cape')">
+                BUY NOW
+            </button>
         </div>
     </div>
 
@@ -1322,7 +1377,7 @@
             });
             
             document.getElementById('boatRight').addEventListener('click', () => {
-                boatPositionX = Math.min(boatPositionX + 10, riverWidth/2 - 5);
+                boatPositionX = Math.min(boatPositionX + 10, riverWidth/2 + 5);
             });
             
             document.getElementById('boatCenter').addEventListener('click', () => {
