@@ -147,19 +147,19 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.5rem 5%;
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 20;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.8);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0,240,255,0.2);
         }
         
         .nav-logo {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 900;
             background: linear-gradient(45deg, #00f0ff, #9d00ff);
             -webkit-background-clip: text;
@@ -170,7 +170,7 @@
         
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
         }
         
         .nav-link {
@@ -181,6 +181,7 @@
             position: relative;
             padding: 0.5rem 0;
             transition: color 0.3s;
+            font-size: 0.9rem;
         }
         
         .nav-link:hover {
@@ -188,7 +189,7 @@
         }
         
         .wallet-btn {
-            padding: 0.8rem 2rem;
+            padding: 0.6rem 1.5rem;
             background: linear-gradient(45deg, #00f0ff, #9d00ff);
             border: none;
             border-radius: 30px;
@@ -197,6 +198,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 0.9rem;
         }
         
         .wallet-btn:hover {
@@ -217,24 +219,24 @@
         
         .hero-badge {
             display: inline-block;
-            padding: 1rem 2rem;
+            padding: 0.8rem 1.5rem;
             background: rgba(0,0,0,0.5);
             border: 1px solid #00f0ff;
             border-radius: 50px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             letter-spacing: 3px;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             backdrop-filter: blur(10px);
             pointer-events: auto;
         }
         
         .hero-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 5rem;
+            font-size: 4.5rem;
             font-weight: 900;
             line-height: 1;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             background: linear-gradient(45deg, #00f0ff, #9d00ff);
             -webkit-background-clip: text;
             background-clip: text;
@@ -243,33 +245,36 @@
         }
         
         .hero-subtitle {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: rgba(255,255,255,0.8);
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
             line-height: 1.6;
         }
         
         .button-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
             pointer-events: auto;
+            max-width: 400px;
         }
         
         .btn {
-            padding: 1.2rem 2.5rem;
+            padding: 1rem 2rem;
             border-radius: 50px;
             font-family: 'Orbitron', sans-serif;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
+            white-space: nowrap;
+            width: 100%;
         }
         
         .btn-primary {
@@ -289,23 +294,23 @@
             bottom: 5%;
             right: 5%;
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             z-index: 15;
         }
         
         .stat-item {
             text-align: center;
             background: rgba(0,0,0,0.5);
-            padding: 1.5rem 2rem;
+            padding: 1rem 1.5rem;
             border-radius: 15px;
             border: 1px solid rgba(0,240,255,0.2);
             backdrop-filter: blur(10px);
-            min-width: 120px;
+            min-width: 100px;
         }
         
         .stat-number {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
+            font-size: 2rem;
             background: linear-gradient(45deg, #00f0ff, #9d00ff);
             -webkit-background-clip: text;
             background-clip: text;
@@ -313,7 +318,7 @@
         }
         
         .stat-label {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: rgba(255,255,255,0.7);
             margin-top: 0.5rem;
         }
@@ -324,13 +329,13 @@
             bottom: 5%;
             left: 5%;
             background: rgba(0,0,0,0.5);
-            padding: 1rem 2rem;
+            padding: 1rem 1.5rem;
             border-radius: 15px;
             border: 1px solid rgba(0,240,255,0.2);
             backdrop-filter: blur(10px);
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
-            max-width: 300px;
+            font-size: 0.8rem;
+            max-width: 280px;
             z-index: 15;
         }
         
@@ -346,13 +351,13 @@
             z-index: 15;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
-            min-width: 220px;
+            min-width: 200px;
             box-shadow: 0 8px 32px rgba(0, 240, 255, 0.1);
         }
         
         .weather-control.minimized {
-            height: 50px;
-            width: 180px;
+            height: 45px;
+            width: 160px;
         }
         
         .weather-control.minimized .weather-content {
@@ -363,7 +368,7 @@
         }
         
         .weather-header {
-            padding: 1rem 1.5rem;
+            padding: 0.8rem 1.2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -374,7 +379,7 @@
         
         .weather-header h3 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: #00f0ff;
             margin: 0;
         }
@@ -383,7 +388,7 @@
             background: none;
             border: none;
             color: #00f0ff;
-            font-size: 1.2rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: transform 0.3s;
             padding: 4px;
@@ -396,14 +401,14 @@
         }
         
         .weather-content {
-            padding: 1.5rem;
+            padding: 1.2rem;
             transition: all 0.3s ease;
         }
         
         .weather-slider {
             -webkit-appearance: none;
             width: 100%;
-            height: 5px;
+            height: 4px;
             background: rgba(255,255,255,0.1);
             border-radius: 5px;
             outline: none;
@@ -412,8 +417,8 @@
         
         .weather-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             background: #00f0ff;
             border-radius: 50%;
             cursor: pointer;
@@ -421,14 +426,14 @@
         
         .weather-buttons {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             margin-top: 10px;
             flex-wrap: wrap;
             justify-content: center;
         }
         
         .weather-btn {
-            padding: 0.5rem 1rem;
+            padding: 0.4rem 0.8rem;
             background: rgba(0,0,0,0.5);
             border: 1px solid rgba(0,240,255,0.3);
             border-radius: 5px;
@@ -436,7 +441,7 @@
             cursor: pointer;
             transition: all 0.3s;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
         
         .weather-btn.active {
@@ -450,32 +455,32 @@
             top: 15%;
             right: 5%;
             background: rgba(0,0,0,0.7);
-            padding: 1.5rem;
+            padding: 1.2rem;
             border-radius: 15px;
             border: 1px solid rgba(0,240,255,0.2);
             backdrop-filter: blur(10px);
             text-align: center;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             z-index: 15;
-            width: 220px;
+            width: 200px;
         }
         
         .control-buttons {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            gap: 8px;
         }
         
         .control-btn {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             background: rgba(0,0,0,0.7);
             border: 1px solid rgba(0,240,255,0.3);
             border-radius: 10px;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -497,7 +502,7 @@
         
         .speed-value {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
+            font-size: 1.8rem;
             background: linear-gradient(45deg, #00f0ff, #9d00ff);
             -webkit-background-clip: text;
             background-clip: text;
@@ -511,13 +516,13 @@
             left: 50%;
             transform: translateX(-50%);
             background: rgba(0,0,0,0.7);
-            padding: 1rem 2rem;
+            padding: 0.8rem 1.5rem;
             border-radius: 15px;
             border: 1px solid rgba(0,240,255,0.2);
             backdrop-filter: blur(10px);
             text-align: center;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             display: flex;
             flex-direction: column;
             gap: 5px;
@@ -525,7 +530,7 @@
         }
         
         .direction-arrow {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: #00f0ff;
         }
         
@@ -534,8 +539,8 @@
             position: fixed;
             bottom: 120px;
             left: 30px;
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             z-index: 15;
             display: none;
             touch-action: none;
@@ -553,8 +558,8 @@
         
         .touch-joystick-handle {
             position: absolute;
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             background: linear-gradient(45deg, #00f0ff, #9d00ff);
             border-radius: 50%;
             top: 50%;
@@ -568,8 +573,8 @@
             position: fixed;
             bottom: 120px;
             right: 30px;
-            width: 80px;
-            height: 180px;
+            width: 70px;
+            height: 150px;
             z-index: 15;
             display: none;
             touch-action: none;
@@ -587,8 +592,8 @@
         
         .touch-speed-slider {
             position: absolute;
-            width: 70px;
-            height: 70px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(45deg, #00f0ff, #9d00ff);
             border-radius: 50%;
             left: 50%;
@@ -604,12 +609,12 @@
             left: 50%;
             transform: translateX(-50%);
             background: rgba(0,0,0,0.8);
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 25px;
             border: 1px solid rgba(0,240,255,0.3);
             backdrop-filter: blur(10px);
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #00f0ff;
             text-align: center;
             z-index: 15;
@@ -630,7 +635,7 @@
             transform: translateY(-50%);
             width: 350px;
             background: rgba(0,0,0,0.9);
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 20px;
             border: 1px solid #00f0ff;
             backdrop-filter: blur(20px);
@@ -649,12 +654,13 @@
             transform: translateY(-50%);
             background: linear-gradient(45deg, #00f0ff, #9d00ff);
             color: black;
-            padding: 1rem;
+            padding: 0.8rem;
             border-radius: 10px 0 0 10px;
             cursor: pointer;
             font-family: 'Orbitron', sans-serif;
             font-weight: 600;
             z-index: 19;
+            font-size: 0.9rem;
         }
         
         .nft-item {
@@ -673,7 +679,7 @@
         
         .nft-price {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: #00f0ff;
             margin: 1rem 0;
         }
@@ -701,16 +707,16 @@
         @media (max-width: 1200px) {
             .hero-title { font-size: 4rem; }
             .stats-overlay { gap: 1rem; }
-            .stat-item { padding: 1rem 1.5rem; }
+            .stat-item { padding: 1rem 1.2rem; }
         }
         
         @media (max-width: 1024px) {
             .hero { max-width: 500px; }
             .hero-title { font-size: 3.5rem; }
-            .hero-subtitle { font-size: 1.3rem; }
+            .hero-subtitle { font-size: 1.2rem; }
             
             .weather-control, .boat-control {
-                width: 200px;
+                width: 180px;
                 padding: 1rem;
             }
         }
@@ -723,7 +729,11 @@
             }
             
             .hero-title { font-size: 3rem; }
-            .hero-subtitle { font-size: 1.2rem; margin-bottom: 3rem; }
+            .hero-subtitle { font-size: 1.1rem; margin-bottom: 2.5rem; }
+            
+            .button-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
             
             .stats-overlay {
                 bottom: 10%;
@@ -733,13 +743,13 @@
             .controls-info {
                 left: 2%;
                 bottom: 10%;
-                font-size: 0.8rem;
-                padding: 0.8rem 1.5rem;
+                font-size: 0.75rem;
+                padding: 0.8rem 1.2rem;
             }
             
             .weather-control, .boat-control {
                 top: 20%;
-                width: 180px;
+                width: 170px;
             }
             
             .touch-joystick-container, .touch-speed-control, .gesture-hint {
@@ -747,45 +757,50 @@
             }
         }
         
-        /* MOBILE STYLES */
+        /* MOBILE STYLES - FIXED FOR SMALLER BUTTONS */
         @media (max-width: 768px) {
             .hero {
-                top: 40%;
+                top: 45%;
                 left: 5%;
                 right: 5%;
                 max-width: 100%;
                 text-align: center;
+                transform: translateY(-50%);
             }
             
             .hero-title { 
-                font-size: 2.5rem;
-                margin-bottom: 1.5rem;
+                font-size: 2.2rem;
+                margin-bottom: 1rem;
             }
             
             .hero-subtitle { 
-                font-size: 1.1rem;
-                margin-bottom: 2.5rem;
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
+                padding: 0 10px;
             }
             
             .hero-badge {
-                font-size: 0.8rem;
-                padding: 0.8rem 1.5rem;
-                margin-bottom: 2rem;
+                font-size: 0.7rem;
+                padding: 0.6rem 1.2rem;
+                margin-bottom: 1.5rem;
             }
             
             .button-grid {
                 grid-template-columns: 1fr;
-                gap: 15px;
+                gap: 12px;
+                max-width: 280px;
+                margin: 0 auto;
             }
             
             .btn {
-                padding: 1rem 2rem;
-                font-size: 1rem;
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+                min-height: 48px;
             }
             
-            /* Hide desktop controls */
+            /* Hide desktop controls on mobile */
             .controls-info, .weather-control, .boat-control, .direction-indicator {
-                display: none;
+                display: none !important;
             }
             
             /* Show mobile controls */
@@ -794,28 +809,29 @@
             }
             
             .stats-overlay {
-                bottom: 20%;
+                bottom: 15%;
                 right: 5%;
                 left: 5%;
                 justify-content: center;
                 flex-wrap: wrap;
+                gap: 10px;
             }
             
             .stat-item {
-                padding: 1rem;
-                min-width: 100px;
+                padding: 0.8rem 1rem;
+                min-width: 85px;
             }
             
             .stat-number {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
             }
             
             .nav {
-                padding: 1rem 5%;
+                padding: 0.8rem 5%;
             }
             
             .nav-logo {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
             }
             
             .nav-links {
@@ -823,14 +839,16 @@
             }
             
             .wallet-btn {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.9rem;
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
             }
             
             .shop-window {
                 width: 90%;
                 right: -100%;
-                padding: 1.5rem;
+                padding: 1.2rem;
+                max-height: 80vh;
+                overflow-y: auto;
             }
             
             .shop-window.active {
@@ -838,17 +856,120 @@
             }
             
             .shop-toggle {
-                padding: 0.8rem;
-                font-size: 0.9rem;
+                padding: 0.6rem;
+                font-size: 0.8rem;
+                top: 40%;
+            }
+            
+            .touch-joystick-container {
+                left: 20px;
+                bottom: 110px;
+                width: 90px;
+                height: 90px;
+            }
+            
+            .touch-speed-control {
+                right: 20px;
+                bottom: 110px;
+                width: 60px;
+                height: 130px;
+            }
+            
+            .touch-joystick-handle {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .touch-speed-slider {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .gesture-hint {
+                font-size: 0.7rem;
+                padding: 6px 12px;
+                bottom: 35px;
+                width: 90%;
+                max-width: 280px;
+            }
+            
+            .preloader-logo {
+                font-size: 3rem;
+            }
+            
+            .loading-bar {
+                width: 200px;
             }
         }
         
+        /* SMALL MOBILE DEVICES */
         @media (max-width: 480px) {
-            .hero-title { font-size: 2rem; }
-            .hero-subtitle { font-size: 1rem; }
+            .hero-title { font-size: 1.8rem; }
+            .hero-subtitle { font-size: 0.85rem; }
             .touch-joystick-container { left: 15px; bottom: 100px; }
             .touch-speed-control { right: 15px; bottom: 100px; }
-            .gesture-hint { font-size: 0.8rem; padding: 8px 16px; }
+            .gesture-hint { font-size: 0.65rem; padding: 5px 10px; }
+            
+            .stats-overlay {
+                bottom: 12%;
+            }
+            
+            .stat-item {
+                padding: 0.6rem 0.8rem;
+                min-width: 75px;
+            }
+            
+            .stat-number {
+                font-size: 1.3rem;
+            }
+            
+            .stat-label {
+                font-size: 0.7rem;
+            }
+        }
+        
+        /* EXTRA SMALL DEVICES */
+        @media (max-width: 360px) {
+            .hero-title { font-size: 1.6rem; }
+            .hero-subtitle { font-size: 0.8rem; }
+            .button-grid {
+                max-width: 250px;
+            }
+            
+            .btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.85rem;
+            }
+        }
+        
+        /* LANDSCAPE MODE */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .hero {
+                top: 40%;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.8rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .button-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 400px;
+            }
+            
+            .stats-overlay {
+                bottom: 5%;
+            }
+            
+            .touch-joystick-container, .touch-speed-control {
+                bottom: 80px;
+            }
         }
         
         /* SCROLLBAR */
@@ -882,12 +1003,12 @@
     
     <!-- NAVIGATION -->
     <nav class="nav">
-        <a href="#" class="nav-logo">BURΔQ</a>
+        <a href="https://www.shopburaq.com" class="nav-logo">BURΔQ</a>
         <div class="nav-links">
-            <a href="#shop" class="nav-link">SHOP</a>
-            <a href="#" class="nav-link">COLLECTION</a>
-            <a href="#" class="nav-link">ABOUT</a>
-            <a href="#" class="nav-link">CONTACT</a>
+            <a href="https://www.shopburaq.com/shop" class="nav-link">SHOP</a>
+            <a href="https://www.shopburaq.com/collection" class="nav-link">COLLECTION</a>
+            <a href="https://www.shopburaq.com/about" class="nav-link">ABOUT</a>
+            <a href="https://www.shopburaq.com/contact" class="nav-link">CONTACT</a>
         </div>
         <button class="wallet-btn" id="connectWallet">
             <i class="fas fa-wallet"></i> CONNECT WALLET
@@ -904,12 +1025,12 @@
             Navigate the digital currents with us.
         </p>
         <div class="button-grid">
-            <button class="btn btn-primary" id="shopToggle">
-                <i class="fas fa-store"></i> OPEN SHOP
-            </button>
-            <button class="btn btn-primary" id="speedUp">
-                <i class="fas fa-tachometer-alt"></i> INCREASE SPEED
-            </button>
+            <a href="https://www.shopburaq.com/shop" class="btn btn-primary" id="shopLink">
+                <i class="fas fa-store"></i> SHOP NOW
+            </a>
+            <a href="https://www.shopburaq.com/collection" class="btn btn-primary" id="collectionLink">
+                <i class="fas fa-layer-group"></i> COLLECTION
+            </a>
         </div>
     </section>
     
@@ -1003,33 +1124,33 @@
         <i class="fas fa-shopping-bag"></i> SHOP
     </div>
     <div class="shop-window" id="shopWindow">
-        <h2 style="font-family:'Orbitron';margin-bottom:1.5rem;color:#00f0ff">NFT FASHION</h2>
+        <h2 style="font-family:'Orbitron';margin-bottom:1.2rem;color:#00f0ff;font-size:1.5rem;">NFT FASHION</h2>
         
         <div class="nft-item">
-            <h3 style="font-family:'Orbitron'">CYBER JACKET</h3>
-            <p>Limited edition with NFC chip</p>
+            <h3 style="font-family:'Orbitron';font-size:1.1rem;">CYBER JACKET</h3>
+            <p style="font-size:0.9rem;">Limited edition with NFC chip</p>
             <div class="nft-price">0.15 ETH</div>
-            <button class="btn btn-primary" style="width:100%" onclick="buyProduct('cyber-jacket')">
+            <a href="https://www.shopburaq.com/shop/cyber-jacket" class="btn btn-primary" style="width:100%;font-size:0.9rem;padding:0.8rem;">
                 BUY NOW
-            </button>
+            </a>
         </div>
         
         <div class="nft-item">
-            <h3 style="font-family:'Orbitron'">RIVER RUNNERS</h3>
-            <p>Water-resistant smart shoes</p>
+            <h3 style="font-family:'Orbitron';font-size:1.1rem;">RIVER RUNNERS</h3>
+            <p style="font-size:0.9rem;">Water-resistant smart shoes</p>
             <div class="nft-price">0.08 ETH</div>
-            <button class="btn btn-primary" style="width:100%" onclick="buyProduct('river-runners')">
+            <a href="https://www.shopburaq.com/shop/river-runners" class="btn btn-primary" style="width:100%;font-size:0.9rem;padding:0.8rem;">
                 BUY NOW
-            </button>
+            </a>
         </div>
         
         <div class="nft-item">
-            <h3 style="font-family:'Orbitron'">DIGITAL CAPE</h3>
-            <p>AR-enabled wearable</p>
+            <h3 style="font-family:'Orbitron';font-size:1.1rem;">DIGITAL CAPE</h3>
+            <p style="font-size:0.9rem;">AR-enabled wearable</p>
             <div class="nft-price">0.25 ETH</div>
-            <button class="btn btn-primary" style="width:100%" onclick="buyProduct('digital-cape')">
+            <a href="https://www.shopburaq.com/shop/digital-cape" class="btn btn-primary" style="width:100%;font-size:0.9rem;padding:0.8rem;">
                 BUY NOW
-            </button>
+            </a>
         </div>
     </div>
 
@@ -1688,14 +1809,6 @@
             document.getElementById('boatCenter').addEventListener('click', () => centerBoat());
             document.getElementById('boatBoost').addEventListener('click', () => activateNitro());
             
-            // Speed control
-            document.getElementById('speedUp').addEventListener('click', () => {
-                boatSpeed = Math.min(boatSpeed + 25, 200);
-                speedBoost = 1.5;
-                setTimeout(() => speedBoost = 1, 1000);
-                updateUI();
-            });
-            
             // Weather controls
             document.getElementById('weatherSlider').addEventListener('input', (e) => {
                 weatherIntensity = e.target.value / 100;
@@ -1834,7 +1947,7 @@
                 
                 // Limit joystick movement to circle
                 const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-                const maxDistance = 50;
+                const maxDistance = 40;
                 
                 if (distance > maxDistance) {
                     joystickX = (deltaX / distance) * maxDistance;
@@ -1897,9 +2010,14 @@
             
             // Gesture hints
             setTimeout(() => {
-                document.getElementById('gestureHint').style.opacity = '0.7';
+                const gestureHint = document.getElementById('gestureHint');
+                gestureHint.style.display = 'block';
+                gestureHint.style.opacity = '0.7';
                 setTimeout(() => {
-                    document.getElementById('gestureHint').style.opacity = '0.3';
+                    gestureHint.style.opacity = '0.3';
+                    setTimeout(() => {
+                        gestureHint.style.display = 'none';
+                    }, 3000);
                 }, 5000);
             }, 2000);
         }
@@ -2138,10 +2256,6 @@
         }
 
         // UI CONTROLS
-        document.getElementById('shopToggle').addEventListener('click', () => {
-            document.getElementById('shopWindow').classList.add('active');
-        });
-
         document.getElementById('shopToggleBtn').addEventListener('click', () => {
             document.getElementById('shopWindow').classList.toggle('active');
         });
@@ -2226,6 +2340,7 @@
                     right: 20px;
                     z-index: 1000;
                     animation: float 3s ease-in-out infinite;
+                    display: none;
                 `;
                 
                 installBtn.onclick = async () => {
@@ -2239,6 +2354,9 @@
                 };
                 
                 document.body.appendChild(installBtn);
+                setTimeout(() => {
+                    installBtn.style.display = 'block';
+                }, 10000);
             }, 10000);
         });
     </script>
