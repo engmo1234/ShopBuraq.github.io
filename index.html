@@ -7,16 +7,19 @@
     <!-- ====== ENHANCED SEO META TAGS ====== -->
     <title>BURΔQ | Cyber River Fashion - Premium Phygital Fashion & NFT Wearables</title>
     <meta name="description" content="BURΔQ - Cyberpunk fashion meets blockchain technology. Navigate digital rivers in our premium speedboat experience with exclusive NFT fashion drops. Experience the future of phygital fashion.">
-    <meta name="keywords" content="cyberpunk fashion, NFT wearables, blockchain fashion, phygital clothing, digital river, speedboat experience, crypto fashion, digital collectibles">
+    <meta name="keywords" content="cyberpunk fashion, NFT wearables, blockchain fashion, phygital clothing, digital river, speedboat experience, crypto fashion, digital collectibles, BURAQ fashion, cyberpunk clothing">
     <meta name="author" content="BURΔQ Fashion">
-    <meta property="og:title" content="BURΔQ | Cyber River Fashion">
+    <meta property="og:title" content="BURΔQ | Cyber River Fashion - Premium Phygital Fashion & NFT Wearables">
     <meta property="og:description" content="Navigate the digital currents of cyberpunk fashion with BURΔQ. Exclusive NFT fashion drops and premium phygital experiences.">
     <meta property="og:image" content="rotatingphoto.png">
     <meta property="og:url" content="https://www.shopburaq.com">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="BURΔQ Fashion">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="BURΔQ | Cyber River Fashion">
     <meta name="twitter:description" content="Premium cyberpunk fashion meets blockchain technology. Exclusive NFT drops.">
+    <meta name="twitter:image" content="rotatingphoto.png">
+    <meta name="twitter:site" content="@buraqfashion">
     <link rel="canonical" href="https://www.shopburaq.com">
     
     <!-- ====== STRUCTURED DATA FOR SEO ====== -->
@@ -28,15 +31,19 @@
         "description": "Cyberpunk phygital fashion with NFT integration",
         "brand": {
             "@type": "Brand",
-            "name": "BURΔQ"
+            "name": "BURΔQ",
+            "logo": "https://www.shopburaq.com/rotatingphoto.png"
         },
         "offers": {
             "@type": "AggregateOffer",
             "offerCount": "3",
             "lowPrice": "89.99",
             "highPrice": "299.99",
-            "priceCurrency": "CAD"
-        }
+            "priceCurrency": "CAD",
+            "availability": "https://schema.org/InStock"
+        },
+        "image": "https://www.shopburaq.com/rotatingphoto.png",
+        "url": "https://www.shopburaq.com"
     }
     </script>
     
@@ -317,7 +324,8 @@
             text-align: center;
         }
         
-        .wallet-btn {
+        /* MUSIC CONTROL BUTTON (Replacing Wallet Button) */
+        .music-control-btn {
             padding: 0.6rem 1.5rem;
             background: linear-gradient(45deg, #00f0ff, #9d00ff);
             border: none;
@@ -328,9 +336,12 @@
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
             font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
-        .wallet-btn:hover {
+        .music-control-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0,240,255,0.3);
         }
@@ -568,7 +579,7 @@
                 height: 40px;
             }
             
-            .wallet-btn {
+            .music-control-btn {
                 padding: 0.5rem 1rem;
                 font-size: 0.8rem;
             }
@@ -651,6 +662,12 @@
     <!-- VIDEO OVERLAY -->
     <div class="video-overlay"></div>
     
+    <!-- BACKGROUND MUSIC (Hidden) -->
+    <audio id="background-music" loop>
+        <source src="soundburak.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
     <!-- THREE.JS CONTAINER -->
     <div id="three-container"></div>
     
@@ -667,7 +684,7 @@
     <!-- NAVIGATION -->
     <nav class="nav">
         <div class="logo-container">
-            <img src="rotatingphoto.png" alt="BURΔQ Logo" class="rotating-logo">
+            <img src="rotatingphoto.png" alt="BURΔQ Logo - Cyberpunk Fashion Brand" class="rotating-logo">
             <a href="https://www.shopburaq.com" class="nav-logo">BURΔQ</a>
         </div>
         <div class="nav-links">
@@ -705,8 +722,9 @@
                 </div>
             </div>
             
-            <button class="wallet-btn" id="connectWallet">
-                <i class="fas fa-wallet"></i> CONNECT WALLET
+            <!-- Music Control Button (Replaced Connect Wallet) -->
+            <button class="music-control-btn" id="musicControl">
+                <i class="fas fa-volume-up"></i> MUSIC
             </button>
         </div>
     </nav>
@@ -760,9 +778,105 @@
                     initThreeJS();
                     initCursor();
                     updateStatsAnimation();
+                    initBackgroundMusic();
                 }, 500);
             }, 2000);
         });
+
+        // BACKGROUND MUSIC SYSTEM
+        function initBackgroundMusic() {
+            const backgroundMusic = document.getElementById('background-music');
+            const musicControlBtn = document.getElementById('musicControl');
+            const musicIcon = musicControlBtn.querySelector('i');
+            
+            // Set initial volume to low (30%)
+            backgroundMusic.volume = 0.3;
+            
+            // Try to autoplay music (with user interaction requirement handling)
+            const playMusic = () => {
+                if (backgroundMusic.paused) {
+                    const playPromise = backgroundMusic.play();
+                    
+                    if (playPromise !== undefined) {
+                        playPromise.then(() => {
+                            // Music started successfully
+                            musicIcon.className = 'fas fa-volume-up';
+                            musicControlBtn.innerHTML = '<i class="fas fa-volume-up"></i> MUSIC';
+                            console.log('Background music started successfully');
+                        }).catch(error => {
+                            // Autoplay was prevented
+                            console.log('Autoplay prevented. User interaction required.');
+                            musicIcon.className = 'fas fa-volume-mute';
+                            musicControlBtn.innerHTML = '<i class="fas fa-volume-mute"></i> CLICK TO PLAY';
+                            
+                            // Add click handler to start music on first user interaction
+                            const startOnInteraction = () => {
+                                backgroundMusic.play().then(() => {
+                                    musicIcon.className = 'fas fa-volume-up';
+                                    musicControlBtn.innerHTML = '<i class="fas fa-volume-up"></i> MUSIC';
+                                    console.log('Music started after user interaction');
+                                }).catch(e => console.log('Could not start music:', e));
+                                
+                                // Remove event listeners after first interaction
+                                document.removeEventListener('click', startOnInteraction);
+                                document.removeEventListener('touchstart', startOnInteraction);
+                            };
+                            
+                            document.addEventListener('click', startOnInteraction);
+                            document.addEventListener('touchstart', startOnInteraction);
+                        });
+                    }
+                }
+            };
+            
+            // Initial attempt to play music (will be handled by the promise)
+            playMusic();
+            
+            // Toggle music play/pause on button click
+            musicControlBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                
+                if (backgroundMusic.paused) {
+                    backgroundMusic.play().then(() => {
+                        musicIcon.className = 'fas fa-volume-up';
+                        musicControlBtn.innerHTML = '<i class="fas fa-volume-up"></i> MUSIC';
+                    }).catch(error => {
+                        console.log('Could not play music:', error);
+                        musicIcon.className = 'fas fa-volume-mute';
+                        musicControlBtn.innerHTML = '<i class="fas fa-volume-mute"></i> CLICK TO PLAY';
+                    });
+                } else {
+                    backgroundMusic.pause();
+                    musicIcon.className = 'fas fa-volume-mute';
+                    musicControlBtn.innerHTML = '<i class="fas fa-volume-mute"></i> MUSIC';
+                }
+            });
+            
+            // Add volume control on hover for desktop
+            if (window.innerWidth > 768) {
+                musicControlBtn.addEventListener('mouseenter', () => {
+                    musicControlBtn.innerHTML = '<i class="fas fa-volume-up"></i> VOLUME: 30%';
+                });
+                
+                musicControlBtn.addEventListener('mouseleave', () => {
+                    if (!backgroundMusic.paused) {
+                        musicControlBtn.innerHTML = '<i class="fas fa-volume-up"></i> MUSIC';
+                    } else {
+                        musicControlBtn.innerHTML = '<i class="fas fa-volume-mute"></i> MUSIC';
+                    }
+                });
+            }
+            
+            // Pause music when page is not visible (tab switch)
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    backgroundMusic.pause();
+                } else if (!backgroundMusic.paused) {
+                    // Only resume if it was playing before
+                    backgroundMusic.play().catch(e => console.log('Could not resume music:', e));
+                }
+            });
+        }
 
         // THREE.JS MODERN 3D EFFECTS
         let scene, camera, renderer, composer;
@@ -1092,24 +1206,6 @@
             }
         }
 
-        // UI INTERACTIONS
-        document.getElementById('connectWallet').addEventListener('click', function() {
-            const originalText = this.innerHTML;
-            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> CONNECTING...';
-            this.style.opacity = '0.8';
-            
-            setTimeout(() => {
-                this.innerHTML = '<i class="fas fa-check"></i> CONNECTED';
-                this.style.background = 'linear-gradient(45deg, #00ff9d, #00f0ff)';
-                
-                setTimeout(() => {
-                    this.innerHTML = originalText;
-                    this.style.opacity = '1';
-                    this.style.background = 'linear-gradient(45deg, #00f0ff, #9d00ff)';
-                }, 3000);
-            }, 1500);
-        });
-
         // MOBILE MENU TOGGLE
         if (window.innerWidth <= 768) {
             const shopDropdown = document.querySelector('.shop-dropdown-btn');
@@ -1198,7 +1294,9 @@
         console.log('🎨 Modern 3D effects: Active');
         console.log('📹 Video background: Active');
         console.log('🔄 Rotating logo: Active');
+        console.log('🎵 Background music: Active (soundburak.mp3)');
         console.log('💎 Premium design: Active');
+        console.log('🔍 SEO optimized: Yes');
     </script>
 </body>
 </html>
