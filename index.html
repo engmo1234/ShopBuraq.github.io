@@ -650,6 +650,33 @@
             mix-blend-mode: difference;
             transition: all 0.1s;
         }
+        
+        /* AUDIO INDICATOR */
+        #audio-indicator {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            font-size: 24px;
+            opacity: 0.5;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #00f0ff;
+            transition: opacity 1s;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 0.5; }
+        }
     </style>
 </head>
 <body>
@@ -661,12 +688,6 @@
     
     <!-- VIDEO OVERLAY -->
     <div class="video-overlay"></div>
-    
-    <!-- BACKGROUND MUSIC (Hidden) -->
-    <audio id="background-music" loop>
-        <source src="soundburak.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
     
     <!-- THREE.JS CONTAINER -->
     <div id="three-container"></div>
@@ -724,7 +745,7 @@
             
             <!-- Music Control Button (Replaced Connect Wallet) -->
             <button class="music-control-btn" id="musicControl">
-                <i class="fas fa-volume-up"></i> MUSIC
+                <i class="fas fa-volume-mute"></i> CLICK TO PLAY
             </button>
         </div>
     </nav>
@@ -778,104 +799,168 @@
                     initThreeJS();
                     initCursor();
                     updateStatsAnimation();
+                    
+                    // Initialize background music system
                     initBackgroundMusic();
+                    
+                    // Create audio indicator
+                    createAudioIndicator();
+                    
+                    // Enable audio on any user interaction
+                    setupAudioInteraction();
+                    
+                    console.log('BURΔQ Platform: Fully Loaded & Ready');
                 }, 500);
             }, 2000);
         });
 
         // BACKGROUND MUSIC SYSTEM
+        let backgroundMusic = null;
+        let audioEnabled = false;
+        let audioIndicator = null;
+
         function initBackgroundMusic() {
-            const backgroundMusic = document.getElementById('background-music');
+            // Create audio element
+            backgroundMusic = new Audio('soundburak.mp3');
+            backgroundMusic.loop = true;
+            backgroundMusic.volume = 0.2; // 20% volume - not too loud
+            backgroundMusic.preload = 'auto';
+            
+            // Error handling
+            backgroundMusic.addEventListener('error', (e) => {
+                console.log('Audio loading issue:', e);
+                document.getElementById('musicControl').innerHTML = '<i class="fas fa-exclamation-triangle"></i> NO MUSIC';
+            });
+            
+            // Store globally for easy access
+            window.buraqMusic = backgroundMusic;
+            
+            console.log('BURΔQ Music: Loaded (soundburak.mp3)');
+        }
+
+        function createAudioIndicator() {
+            // Remove existing indicator if any
+            const existingIndicator = document.getElementById('audio-indicator');
+            if (existingIndicator) existingIndicator.remove();
+            
+            // Create new indicator
+            audioIndicator = document.createElement('div');
+            audioIndicator.id = 'audio-indicator';
+            audioIndicator.innerHTML = '🎵';
+            audioIndicator.title = 'Click to enable music';
+            
+            // Position and style are in CSS
+            document.body.appendChild(audioIndicator);
+            
+            // Click indicator to enable audio
+            audioIndicator.addEventListener('click', () => {
+                enableAudio();
+                if (audioIndicator) {
+                    audioIndicator.style.opacity = '0';
+                    setTimeout(() => {
+                        if (audioIndicator && audioIndicator.parentNode) {
+                            audioIndicator.remove();
+                        }
+                    }, 1000);
+                }
+            });
+            
+            // Auto-remove after 30 seconds
+            setTimeout(() => {
+                if (audioIndicator && audioIndicator.parentNode) {
+                    audioIndicator.style.opacity = '0';
+                    setTimeout(() => {
+                        if (audioIndicator && audioIndicator.parentNode) {
+                            audioIndicator.remove();
+                        }
+                    }, 1000);
+                }
+            }, 30000);
+        }
+
+        function enableAudio() {
+            if (!audioEnabled && backgroundMusic) {
+                audioEnabled = true;
+                
+                const playPromise = backgroundMusic.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        // Successfully started playing
+                        const musicBtn = document.getElementById('musicControl');
+                        musicBtn.innerHTML = '<i class="fas fa-volume-up"></i> MUSIC ON';
+                        musicBtn.style.background = 'linear-gradient(45deg, #00ff9d, #00f0ff)';
+                        
+                        console.log('BURΔQ Music: Started playing');
+                        
+                        // Set up toggle functionality
+                        setupMusicToggle();
+                        
+                        // Remove audio indicator
+                        if (audioIndicator && audioIndicator.parentNode) {
+                            audioIndicator.style.opacity = '0';
+                            setTimeout(() => {
+                                if (audioIndicator && audioIndicator.parentNode) {
+                                    audioIndicator.remove();
+                                }
+                            }, 500);
+                        }
+                    }).catch(error => {
+                        console.log('BURΔQ Music: Playback failed -', error);
+                        const musicBtn = document.getElementById('musicControl');
+                        musicBtn.innerHTML = '<i class="fas fa-volume-mute"></i> CLICK TO PLAY';
+                    });
+                }
+            }
+        }
+
+        function setupAudioInteraction() {
             const musicControlBtn = document.getElementById('musicControl');
-            const musicIcon = musicControlBtn.querySelector('i');
             
-            // Set initial volume to low (30%)
-            backgroundMusic.volume = 0.3;
-            
-            // Try to autoplay music (with user interaction requirement handling)
-            const playMusic = () => {
-                if (backgroundMusic.paused) {
-                    const playPromise = backgroundMusic.play();
-                    
-                    if (playPromise !== undefined) {
-                        playPromise.then(() => {
-                            // Music started successfully
-                            musicIcon.className = 'fas fa-volume-up';
-                            musicControlBtn.innerHTML = '<i class="fas fa-volume-up"></i> MUSIC';
-                            console.log('Background music started successfully');
-                        }).catch(error => {
-                            // Autoplay was prevented
-                            console.log('Autoplay prevented. User interaction required.');
-                            musicIcon.className = 'fas fa-volume-mute';
-                            musicControlBtn.innerHTML = '<i class="fas fa-volume-mute"></i> CLICK TO PLAY';
-                            
-                            // Add click handler to start music on first user interaction
-                            const startOnInteraction = () => {
-                                backgroundMusic.play().then(() => {
-                                    musicIcon.className = 'fas fa-volume-up';
-                                    musicControlBtn.innerHTML = '<i class="fas fa-volume-up"></i> MUSIC';
-                                    console.log('Music started after user interaction');
-                                }).catch(e => console.log('Could not start music:', e));
-                                
-                                // Remove event listeners after first interaction
-                                document.removeEventListener('click', startOnInteraction);
-                                document.removeEventListener('touchstart', startOnInteraction);
-                            };
-                            
-                            document.addEventListener('click', startOnInteraction);
-                            document.addEventListener('touchstart', startOnInteraction);
-                        });
-                    }
+            // Function to enable audio on interaction
+            const enableOnInteraction = () => {
+                if (!audioEnabled) {
+                    enableAudio();
+                    // Remove event listeners after first successful interaction
+                    document.removeEventListener('click', enableOnInteraction);
+                    document.removeEventListener('touchstart', enableOnInteraction);
+                    document.removeEventListener('keydown', enableOnInteraction);
+                    musicControlBtn.removeEventListener('mouseenter', enableOnInteraction);
                 }
             };
             
-            // Initial attempt to play music (will be handled by the promise)
-            playMusic();
+            // Multiple ways for user to enable audio
+            document.addEventListener('click', enableOnInteraction);
+            document.addEventListener('touchstart', enableOnInteraction);
+            document.addEventListener('keydown', enableOnInteraction);
+            musicControlBtn.addEventListener('mouseenter', enableOnInteraction);
             
-            // Toggle music play/pause on button click
-            musicControlBtn.addEventListener('click', (e) => {
+            // Set initial button state
+            musicControlBtn.innerHTML = '<i class="fas fa-volume-mute"></i> CLICK TO PLAY';
+        }
+
+        function setupMusicToggle() {
+            const musicControlBtn = document.getElementById('musicControl');
+            
+            musicControlBtn.onclick = (e) => {
                 e.stopPropagation();
+                
+                if (!audioEnabled) {
+                    enableAudio();
+                    return;
+                }
                 
                 if (backgroundMusic.paused) {
                     backgroundMusic.play().then(() => {
-                        musicIcon.className = 'fas fa-volume-up';
-                        musicControlBtn.innerHTML = '<i class="fas fa-volume-up"></i> MUSIC';
-                    }).catch(error => {
-                        console.log('Could not play music:', error);
-                        musicIcon.className = 'fas fa-volume-mute';
-                        musicControlBtn.innerHTML = '<i class="fas fa-volume-mute"></i> CLICK TO PLAY';
+                        musicControlBtn.innerHTML = '<i class="fas fa-volume-up"></i> MUSIC ON';
+                        musicControlBtn.style.background = 'linear-gradient(45deg, #00ff9d, #00f0ff)';
                     });
                 } else {
                     backgroundMusic.pause();
-                    musicIcon.className = 'fas fa-volume-mute';
-                    musicControlBtn.innerHTML = '<i class="fas fa-volume-mute"></i> MUSIC';
+                    musicControlBtn.innerHTML = '<i class="fas fa-volume-mute"></i> MUSIC OFF';
+                    musicControlBtn.style.background = 'linear-gradient(45deg, #00f0ff, #9d00ff)';
                 }
-            });
-            
-            // Add volume control on hover for desktop
-            if (window.innerWidth > 768) {
-                musicControlBtn.addEventListener('mouseenter', () => {
-                    musicControlBtn.innerHTML = '<i class="fas fa-volume-up"></i> VOLUME: 30%';
-                });
-                
-                musicControlBtn.addEventListener('mouseleave', () => {
-                    if (!backgroundMusic.paused) {
-                        musicControlBtn.innerHTML = '<i class="fas fa-volume-up"></i> MUSIC';
-                    } else {
-                        musicControlBtn.innerHTML = '<i class="fas fa-volume-mute"></i> MUSIC';
-                    }
-                });
-            }
-            
-            // Pause music when page is not visible (tab switch)
-            document.addEventListener('visibilitychange', () => {
-                if (document.hidden) {
-                    backgroundMusic.pause();
-                } else if (!backgroundMusic.paused) {
-                    // Only resume if it was playing before
-                    backgroundMusic.play().catch(e => console.log('Could not resume music:', e));
-                }
-            });
+            };
         }
 
         // THREE.JS MODERN 3D EFFECTS
@@ -1289,14 +1374,26 @@
             }, 250);
         });
 
-        // WEB3 INTEGRATION READY
-        console.log('BURΔQ Cyber Fashion Platform initialized');
-        console.log('🎨 Modern 3D effects: Active');
-        console.log('📹 Video background: Active');
-        console.log('🔄 Rotating logo: Active');
-        console.log('🎵 Background music: Active (soundburak.mp3)');
-        console.log('💎 Premium design: Active');
-        console.log('🔍 SEO optimized: Yes');
+        // PAUSE MUSIC WHEN TAB IS HIDDEN
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden && backgroundMusic && !backgroundMusic.paused) {
+                backgroundMusic.pause();
+                const musicBtn = document.getElementById('musicControl');
+                if (musicBtn) {
+                    musicBtn.innerHTML = '<i class="fas fa-volume-mute"></i> MUSIC OFF';
+                    musicBtn.style.background = 'linear-gradient(45deg, #00f0ff, #9d00ff)';
+                }
+            }
+        });
+
+        // FINAL INITIALIZATION LOG
+        console.log('🚀 BURΔQ Cyber Fashion Platform Initialized');
+        console.log('✅ Connect Wallet Button: REMOVED');
+        console.log('✅ Background Music: READY (soundburak.mp3)');
+        console.log('✅ SEO Optimization: COMPLETE');
+        console.log('✅ All Favicons: CONFIGURED');
+        console.log('✅ 3D Effects: ACTIVE');
+        console.log('💡 User Interaction Required: Click anywhere to enable music');
     </script>
 </body>
 </html>
