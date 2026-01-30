@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    
+    <!-- ====== ENHANCED SEO META TAGS ====== -->
+    <title>BURΔQ SHOP | Cyberpunk Fashion & Customizable NFT Wearables</title>
+    <meta name="description" content="Customizable cyberpunk fashion at BURΔQ. Upload your art, work with artists, or choose our designs. Motorbike hoodies, vests, t-shirts - all customizable with blockchain integration.">
+    <meta name="keywords" content="cyberpunk fashion, customizable clothing, NFT wearables, upload design, artist collaboration, motorbike hoodie, tactical vest, jeans vest, hoodie, blockchain fashion">
+    <meta name="author" content="BURΔQ Fashion">
+    <meta property="og:title" content="BURΔQ SHOP | Custom Cyberpunk Fashion">
+    <meta property="og:description" content="Design your own cyberpunk fashion. Upload images, collaborate with artists, or choose from our exclusive designs.">
+    <meta property="og:image" content="https://shopburaq.com/shop-preview.jpg">
+    <meta property="og:url" content="https://shopburaq.com/shop">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BURΔQ SHOP | Custom Cyberpunk Fashion">
+    <meta name="twitter:description" content="Design your own cyberpunk fashion with NFT integration.">
+    <link rel="canonical" href="https://shopburaq.com/shop">
+    
+    <!-- ====== STRUCTURED DATA FOR SEO ====== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "BURΔQ Cyberpunk Fashion Shop",
+        "description": "Customizable cyberpunk fashion with NFT integration",
+        "url": "https://shopburaq.com/shop",
+        "mainEntity": {
+            "@type": "ItemList",
+            "numberOfItems": "6",
+            "itemListElement": [
+                {
+                    "@type": "Product",
+                    "name": "Motorbike Hoodie",
+                    "description": "Customizable motorbike hoodie with NFT integration",
+                    "offers": {
+                        "@type": "Offer",
+                        "availability": "https://schema.org/OutOfStock"
+                    }
+                },
+                {
+                    "@type": "Product",
+                    "name": "Black Tactical Vest",
+                    "description": "Customizable black tactical vest with NFT integration",
+                    "offers": {
+                        "@type": "Offer",
+                        "availability": "https://schema.org/OutOfStock"
+                    }
+                },
+                {
+                    "@type": "Product",
+                    "name": "Jeans Motorbike Vest",
+                    "description": "Customizable jeans vest with NFT integration",
+                    "offers": {
+                        "@type": "Offer",
+                        "availability": "https://schema.org/OutOfStock"
+                    }
+                },
+                {
+                    "@type": "Product",
+                    "name": "Black T-Shirt",
+                    "description": "Customizable black t-shirt with NFT integration",
+                    "offers": {
+                        "@type": "Offer",
+                        "availability": "https://schema.org/OutOfStock"
+                    }
+                },
+                {
+                    "@type": "Product",
+                    "name": "White T-Shirt",
+                    "description": "Customizable white t-shirt with NFT integration",
+                    "offers": {
+                        "@type": "Offer",
+                        "availability": "https://schema.org/OutOfStock"
+                    }
+                },
+                {
+                    "@type": "Product",
+                    "name": "Cyber Hoodie with LED",
+                    "description": "Customizable cyber hoodie with LED lights and NFT integration",
+                    "offers": {
+                        "@type": "Offer",
+                        "availability": "https://schema.org/OutOfStock"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+    
+    <!-- ====== FONTS & ICONS ====== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; min-height: 100%; overflow-x: hidden; }
+        body { 
+            font-family: 'Rajdhani', sans-serif;
+            background: #000;
+            color: white;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+            background: radial-gradient(ellipse at center, #0a0a2a 0%, #000000 70%);
+        }
+        
+        /* BACKGROUND EFFECTS */
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .shape {
+            position: absolute;
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            border-radius: 50%;
+            animation: floatShape 20s infinite linear;
+        }
+        
+        @keyframes floatShape {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-1000px) rotate(360deg); }
+        }
+        
+        /* NAVIGATION */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,240,255,0.2);
+        }
+        
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00f0ff, #9d00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        .nav-link:hover {
+            color: #00f0ff;
+        }
+        
+        .nav-link.active {
+            color: #00f0ff;
+            border-bottom: 2px solid #00f0ff;
+        }
+        
+        .wallet-btn {
+            padding: 0.6rem 1.5rem;
+            background: linear-gradient(45deg, #00f0ff, #9d00ff);
+            border: none;
+            border-radius: 30px;
+            color: black;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .wallet-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,240,255,0.3);
+        }
+        
+        /* SHOP HERO */
+        .shop-hero {
+            padding: 180px 5% 80px;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .shop-badge {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid #00f0ff;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            color: #00f0ff;
+        }
+        
+        .shop-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #00f0ff, #9d00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(0,240,255,0.3);
+        }
+        
+        .shop-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* FILTER BAR */
+        .filter-bar {
+            padding: 1.5rem 5%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,240,255,0.2);
+            margin-bottom: 3rem;
+        }
+        
+        .filter-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.6rem 1.5rem;
+            background: rgba(20,20,30,0.8);
+            border: 1px solid rgba(0,240,255,0.3);
+            border-radius: 30px;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: linear-gradient(45deg, #00f0ff, #9d00ff);
+            color: black;
+            border-color: transparent;
+        }
+        
+        .search-box {
+            position: relative;
+            min-width: 250px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 0.7rem 1rem 0.7rem 3rem;
+            background: rgba(20,20,30,0.8);
+            border: 1px solid rgba(0,240,255,0.3);
+            border-radius: 30px;
+            color: white;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #00f0ff;
+        }
+        
+        /* PRODUCT GRID */
+        .products-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5% 5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .product-card {
+            background: rgba(10,10,20,0.8);
+            border-radius: 20px;
+            border: 1px solid rgba(0,240,255,0.2);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,240,255,0.15);
+            border-color: #00f0ff;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 280px;
+            background: #001122;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s;
+            background: #001122;
+        }
+        
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(45deg, #00f0ff, #9d00ff);
+            color: black;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .sold-out-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: linear-gradient(45deg, #ff3300, #ff6600);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 10;
+        }
+        
+        .product-content {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #00f0ff;
+        }
+        
+        .product-description {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        /* CUSTOMIZATION TABS */
+        .customization-tabs {
+            margin-bottom: 1.5rem;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            border-bottom: 1px solid rgba(0,240,255,0.2);
+            margin-bottom: 1rem;
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 0.8rem;
+            background: transparent;
+            border: none;
+            color: rgba(255,255,255,0.7);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .tab-btn.active {
+            color: #00f0ff;
+            border-bottom: 2px solid #00f0ff;
+            background: rgba(0,240,255,0.1);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .custom-option {
+            background: rgba(20,20,30,0.6);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(0,240,255,0.1);
+            position: relative;
+        }
+        
+        .sold-out-option {
+            opacity: 0.7;
+            position: relative;
+        }
+        
+        .sold-out-option::after {
+            content: "SOLD OUT";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            background: rgba(255, 51, 0, 0.9);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            z-index: 5;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .option-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: #00f0ff;
+        }
+        
+        .option-description {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 1rem;
+        }
+        
+        /* JOTFORM EMBED */
+        .jotform-embed {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 10px;
+            background: white;
+        }
+        
+        .jotform-alternative {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(20,20,30,0.8);
+            border-radius: 10px;
+            border: 1px dashed rgba(0,240,255,0.3);
+        }
+        
+        .jotform-alternative p {
+            margin-bottom: 1.5rem;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .form-link-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(45deg, #00f0ff, #9d00ff);
+            border-radius: 30px;
+            color: black;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .form-link-btn:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* FOOTER */
+        .footer {
+            padding: 4rem 5% 2rem;
+            background: rgba(0,0,0,0.9);
+            border-top: 1px solid rgba(0,240,255,0.2);
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-section h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #00f0ff;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #00f0ff;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(20,20,30,0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00f0ff;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid rgba(0,240,255,0.3);
+        }
+        
+        .social-icon:hover {
+            background: #00f0ff;
+            color: black;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+        
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+            
+            .shop-title {
+                font-size: 3.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .shop-title {
+                font-size: 2.8rem;
+            }
+            
+            .shop-hero {
+                padding: 150px 5% 60px;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+                padding: 0 5% 3rem;
+            }
+            
+            .filter-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .search-box {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .shop-title {
+                font-size: 2.2rem;
+            }
+            
+            .shop-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .product-card {
+                max-width: 100%;
+            }
+            
+            .tab-buttons {
+                flex-direction: column;
+            }
+            
+            .tab-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- BACKGROUND EFFECTS -->
+    <div class="cyber-grid"></div>
+    <div class="floating-shapes" id="floatingShapes"></div>
+    
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <a href="index.html" class="nav-logo">BURΔQ</a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">HOME</a>
+            <a href="shop.html" class="nav-link active">SHOP</a>
+            <a href="https://www.shopburaq.com/collection" class="nav-link">COLLECTION</a>
+            <a href="https://www.shopburaq.com/about" class="nav-link">ABOUT</a>
+            <a href="https://www.shopburaq.com/contact" class="nav-link">CONTACT</a>
+        </div>
+        <button class="wallet-btn" id="connectWallet">
+            <i class="fas fa-wallet"></i> CONNECT WALLET
+        </button>
+    </nav>
+    
+    <!-- SHOP HERO -->
+    <section class="shop-hero">
+        <div class="shop-badge">CUSTOM CYBER FASHION</div>
+        <h1 class="shop-title">DESIGN YOUR<br>CYBER FUTURE</h1>
+        <p class="shop-subtitle">
+            Each garment is a canvas. Choose from our exclusive designs, upload your own art, 
+            or collaborate with our artists to create unique cyberpunk fashion integrated with blockchain technology.
+        </p>
+    </section>
+    
+    <!-- FILTER BAR -->
+    <div class="filter-bar">
+        <div class="filter-container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">ALL ITEMS</button>
+                <button class="filter-btn" data-filter="hoodie">HOODIES</button>
+                <button class="filter-btn" data-filter="vest">VESTS</button>
+                <button class="filter-btn" data-filter="tshirt">T-SHIRTS</button>
+            </div>
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Search cyber fashion..." id="searchInput">
+            </div>
+        </div>
+    </div>
+    
+    <!-- PRODUCTS GRID -->
+    <div class="products-grid" id="productsGrid">
+        <!-- MOTORBIKE HOODIE -->
+        <div class="product-card" data-category="hoodie">
+            <div class="product-image">
+                <img src="motorbikehoodie.png" alt="Motorbike Hoodie" class="product-img">
+                <div class="product-badge">NFT READY</div>
+                <div class="sold-out-badge">SOLD OUT</div>
+            </div>
+            <div class="product-content">
+                <h3 class="product-title">MOTORBIKE HOODIE</h3>
+                <p class="product-description">Premium cyberpunk hoodie with reinforced stitching and NFC chip for digital identity verification.</p>
+                
+                <!-- CUSTOMIZATION TABS -->
+                <div class="customization-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="pre-designed-1">PRE-DESIGNED</button>
+                        <button class="tab-btn" data-tab="custom-upload-1">CUSTOM UPLOAD</button>
+                        <button class="tab-btn" data-tab="artist-collab-1">ARTIST COLLAB</button>
+                    </div>
+                    
+                    <!-- PRE-DESIGNED TAB -->
+                    <div class="tab-content active" id="pre-designed-1">
+                        <div class="custom-option sold-out-option">
+                            <h4 class="option-title">BURΔQ MOTORCYCLE DESIGN</h4>
+                            <p class="option-description">Exclusive motorbike artwork with glowing BURΔQ logo. Includes hidden NFC tag for digital unlock.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- CUSTOM UPLOAD TAB -->
+                    <div class="tab-content" id="custom-upload-1">
+                        <div class="custom-option">
+                            <h4 class="option-title">UPLOAD YOUR DESIGN</h4>
+                            <p class="option-description">Upload your own image or artwork. We'll integrate it with premium printing technology.</p>
+                            <div class="artist-form-container">
+                                <iframe src="https://www.jotform.com/build/260288020981457" 
+                                        class="jotform-embed" 
+                                        id="custom-jotform-1"
+                                        title="BURΔQ Custom Upload Form">
+                                </iframe>
+                                
+                                <!-- FALLBACK IF IFRAME FAILS -->
+                                <div class="jotform-alternative" id="custom-jotform-alternative-1" style="display: none;">
+                                    <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
+                                    <a href="https://www.jotform.com/build/260288020981457" target="_blank" class="form-link-btn">
+                                        <i class="fas fa-external-link-alt"></i> OPEN CUSTOM UPLOAD FORM
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ARTIST COLLABORATION TAB -->
+                    <div class="tab-content" id="artist-collab-1">
+                        <div class="custom-option">
+                            <h4 class="option-title">COLLABORATE WITH ARTISTS</h4>
+                            <p class="option-description">Describe your vision and our artists will create a custom design for you.</p>
+                            <div class="artist-form-container">
+                                <iframe src="https://form.jotform.com/260267741162051" 
+                                        class="jotform-embed" 
+                                        id="artist-jotform-1"
+                                        title="BURΔQ Artist Collaboration Form">
+                                </iframe>
+                                
+                                <!-- FALLBACK IF IFRAME FAILS -->
+                                <div class="jotform-alternative" id="artist-jotform-alternative-1" style="display: none;">
+                                    <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
+                                    <a href="https://form.jotform.com/260267741162051" target="_blank" class="form-link-btn">
+                                        <i class="fas fa-external-link-alt"></i> OPEN ARTIST FORM
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- BLACK TACTICAL VEST -->
+        <div class="product-card" data-category="vest">
+            <div class="product-image">
+                <img src="tacticalvest.png" alt="Black Tactical Vest" class="product-img">
+                <div class="product-badge">TACTICAL GEAR</div>
+                <div class="sold-out-badge">SOLD OUT</div>
+            </div>
+            <div class="product-content">
+                <h3 class="product-title">BLACK TACTICAL VEST</h3>
+                <p class="product-description">Military-grade tactical vest with hidden pockets, water-resistant fabric, and AR-enabled features.</p>
+                
+                <!-- CUSTOMIZATION TABS -->
+                <div class="customization-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="pre-designed-2">PRE-DESIGNED</button>
+                        <button class="tab-btn" data-tab="custom-upload-2">CUSTOM UPLOAD</button>
+                        <button class="tab-btn" data-tab="artist-collab-2">ARTIST COLLAB</button>
+                    </div>
+                    
+                    <!-- PRE-DESIGNED TAB -->
+                    <div class="tab-content active" id="pre-designed-2">
+                        <div class="custom-option sold-out-option">
+                            <h4 class="option-title">BURΔQ TACTICAL DESIGN</h4>
+                            <p class="option-description">Stealth black with reflective BURΔQ tactical patterns. Includes NFC for digital mission logs.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- CUSTOM UPLOAD TAB -->
+                    <div class="tab-content" id="custom-upload-2">
+                        <div class="custom-option">
+                            <h4 class="option-title">UPLOAD TACTICAL DESIGN</h4>
+                            <p class="option-description">Upload your tactical patches, unit logos, or custom camouflage patterns.</p>
+                            <div class="artist-form-container">
+                                <iframe src="https://www.jotform.com/build/260288020981457" 
+                                        class="jotform-embed" 
+                                        id="custom-jotform-2"
+                                        title="BURΔQ Custom Upload Form">
+                                </iframe>
+                                
+                                <!-- FALLBACK IF IFRAME FAILS -->
+                                <div class="jotform-alternative" id="custom-jotform-alternative-2" style="display: none;">
+                                    <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
+                                    <a href="https://www.jotform.com/build/260288020981457" target="_blank" class="form-link-btn">
+                                        <i class="fas fa-external-link-alt"></i> OPEN CUSTOM UPLOAD FORM
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ARTIST COLLABORATION TAB -->
+                    <div class="tab-content" id="artist-collab-2">
+                        <div class="custom-option">
+                            <h4 class="option-title">CUSTOM TACTICAL DESIGN</h4>
+                            <p class="option-description">Describe your tactical needs and our designers will create custom solutions.</p>
+                            <div class="artist-form-container">
+                                <iframe src="https://form.jotform.com/260267741162051" 
+                                        class="jotform-embed" 
+                                        id="artist-jotform-2"
+                                        title="BURΔQ Artist Collaboration Form">
+                                </iframe>
+                                
+                                <!-- FALLBACK IF IFRAME FAILS -->
+                                <div class="jotform-alternative" id="artist-jotform-alternative-2" style="display: none;">
+                                    <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
+                                    <a href="https://form.jotform.com/260267741162051" target="_blank" class="form-link-btn">
+                                        <i class="fas fa-external-link-alt"></i> OPEN ARTIST FORM
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- JEANS MOTORBIKE VEST -->
+        <div class="product-card" data-category="vest">
+            <div class="product-image">
+                <img src="jeansvest.png" alt="Jeans Motorbike Vest" class="product-img">
+                <div class="product-badge">VINTAGE CYBER</div>
+                <div class="sold-out-badge">SOLD OUT</div>
+            </div>
+            <div class="product-content">
+                <h3 class="product-title">JEANS MOTORBIKE VEST</h3>
+                <p class="product-description">Classic denim vest reimagined with cyberpunk enhancements and blockchain-integrated patches.</p>
+                
+                <!-- CUSTOMIZATION TABS -->
+                <div class="customization-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="pre-designed-3">PRE-DESIGNED</button>
+                        <button class="tab-btn" data-tab="custom-upload-3">CUSTOM UPLOAD</button>
+                        <button class="tab-btn" data-tab="artist-collab-3">ARTIST COLLAB</button>
+                    </div>
+                    
+                    <!-- PRE-DESIGNED TAB -->
+                    <div class="tab-content active" id="pre-designed-3">
+                        <div class="custom-option sold-out-option">
+                            <h4 class="option-title">BURΔQ DENIM ART</h4>
+                            <p class="option-description">Vintage denim with glow-in-the-dark BURΔQ circuitry patterns. Includes NFT patch system.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- CUSTOM UPLOAD TAB -->
+                    <div class="tab-content" id="custom-upload-3">
+                        <div class="custom-option">
+                            <h4 class="option-title">UPLOAD PATCH DESIGNS</h4>
+                            <p class="option-description">Upload custom patches or back artwork for your denim vest.</p>
+                            <div class="artist-form-container">
+                                <iframe src="https://www.jotform.com/build/260288020981457" 
+                                        class="jotform-embed" 
+                                        id="custom-jotform-3"
+                                        title="BURΔQ Custom Upload Form">
+                                </iframe>
+                                
+                                <!-- FALLBACK IF IFRAME FAILS -->
+                                <div class="jotform-alternative" id="custom-jotform-alternative-3" style="display: none;">
+                                    <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
+                                    <a href="https://www.jotform.com/build/260288020981457" target="_blank" class="form-link-btn">
+                                        <i class="fas fa-external-link-alt"></i> OPEN CUSTOM UPLOAD FORM
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ARTIST COLLABORATION TAB -->
+                    <div class="tab-content" id="artist-collab-3">
+                        <div class="custom-option">
+                            <h4 class="option-title">CUSTOM DENIM ART</h4>
+                            <p class="option-description">Work with our artists to create unique denim artwork and patch placements.</p>
+                            <div class="artist-form-container">
+                                <iframe src="https://form.jotform.com/260267741162051" 
+                                        class="jotform-embed" 
+                                        id="artist-jotform-3"
+                                        title="BURΔQ Artist Collaboration Form">
+                                </iframe>
+                                
+                                <!-- FALLBACK IF IFRAME FAILS -->
+                                <div class="jotform-alternative" id="artist-jotform-alternative-3" style="display: none;">
+                                    <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
+                                    <a href="https://form.jotform.com/260267741162051" target="_blank" class="form-link-btn">
+                                        <i class="fas fa-external-link-alt"></i> OPEN ARTIST FORM
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- BLACK T-SHIRT -->
+        <div class="product-card" data-category="tshirt">
+            <div class="product-image">
+                <img src="blacktshirt.png" alt="Black T-Shirt" class="product-img">
+                <div class="product-badge">BASIC EDITION</div>
+                <div class="sold-out-badge">SOLD OUT</div>
+            </div>
+            <div class="product-content">
+                <h3 class="product-title">BLACK T-SHIRT</h3>
+                <p class="product-description">Premium cotton t-shirt with cyberpunk artwork options. Perfect canvas for your digital identity.</p>
+                
+                <!-- CUSTOMIZATION TABS -->
+                <div class="customization-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="pre-designed-4">PRE-DESIGNED</button>
+                        <button class="tab-btn" data-tab="custom-upload-4">CUSTOM UPLOAD</button>
+                        <button class="tab-btn" data-tab="artist-collab-4">ARTIST COLLAB</button>
+                    </div>
+                    
+                    <!-- PRE-DESIGNED TAB -->
+                    <div class="tab-content active" id="pre-designed-4">
+                        <div class="custom-option sold-out-option">
+                            <h4 class="option-title">BURΔQ CIRCUIT DESIGN</h4>
+                            <p class="option-description">Glowing circuit patterns with BURΔQ logo. Minimalist cyberpunk aesthetic.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- CUSTOM UPLOAD TAB -->
+                    <div class="tab-content" id="custom-upload-4">
+                        <div class="custom-option">
+                            <h4 class="option-title">UPLOAD T-SHIRT ART</h4>
+                            <p class="option-description">Upload your artwork for front, back, or sleeve printing on premium black cotton.</p>
+                            <div class="artist-form-container">
+                                <iframe src="https://www.jotform.com/build/260288020981457" 
+                                        class="jotform-embed" 
+                                        id="custom-jotform-4"
+                                        title="BURΔQ Custom Upload Form">
+                                </iframe>
+                                
+                                <!-- FALLBACK IF IFRAME FAILS -->
+                                <div class="jotform-alternative" id="custom-jotform-alternative-4" style="display: none;">
+                                    <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
+                                    <a href="https://www.jotform.com/build/260288020981457" target="_blank" class="form-link-btn">
+                                        <i class="fas fa-external-link-alt"></i> OPEN CUSTOM UPLOAD FORM
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ARTIST COLLABORATION TAB -->
+                    <div class="tab-content" id="artist-collab-4">
+                        <div class="custom-option">
+                            <h4 class="option-title">CUSTOM T-SHIRT ART</h4>
+                            <p class="option-description">Collaborate with artists to create unique t-shirt designs that represent your digital identity.</p>
+                            <div class="artist-form-container">
+                                <iframe src="https://form.jotform.com/260267741162051" 
+                                        class="jotform-embed" 
+                                        id="artist-jotform-4"
+                                        title="BURΔQ Artist Collaboration Form">
+                                </iframe>
+                                
+                                <!-- FALLBACK IF IFRAME FAILS -->
+                                <div class="jotform-alternative" id="artist-jotform-alternative-4" style="display: none;">
+                                    <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
+                                    <a href="https://form.jotform.com/260267741162051" target="_blank" class="form-link-btn">
+                                        <i class="fas fa-external-link-alt"></i> OPEN ARTIST FORM
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- WHITE T-SHIRT -->
+        <div class="product-card" data-category="tshirt">
+            <div class="product-image">
+                <img src="whitetshirt.png" alt="White T-Shirt" class="product-img">
+                <div class="product-badge">CANVAS READY</div>
+                <div class="sold-out-badge">SOLD OUT</div>
+            </div>
+            <div class="product-content">
+                <h3 class="product-title">WHITE T-SHIRT</h3>
+                <p class="product-description">Crisp white premium cotton t-shirt. Perfect blank canvas for vibrant cyberpunk artwork.</p>
+                
+                <!-- CUSTOMIZATION TABS -->
+                <div class="customization-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="pre-designed-5">PRE-DESIGNED</button>
+                        <button class="tab-btn" data-tab="custom-upload-5">CUSTOM UPLOAD</button>
+                        <button class="tab-btn" data-tab="artist-collab-5">ARTIST COLLAB</button>
+                    </div>
+                    
+                    <!-- PRE-DESIGNED TAB -->
+                    <div class="tab-content active" id="pre-designed-5">
+                        <div class="custom-option sold-out-option">
+                            <h4 class="option-title">BURΔQ NEO-TOKYO</h4>
+                            <p class="option-description">Vibrant Neo-Tokyo skyline with BURΔQ branding. Full-color digital print.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- CUSTOM UPLOAD TAB -->
+                    <div class="tab-content" id="custom-upload-5">
+                        <div class="custom-option">
+                            <h4 class="option-title">UPLOAD VIBRANT ART</h4>
+                            <p class="option-description">Upload full-color artwork that will pop on the white cotton canvas.</p>
+                            <div class="artist-form-container">
+                                <iframe src="https://www.jotform.com/build/260288020981457" 
+                                        class="jotform-embed" 
+                                        id="custom-jotform-5"
+                                        title="BURΔQ Custom Upload Form">
+                                </iframe>
+                                
+                                <!-- FALLBACK IF IFRAME FAILS -->
+                                <div class="jotform-alternative" id="custom-jotform-alternative-5" style="display: none;">
+                                    <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
+                                    <a href="https://www.jotform.com/build/260288020981457" target="_blank" class="form-link-btn">
+                                        <i class="fas fa-external-link-alt"></i> OPEN CUSTOM UPLOAD FORM
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ARTIST COLLABORATION TAB -->
+                    <div class="tab-content" id="artist-collab-5">
+                        <div class="custom-option">
+                            <h4 class="option-title">CUSTOM WHITE TEE ART</h4>
+                            <p class="option-description">Work with artists to create vibrant, full-color designs optimized for white fabric.</p>
+                            <div class="artist-form-container">
+                                <iframe src="https://form.jotform.com/260267741162051" 
+                                        class="jotform-embed" 
+                                        id="artist-jotform-5"
+                                        title="BURΔQ Artist Collaboration Form">
+                                </iframe>
+                                
+                                <!-- FALLBACK IF IFRAME FAILS -->
+                                <div class="jotform-alternative" id="artist-jotform-alternative-5" style="display: none;">
+                                    <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
+                                    <a href="https://form.jotform.com/260267741162051" target="_blank" class="form-link-btn">
+                                        <i class="fas fa-external-link-alt"></i> OPEN ARTIST FORM
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CYBER HOODIE WITH LED -->
+        <div class="product-card" data-category="hoodie">
+            <div class="product-image">
+                <img src="cyberhoodie.png" alt="Cyber Hoodie with LED Lights" class="product-img">
+                <div class="product-badge">LED LIGHTS</div>
+                <div class="sold-out-badge">SOLD OUT</div>
+            </div>
+            <div class="product-content">
+                <h3 class="product-title">CYBER HOODIE WITH LED</h3>
+                <p class="product-description">Heavyweight cyber hoodie with integrated LED lighting system and augmented reality features.</p>
+                
+                <!-- CUSTOMIZATION TABS -->
+                <div class="customization-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="pre-designed-6">PRE-DESIGNED</button>
+                        <button class="tab-btn" data-tab="custom-upload-6">CUSTOM UPLOAD</button>
+                        <button class="tab-btn" data-tab="artist-collab-6">ARTIST COLLAB</button>
+                    </div>
+                    
+                    <!-- PRE-DESIGNED TAB -->
+                    <div class="tab-content active" id="pre-designed-6">
+                        <div class="custom-option sold-out-option">
+                            <h4 class="option-title">BURΔQ AR HOODIE</h4>
+                            <p class="option-description">Holographic patterns that activate in AR. Includes programmable LED collar with 16 colors.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- CUSTOM UPLOAD TAB -->
+                    <div class="tab-content" id="custom-upload-6">
+                        <div class="custom-option">
+                            <h4 class="option-title">UPLOAD AR PATTERNS</h4>
+                            <p class="option-description">Upload designs that will be enhanced with augmented reality features and LED integration.</p>
+                            <div class="artist-form-container">
+                                <iframe src="https://www.jotform.com/build/260288020981457" 
+                                        class="jotform-embed" 
+                                        id="custom-jotform-6"
+                                        title="BURΔQ Custom Upload Form">
+                                </iframe>
+                                
+                                <!-- FALLBACK IF IFRAME FAILS -->
+                                <div class="jotform-alternative" id="custom-jotform-alternative-6" style="display: none;">
+                                    <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
+                                    <a href="https://www.jotform.com/build/260288020981457" target="_blank" class="form-link-btn">
+                                        <i class="fas fa-external-link-alt"></i> OPEN CUSTOM UPLOAD FORM
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ARTIST COLLABORATION TAB -->
+                    <div class="tab-content" id="artist-collab-6">
+                        <div class="custom-option">
+                            <h4 class="option-title">CUSTOM AR HOODIE</h4>
+                            <p class="option-description">Collaborate with AR artists to create interactive hoodie designs with custom LED programming.</p>
+                            <div class="artist-form-container">
+                                <iframe src="https://form.jotform.com/260267741162051" 
+                                        class="jotform-embed" 
+                                        id="artist-jotform-6"
+                                        title="BURΔQ Artist Collaboration Form">
+                                </iframe>
+                                
+                                <!-- FALLBACK IF IFRAME FAILS -->
+                                <div class="jotform-alternative" id="artist-jotform-alternative-6" style="display: none;">
+                                    <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
+                                    <a href="https://form.jotform.com/260267741162051" target="_blank" class="form-link-btn">
+                                        <i class="fas fa-external-link-alt"></i> OPEN ARTIST FORM
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>BURΔQ FASHION</h3>
+                <p style="color: rgba(255,255,255,0.7); margin-bottom: 1.5rem; line-height: 1.6;">
+                    Cyberpunk fashion meets blockchain technology. Each garment tells a story, each story is a token.
+                </p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-opensea"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>QUICK LINKS</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="https://www.shopburaq.com/collection">Collection</a></li>
+                    <li><a href="https://www.shopburaq.com/about">About Us</a></li>
+                    <li><a href="https://www.shopburaq.com/contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>SUPPORT</h3>
+                <ul class="footer-links">
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Customization Help</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>CONTACT</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope" style="color: #00f0ff; margin-right: 10px;"></i> contact@shopburaq.com</li>
+                    <li><i class="fas fa-phone" style="color: #00f0ff; margin-right: 10px;"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-map-marker-alt" style="color: #00f0ff; margin-right: 10px;"></i> Neo-Tokyo District</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024 BURΔQ Cyber Fashion. All rights reserved. | Blockchain-integrated phygital fashion</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Initialize floating shapes
+        document.addEventListener('DOMContentLoaded', function() {
+            createFloatingShapes();
+            setupEventListeners();
+            checkJotFormFrames();
+        });
+        
+        // Create floating background shapes
+        function createFloatingShapes() {
+            const container = document.getElementById('floatingShapes');
+            
+            for (let i = 0; i < 15; i++) {
+                const shape = document.createElement('div');
+                shape.classList.add('shape');
+                
+                // Random size
+                const size = Math.random() * 100 + 20;
+                shape.style.width = `${size}px`;
+                shape.style.height = `${size}px`;
+                
+                // Random position
+                shape.style.left = `${Math.random() * 100}%`;
+                shape.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation
+                const duration = Math.random() * 30 + 20;
+                const delay = Math.random() * 5;
+                shape.style.animationDuration = `${duration}s`;
+                shape.style.animationDelay = `${delay}s`;
+                
+                // Random border color
+                const colors = ['rgba(0, 240, 255, 0.1)', 'rgba(157, 0, 255, 0.1)', 'rgba(0, 255, 157, 0.1)'];
+                shape.style.borderColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                container.appendChild(shape);
+            }
+        }
+        
+        // Setup all event listeners
+        function setupEventListeners() {
+            // Tab switching
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    const parent = this.closest('.customization-tabs');
+                    
+                    // Remove active class from all tabs in this group
+                    parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                    parent.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    filterProducts(filter);
+                });
+            });
+            
+            // Search functionality
+            document.getElementById('searchInput').addEventListener('input', function() {
+                searchProducts(this.value);
+            });
+            
+            // Wallet connect
+            document.getElementById('connectWallet').addEventListener('click', function() {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> CONNECTING...';
+                this.style.opacity = '0.8';
+                
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-check"></i> CONNECTED';
+                    this.style.background = 'linear-gradient(45deg, #00ff9d, #00f0ff)';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        this.style.opacity = '1';
+                        this.style.background = 'linear-gradient(45deg, #00f0ff, #9d00ff)';
+                    }, 3000);
+                }, 1500);
+            });
+        }
+        
+        // Filter products by category
+        function filterProducts(category) {
+            const products = document.querySelectorAll('.product-card');
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            
+            products.forEach(product => {
+                const productCategory = product.getAttribute('data-category');
+                const title = product.querySelector('.product-title').textContent.toLowerCase();
+                const description = product.querySelector('.product-description').textContent.toLowerCase();
+                
+                let shouldShow = true;
+                
+                // Apply category filter
+                if (category !== 'all' && productCategory !== category) {
+                    shouldShow = false;
+                }
+                
+                // Apply search filter if there's a search term
+                if (searchTerm && !title.includes(searchTerm) && !description.includes(searchTerm)) {
+                    shouldShow = false;
+                }
+                
+                product.style.display = shouldShow ? 'block' : 'none';
+            });
+        }
+        
+        // Search products
+        function searchProducts(term) {
+            term = term.toLowerCase();
+            const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+            filterProducts(activeFilter);
+        }
+        
+        // Check if JotForm iframes loaded successfully
+        function checkJotFormFrames() {
+            // Check custom upload forms
+            document.querySelectorAll('iframe[id^="custom-jotform-"]').forEach((iframe, index) => {
+                iframe.onload = function() {
+                    console.log(`Custom JotForm iframe ${index + 1} loaded successfully`);
+                };
+                
+                iframe.onerror = function() {
+                    console.log(`Custom JotForm iframe ${index + 1} failed to load`);
+                    const altId = iframe.id.replace('custom-jotform-', 'custom-jotform-alternative-');
+                    const alternative = document.getElementById(altId);
+                    if (alternative) {
+                        alternative.style.display = 'block';
+                        iframe.style.display = 'none';
+                    }
+                };
+            });
+            
+            // Check artist collaboration forms
+            document.querySelectorAll('iframe[id^="artist-jotform-"]').forEach((iframe, index) => {
+                iframe.onload = function() {
+                    console.log(`Artist JotForm iframe ${index + 1} loaded successfully`);
+                };
+                
+                iframe.onerror = function() {
+                    console.log(`Artist JotForm iframe ${index + 1} failed to load`);
+                    const altId = iframe.id.replace('artist-jotform-', 'artist-jotform-alternative-');
+                    const alternative = document.getElementById(altId);
+                    if (alternative) {
+                        alternative.style.display = 'block';
+                        iframe.style.display = 'none';
+                    }
+                };
+            });
+        }
+    </script>
+</body>
+</html>
