@@ -639,7 +639,7 @@
             line-height: 1.6;
         }
 
-        /* BACK TO HOME BUTTON - OPTIONAL */
+        /* BACK TO HOME BUTTON */
         .back-home {
             position: fixed;
             bottom: 20px;
@@ -830,7 +830,7 @@
         </div>
     </nav>
     
-    <!-- BACK TO HOME (OPTIONAL) -->
+    <!-- BACK TO HOME -->
     <div class="back-home">
         <a href="index.html" class="back-btn">
             <i class="fas fa-arrow-left"></i> BACK TO HOME
@@ -924,7 +924,7 @@
     </footer>
 
     <script>
-        // ART DATA - Your 45 collection images
+        // ART DATA - Your 45 collection images with .jpeg extension
         const artCollection = [
             // First 15 - Cyberpunk Theme
             {id: 1, title: "Neo-Tokyo Nights", category: "cyberpunk", downloads: 1420, rating: 4.8},
@@ -1075,7 +1075,7 @@
             }
         }
 
-        // Render art grid
+        // Render art grid with .jpeg extension
         function renderArtGrid() {
             const grid = document.getElementById('artGrid');
             grid.innerHTML = '';
@@ -1090,8 +1090,8 @@
                 artItem.dataset.id = art.id;
                 artItem.dataset.category = art.category;
                 
-                // Construct image path
-                const imagePath = `collection/collection${art.id}.jpg`;
+                // Construct image path with .jpeg extension
+                const imagePath = `collection/collection${art.id}.jpeg`;
                 
                 artItem.innerHTML = `
                     <img src="${imagePath}" alt="${art.title}" class="art-image" loading="lazy">
@@ -1183,7 +1183,7 @@
             });
         }
 
-        // Open lightbox
+        // Open lightbox with .jpeg extension
         function openLightbox(id) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightboxImg');
@@ -1192,8 +1192,8 @@
             currentImageIndex = artCollection.findIndex(art => art.id === id);
             const art = artCollection[currentImageIndex];
             
-            // Update image path
-            lightboxImg.src = `collection/collection${art.id}.jpg`;
+            // Update image path with .jpeg extension
+            lightboxImg.src = `collection/collection${art.id}.jpeg`;
             lightboxTitle.textContent = art.title;
             
             lightbox.classList.add('active');
@@ -1206,36 +1206,36 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Navigate to previous image
+        // Navigate to previous image with .jpeg extension
         function showPrevImage() {
             currentImageIndex = (currentImageIndex - 1 + artCollection.length) % artCollection.length;
             const art = artCollection[currentImageIndex];
             
-            document.getElementById('lightboxImg').src = `collection/collection${art.id}.jpg`;
+            document.getElementById('lightboxImg').src = `collection/collection${art.id}.jpeg`;
             document.getElementById('lightboxTitle').textContent = art.title;
         }
 
-        // Navigate to next image
+        // Navigate to next image with .jpeg extension
         function showNextImage() {
             currentImageIndex = (currentImageIndex + 1) % artCollection.length;
             const art = artCollection[currentImageIndex];
             
-            document.getElementById('lightboxImg').src = `collection/collection${art.id}.jpg`;
+            document.getElementById('lightboxImg').src = `collection/collection${art.id}.jpeg`;
             document.getElementById('lightboxTitle').textContent = art.title;
         }
 
-        // Download art
+        // Download art with .jpeg extension
         function downloadArt(id, title) {
             downloadCount++;
             updateStats();
             
-            // Construct download URL
-            const downloadUrl = `collection/collection${id}.jpg`;
+            // Construct download URL with .jpeg extension
+            const downloadUrl = `collection/collection${id}.jpeg`;
             
             // Create temporary link for download
             const link = document.createElement('a');
             link.href = downloadUrl;
-            link.download = `${title.replace(/\s+/g, '_')}_4K.jpg`;
+            link.download = `${title.replace(/\s+/g, '_')}_4K.jpeg`;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
