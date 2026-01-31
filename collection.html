@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BURΔQ ART GALLERY | Cyberpunk Collection</title>
+    
+    <!-- THREE.JS for 3D Background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            color: white;
+            overflow-x: hidden;
+            background: #000;
+        }
+
+        /* 3D BACKGROUND CONTAINER */
+        #three-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* VIDEO BACKGROUND LAYER */
+        .video-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            opacity: 0.3;
+        }
+
+        #bg-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* NAVIGATION - MATCHING INDEX PAGE */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,240,255,0.2);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .rotating-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: contain;
+            animation: rotateLogo 20s linear infinite;
+            filter: drop-shadow(0 0 15px rgba(0,240,255,0.5));
+        }
+        
+        @keyframes rotateLogo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00f0ff, #9d00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .nav-link:hover {
+            color: #00f0ff;
+        }
+        
+        /* SHOP DROPDOWN - MATCHING INDEX PAGE */
+        .shop-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .shop-dropdown-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s;
+        }
+        
+        .shop-dropdown-btn:hover {
+            color: #00f0ff;
+        }
+        
+        .shop-dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(20px);
+            min-width: 220px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,240,255,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            z-index: 1000;
+            overflow: hidden;
+            animation: dropdownSlide 0.3s ease-out;
+        }
+        
+        @keyframes dropdownSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .shop-dropdown:hover .shop-dropdown-content {
+            display: block;
+        }
+        
+        .dropdown-link {
+            color: white;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            display: block;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .dropdown-link:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-link:hover {
+            background: linear-gradient(90deg, rgba(0,240,255,0.1), rgba(157,0,255,0.1));
+            color: #00f0ff;
+            padding-left: 2rem;
+        }
+        
+        .dropdown-link i {
+            width: 20px;
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        /* GALLERY HERO */
+        .gallery-hero {
+            padding: 200px 5% 100px;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 50;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: rgba(0,0,0,0.6);
+            border: 2px solid #00f0ff;
+            border-radius: 50px;
+            font-size: 1rem;
+            letter-spacing: 4px;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            color: #00f0ff;
+            text-transform: uppercase;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 240, 255, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(0, 240, 255, 0.6); }
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #00f0ff, #9d00ff, #ff00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 50px rgba(0, 240, 255, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* GALLERY CONTROLS */
+        .gallery-controls {
+            padding: 2rem 5%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,240,255,0.2);
+            position: sticky;
+            top: 80px;
+            z-index: 999;
+        }
+
+        .control-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 0.8rem 2rem;
+            background: rgba(20,20,40,0.8);
+            border: 1px solid rgba(0,240,255,0.3);
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .filter-tab.active, .filter-tab:hover {
+            background: linear-gradient(45deg, #00f0ff, #9d00ff);
+            color: black;
+            border-color: transparent;
+            transform: translateY(-3px);
+        }
+
+        .search-box {
+            position: relative;
+            min-width: 300px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 3rem;
+            background: rgba(20,20,40,0.8);
+            border: 1px solid rgba(0,240,255,0.3);
+            border-radius: 30px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #00f0ff;
+        }
+
+        /* ART GRID - MASONRY LAYOUT */
+        .art-grid {
+            padding: 3rem 5%;
+            max-width: 2000px;
+            margin: 0 auto;
+            columns: 4;
+            column-gap: 2rem;
+            position: relative;
+            z-index: 50;
+        }
+
+        @media (max-width: 1200px) {
+            .art-grid { columns: 3; }
+        }
+
+        @media (max-width: 768px) {
+            .art-grid { columns: 2; }
+        }
+
+        @media (max-width: 480px) {
+            .art-grid { columns: 1; }
+        }
+
+        .art-item {
+            break-inside: avoid;
+            margin-bottom: 2rem;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(0,240,255,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(10,10,20,0.6);
+            backdrop-filter: blur(10px);
+        }
+
+        .art-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #00f0ff;
+            box-shadow: 
+                0 20px 40px rgba(0,240,255,0.3),
+                0 0 100px rgba(157,0,255,0.2);
+        }
+
+        .art-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .art-item:hover .art-image {
+            transform: scale(1.05);
+        }
+
+        .art-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .art-item:hover .art-overlay {
+            transform: translateY(0);
+        }
+
+        .art-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #00f0ff;
+        }
+
+        .art-meta {
+            display: flex;
+            justify-content: space-between;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .art-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .art-btn {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .download-btn {
+            background: linear-gradient(45deg, #00f0ff, #9d00ff);
+            color: black;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(45deg, #9d00ff, #ff00ff);
+            transform: scale(1.05);
+        }
+
+        .view-btn {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(0,240,255,0.3);
+        }
+
+        .view-btn:hover {
+            background: rgba(0,240,255,0.2);
+            transform: scale(1.05);
+        }
+
+        /* LOAD MORE */
+        .load-more {
+            text-align: center;
+            padding: 4rem 5%;
+            position: relative;
+            z-index: 50;
+        }
+
+        .load-btn {
+            padding: 1.2rem 3rem;
+            background: linear-gradient(45deg, #00f0ff, #9d00ff);
+            border: none;
+            border-radius: 30px;
+            color: black;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .load-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,240,255,0.4);
+        }
+
+        /* LIGHTBOX MODAL */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            backdrop-filter: blur(20px);
+        }
+
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 15px;
+            box-shadow: 0 0 100px rgba(0,240,255,0.3);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 2rem;
+        }
+
+        .nav-arrow {
+            background: rgba(0,0,0,0.7);
+            border: 2px solid #00f0ff;
+            color: #00f0ff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-arrow:hover {
+            background: #00f0ff;
+            color: black;
+            transform: scale(1.1);
+        }
+
+        .lightbox-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.8);
+            padding: 2rem;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .lightbox-title {
+            font-size: 2rem;
+            color: #00f0ff;
+            margin-bottom: 1rem;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: -60px;
+            right: 0;
+            background: rgba(255,0,0,0.8);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .close-btn:hover {
+            background: #ff0000;
+            transform: rotate(90deg);
+        }
+
+        /* STATS BAR */
+        .stats-bar {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.9);
+            border: 1px solid rgba(0,240,255,0.3);
+            border-radius: 30px;
+            padding: 1rem 2rem;
+            display: flex;
+            gap: 3rem;
+            backdrop-filter: blur(20px);
+            z-index: 100;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            color: #00f0ff;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* FOOTER */
+        .gallery-footer {
+            text-align: center;
+            padding: 4rem 5%;
+            background: rgba(0,0,0,0.9);
+            border-top: 1px solid rgba(0,240,255,0.2);
+            position: relative;
+            z-index: 50;
+        }
+
+        .footer-logo {
+            font-size: 3rem;
+            background: linear-gradient(45deg, #00f0ff, #9d00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .footer-text {
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        /* BACK TO HOME BUTTON - OPTIONAL */
+        .back-home {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1001;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .back-home:hover {
+            opacity: 1;
+        }
+
+        .back-btn {
+            padding: 0.8rem 1.5rem;
+            background: rgba(0,0,0,0.8);
+            border: 1px solid #00f0ff;
+            border-radius: 30px;
+            color: #00f0ff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .back-btn:hover {
+            background: #00f0ff;
+            color: black;
+            transform: translateY(-2px);
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 1024px) {
+            .hero-title { font-size: 4rem; }
+            .art-grid { columns: 3; }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-hero {
+                padding: 150px 5% 80px;
+                text-align: center;
+            }
+            
+            .hero-title { 
+                font-size: 3rem;
+                margin-bottom: 1rem;
+            }
+            
+            .hero-subtitle { 
+                font-size: 1.2rem;
+                margin-bottom: 2rem;
+                padding: 0 10px;
+            }
+            
+            .hero-badge {
+                font-size: 0.9rem;
+                padding: 0.8rem 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .control-container { 
+                flex-direction: column; 
+                gap: 1rem;
+            }
+            
+            .search-box { 
+                width: 100%; 
+                min-width: auto;
+            }
+            
+            .art-grid { 
+                columns: 2; 
+                padding: 2rem 5%;
+            }
+            
+            .stats-bar { 
+                flex-wrap: wrap; 
+                gap: 1.5rem;
+                bottom: 1rem;
+                padding: 0.8rem 1.5rem;
+            }
+            
+            .nav-links .nav-link:not(.shop-dropdown-btn) {
+                display: none;
+            }
+            
+            .back-home {
+                bottom: 10px;
+                left: 10px;
+            }
+            
+            .back-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title { 
+                font-size: 2.5rem; 
+            }
+            
+            .hero-subtitle { 
+                font-size: 1rem; 
+            }
+            
+            .art-grid { 
+                columns: 1; 
+            }
+            
+            .stats-bar { 
+                bottom: 0.5rem; 
+                padding: 0.6rem 1rem;
+                gap: 1rem;
+            }
+            
+            .stat-item {
+                min-width: 70px;
+            }
+            
+            .stat-number {
+                font-size: 1.2rem;
+            }
+            
+            .stat-label {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 3D BACKGROUND -->
+    <div id="three-background"></div>
+    
+    <!-- VIDEO BACKGROUND -->
+    <div class="video-layer">
+        <video id="bg-video" autoplay muted loop playsinline>
+            <source src="rotating.webm" type="video/webm">
+            <!-- Fallback video -->
+            <source src="https://assets.codepen.io/4787486/cyberpunk-street.mp4" type="video/mp4">
+        </video>
+    </div>
+    
+    <!-- NAVIGATION - IDENTICAL TO INDEX PAGE -->
+    <nav class="nav">
+        <div class="logo-container">
+            <img src="rotatingphoto.png" alt="BURΔQ Logo - Cyberpunk Fashion Brand" class="rotating-logo">
+            <a href="index.html" class="nav-logo">BURΔQ</a>
+        </div>
+        <div class="nav-links">
+            <a href="collection.html" class="nav-link active">COLLECTION</a>
+            <a href="about.html" class="nav-link">ABOUT</a>
+            <a href="contact.html" class="nav-link">CONTACT</a>
+            
+            <!-- SHOP DROPDOWN - IDENTICAL TO INDEX PAGE -->
+            <div class="shop-dropdown">
+                <button class="nav-link shop-dropdown-btn">
+                    <i class="fas fa-store"></i> SHOP <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="shop-dropdown-content">
+                    <a href="shop.html" class="dropdown-link">
+                        <i class="fas fa-vest"></i> JACKETS
+                    </a>
+                    <a href="shop.html" class="dropdown-link">
+                        <i class="fas fa-tshirt"></i> T-SHIRTS
+                    </a>
+                    <a href="shop.html" class="dropdown-link">
+                        <i class="fas fa-user"></i> PANTS
+                    </a>
+                    <a href="shop.html?category=accessories" class="dropdown-link">
+                        <i class="fas fa-glasses"></i> ACCESSORIES
+                    </a>
+                    <a href="nft-collection.html" class="dropdown-link">
+                        <i class="fas fa-coins"></i> NFT COLLECTION
+                    </a>
+                    <a href="shop.html?category=new" class="dropdown-link">
+                        <i class="fas fa-star"></i> NEW ARRIVALS
+                    </a>
+                    <a href="shop.html?category=sale" class="dropdown-link">
+                        <i class="fas fa-tag"></i> SALE
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- BACK TO HOME (OPTIONAL) -->
+    <div class="back-home">
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> BACK TO HOME
+        </a>
+    </div>
+    
+    <!-- HERO SECTION -->
+    <section class="gallery-hero">
+        <div class="hero-badge">CYBERPUNK ART COLLECTION</div>
+        <h1 class="hero-title">DIGITAL<br>MASTERPIECES</h1>
+        <p class="hero-subtitle">
+            45 curated cyberpunk artworks. Each piece tells a story of neon-lit futures, 
+            digital consciousness, and augmented humanity. Download in 4K resolution.
+        </p>
+    </section>
+    
+    <!-- GALLERY CONTROLS -->
+    <div class="gallery-controls">
+        <div class="control-container">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">ALL ART</button>
+                <button class="filter-tab" data-filter="cyberpunk">CYBERPUNK</button>
+                <button class="filter-tab" data-filter="neon">NEON</button>
+                <button class="filter-tab" data-filter="future">FUTURE</button>
+                <button class="filter-tab" data-filter="digital">DIGITAL</button>
+                <button class="filter-tab" data-filter="abstract">ABSTRACT</button>
+            </div>
+            <div class="search-box">
+                <i class="search-icon">🔍</i>
+                <input type="text" class="search-input" placeholder="Search artworks..." id="searchInput">
+            </div>
+        </div>
+    </div>
+    
+    <!-- ART GRID -->
+    <div class="art-grid" id="artGrid">
+        <!-- Art items will be dynamically generated -->
+    </div>
+    
+    <!-- LOAD MORE -->
+    <div class="load-more">
+        <button class="load-btn" id="loadMore">LOAD MORE ARTWORKS</button>
+    </div>
+    
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-number" id="totalArt">45</div>
+            <div class="stat-label">ARTWORKS</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">4K</div>
+            <div class="stat-label">RESOLUTION</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number" id="downloadCount">0</div>
+            <div class="stat-label">DOWNLOADS</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">6</div>
+            <div class="stat-label">CATEGORIES</div>
+        </div>
+    </div>
+    
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <img class="lightbox-img" id="lightboxImg" src="" alt="">
+            <div class="lightbox-nav">
+                <button class="nav-arrow" id="prevBtn">❮</button>
+                <button class="nav-arrow" id="nextBtn">❯</button>
+            </div>
+            <div class="lightbox-info">
+                <h2 class="lightbox-title" id="lightboxTitle">Artwork Title</h2>
+                <button class="download-btn" id="lightboxDownload">DOWNLOAD 4K</button>
+            </div>
+            <button class="close-btn" id="closeBtn">✕</button>
+        </div>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer class="gallery-footer">
+        <div class="footer-logo">BURΔQ ART</div>
+        <p class="footer-text">
+            The future of digital art collection. All artworks are available in 4K resolution 
+            for personal and commercial use. Join the cyberpunk revolution.
+        </p>
+        <p style="color: rgba(255,255,255,0.5); margin-top: 2rem;">
+            © 2024 BURΔQ Digital Art Gallery. All rights reserved.
+        </p>
+    </footer>
+
+    <script>
+        // ART DATA - Your 45 collection images
+        const artCollection = [
+            // First 15 - Cyberpunk Theme
+            {id: 1, title: "Neo-Tokyo Nights", category: "cyberpunk", downloads: 1420, rating: 4.8},
+            {id: 2, title: "Digital Rain", category: "cyberpunk", downloads: 987, rating: 4.7},
+            {id: 3, title: "Augmented Reality", category: "cyberpunk", downloads: 1567, rating: 4.9},
+            {id: 4, title: "Circuit City", category: "cyberpunk", downloads: 834, rating: 4.6},
+            {id: 5, title: "Neon Dreams", category: "cyberpunk", downloads: 2105, rating: 4.9},
+            {id: 6, title: "Cyber Samurai", category: "cyberpunk", downloads: 1789, rating: 4.8},
+            {id: 7, title: "Holographic Love", category: "cyberpunk", downloads: 923, rating: 4.7},
+            {id: 8, title: "Data Stream", category: "cyberpunk", downloads: 654, rating: 4.5},
+            {id: 9, title: "Synthwave Sunset", category: "cyberpunk", downloads: 1876, rating: 4.9},
+            {id: 10, title: "Quantum Interface", category: "cyberpunk", downloads: 1321, rating: 4.8},
+            {id: 11, title: "Neon District", category: "cyberpunk", downloads: 945, rating: 4.7},
+            {id: 12, title: "Digital Ghost", category: "cyberpunk", downloads: 789, rating: 4.6},
+            {id: 13, title: "Cyber Warfare", category: "cyberpunk", downloads: 1678, rating: 4.8},
+            {id: 14, title: "AI Consciousness", category: "cyberpunk", downloads: 2045, rating: 4.9},
+            {id: 15, title: "Future Noir", category: "cyberpunk", downloads: 1123, rating: 4.7},
+            
+            // Next 15 - Neon Theme
+            {id: 16, title: "Neon Geometry", category: "neon", downloads: 876, rating: 4.6},
+            {id: 17, title: "Liquid Light", category: "neon", downloads: 954, rating: 4.7},
+            {id: 18, title: "Glow District", category: "neon", downloads: 1023, rating: 4.8},
+            {id: 19, title: "Electric Dreams", category: "neon", downloads: 1456, rating: 4.9},
+            {id: 20, title: "Neon Vortex", category: "neon", downloads: 789, rating: 4.6},
+            {id: 21, title: "Laser Grid", category: "neon", downloads: 987, rating: 4.7},
+            {id: 22, title: "Glowing Circuits", category: "neon", downloads: 1134, rating: 4.8},
+            {id: 23, title: "Neon Waves", category: "neon", downloads: 876, rating: 4.6},
+            {id: 24, title: "Electric Paradise", category: "neon", downloads: 1567, rating: 4.9},
+            {id: 25, title: "Neon Rain", category: "neon", downloads: 923, rating: 4.7},
+            {id: 26, title: "Glowing Data", category: "neon", downloads: 1012, rating: 4.8},
+            {id: 27, title: "Neon Grid", category: "neon", downloads: 834, rating: 4.6},
+            {id: 28, title: "Electric Pulse", category: "neon", downloads: 1456, rating: 4.9},
+            {id: 29, title: "Neon Spectrum", category: "neon", downloads: 987, rating: 4.7},
+            {id: 30, title: "Glowing Future", category: "neon", downloads: 1123, rating: 4.8},
+            
+            // Last 15 - Mixed Themes
+            {id: 31, title: "Future City", category: "future", downloads: 1789, rating: 4.8},
+            {id: 32, title: "Digital Dawn", category: "future", downloads: 923, rating: 4.7},
+            {id: 33, title: "Quantum City", category: "future", downloads: 1567, rating: 4.9},
+            {id: 34, title: "Digital Canvas", category: "digital", downloads: 876, rating: 4.6},
+            {id: 35, title: "Code Poetry", category: "digital", downloads: 954, rating: 4.7},
+            {id: 36, title: "Abstract Circuits", category: "abstract", downloads: 1023, rating: 4.8},
+            {id: 37, title: "Digital Flow", category: "digital", downloads: 789, rating: 4.6},
+            {id: 38, title: "Future Grid", category: "future", downloads: 1456, rating: 4.9},
+            {id: 39, title: "Abstract Data", category: "abstract", downloads: 987, rating: 4.7},
+            {id: 40, title: "Digital Storm", category: "digital", downloads: 1134, rating: 4.8},
+            {id: 41, title: "Quantum Art", category: "abstract", downloads: 876, rating: 4.6},
+            {id: 42, title: "Future Interface", category: "future", downloads: 1567, rating: 4.9},
+            {id: 43, title: "Abstract Future", category: "abstract", downloads: 923, rating: 4.7},
+            {id: 44, title: "Digital Matrix", category: "digital", downloads: 1012, rating: 4.8},
+            {id: 45, title: "Future Vision", category: "future", downloads: 1789, rating: 4.8}
+        ];
+
+        let currentFilter = 'all';
+        let currentImageIndex = 0;
+        let downloadCount = 0;
+
+        // Initialize gallery
+        document.addEventListener('DOMContentLoaded', function() {
+            init3DBackground();
+            renderArtGrid();
+            setupEventListeners();
+            updateStats();
+            
+            // Try to play video
+            const video = document.getElementById('bg-video');
+            video.play().catch(e => console.log('Video autoplay prevented:', e));
+        });
+
+        // Initialize 3D Background
+        function init3DBackground() {
+            try {
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                const renderer = new THREE.WebGLRenderer({ 
+                    alpha: true,
+                    antialias: true 
+                });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                document.getElementById('three-background').appendChild(renderer.domElement);
+                
+                // Create floating particles
+                const particlesCount = 5000;
+                const positions = new Float32Array(particlesCount * 3);
+                const colors = new Float32Array(particlesCount * 3);
+                
+                for(let i = 0; i < particlesCount * 3; i += 3) {
+                    positions[i] = (Math.random() - 0.5) * 100;
+                    positions[i + 1] = (Math.random() - 0.5) * 100;
+                    positions[i + 2] = (Math.random() - 0.5) * 100;
+                    
+                    colors[i] = Math.random() * 0.5 + 0.5;     // R
+                    colors[i + 1] = Math.random() * 0.8 + 0.2; // G
+                    colors[i + 2] = Math.random() * 0.8 + 0.2; // B
+                }
+                
+                const geometry = new THREE.BufferGeometry();
+                geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+                
+                const material = new THREE.PointsMaterial({
+                    size: 0.05,
+                    vertexColors: true,
+                    transparent: true,
+                    opacity: 0.8,
+                    blending: THREE.AdditiveBlending
+                });
+                
+                const particles = new THREE.Points(geometry, material);
+                scene.add(particles);
+                
+                // Add lights
+                const ambientLight = new THREE.AmbientLight(0x00aaff, 0.2);
+                scene.add(ambientLight);
+                
+                const pointLight = new THREE.PointLight(0x00f0ff, 1, 100);
+                pointLight.position.set(10, 10, 10);
+                scene.add(pointLight);
+                
+                camera.position.z = 30;
+                
+                // Animation
+                function animate() {
+                    requestAnimationFrame(animate);
+                    
+                    particles.rotation.x += 0.001;
+                    particles.rotation.y += 0.002;
+                    
+                    const positions = particles.geometry.attributes.position.array;
+                    for(let i = 0; i < positions.length; i += 3) {
+                        positions[i + 1] += Math.sin(Date.now() * 0.001 + positions[i]) * 0.01;
+                    }
+                    particles.geometry.attributes.position.needsUpdate = true;
+                    
+                    renderer.render(scene, camera);
+                }
+                animate();
+                
+                // Handle resize
+                window.addEventListener('resize', function() {
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                });
+                
+            } catch (e) {
+                console.log('Three.js error:', e);
+            }
+        }
+
+        // Render art grid
+        function renderArtGrid() {
+            const grid = document.getElementById('artGrid');
+            grid.innerHTML = '';
+            
+            const filteredArt = currentFilter === 'all' 
+                ? artCollection 
+                : artCollection.filter(art => art.category === currentFilter);
+            
+            filteredArt.forEach(art => {
+                const artItem = document.createElement('div');
+                artItem.className = 'art-item';
+                artItem.dataset.id = art.id;
+                artItem.dataset.category = art.category;
+                
+                // Construct image path
+                const imagePath = `collection/collection${art.id}.jpg`;
+                
+                artItem.innerHTML = `
+                    <img src="${imagePath}" alt="${art.title}" class="art-image" loading="lazy">
+                    <div class="art-overlay">
+                        <h3 class="art-title">${art.title}</h3>
+                        <div class="art-meta">
+                            <span>${art.category.toUpperCase()}</span>
+                            <span>${art.downloads.toLocaleString()} downloads</span>
+                            <span>⭐ ${art.rating}</span>
+                        </div>
+                        <div class="art-actions">
+                            <button class="art-btn download-btn" onclick="downloadArt(${art.id}, '${art.title}')">
+                                Download 4K
+                            </button>
+                            <button class="art-btn view-btn" onclick="openLightbox(${art.id})">
+                                View Full
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                grid.appendChild(artItem);
+            });
+            
+            document.getElementById('totalArt').textContent = filteredArt.length;
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Filter tabs
+            document.querySelectorAll('.filter-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    currentFilter = this.dataset.filter;
+                    renderArtGrid();
+                });
+            });
+            
+            // Search functionality
+            document.getElementById('searchInput').addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                const items = document.querySelectorAll('.art-item');
+                
+                items.forEach(item => {
+                    const title = item.querySelector('.art-title').textContent.toLowerCase();
+                    const category = item.dataset.category;
+                    
+                    if (title.includes(searchTerm) || category.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Load more button
+            document.getElementById('loadMore').addEventListener('click', function() {
+                // In a real implementation, this would load more images from server
+                alert('Loading more artworks...');
+                // For demo, we'll just add some visual feedback
+                this.textContent = 'LOADING...';
+                setTimeout(() => {
+                    this.textContent = 'NO MORE ARTWORKS';
+                    this.disabled = true;
+                }, 1000);
+            });
+            
+            // Lightbox navigation
+            document.getElementById('prevBtn').addEventListener('click', showPrevImage);
+            document.getElementById('nextBtn').addEventListener('click', showNextImage);
+            document.getElementById('closeBtn').addEventListener('click', closeLightbox);
+            document.getElementById('lightboxDownload').addEventListener('click', downloadCurrentImage);
+            
+            // Close lightbox on background click
+            document.getElementById('lightbox').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeLightbox();
+                }
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (document.getElementById('lightbox').classList.contains('active')) {
+                    if (e.key === 'Escape') closeLightbox();
+                    if (e.key === 'ArrowLeft') showPrevImage();
+                    if (e.key === 'ArrowRight') showNextImage();
+                }
+            });
+        }
+
+        // Open lightbox
+        function openLightbox(id) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxTitle = document.getElementById('lightboxTitle');
+            
+            currentImageIndex = artCollection.findIndex(art => art.id === id);
+            const art = artCollection[currentImageIndex];
+            
+            // Update image path
+            lightboxImg.src = `collection/collection${art.id}.jpg`;
+            lightboxTitle.textContent = art.title;
+            
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close lightbox
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Navigate to previous image
+        function showPrevImage() {
+            currentImageIndex = (currentImageIndex - 1 + artCollection.length) % artCollection.length;
+            const art = artCollection[currentImageIndex];
+            
+            document.getElementById('lightboxImg').src = `collection/collection${art.id}.jpg`;
+            document.getElementById('lightboxTitle').textContent = art.title;
+        }
+
+        // Navigate to next image
+        function showNextImage() {
+            currentImageIndex = (currentImageIndex + 1) % artCollection.length;
+            const art = artCollection[currentImageIndex];
+            
+            document.getElementById('lightboxImg').src = `collection/collection${art.id}.jpg`;
+            document.getElementById('lightboxTitle').textContent = art.title;
+        }
+
+        // Download art
+        function downloadArt(id, title) {
+            downloadCount++;
+            updateStats();
+            
+            // Construct download URL
+            const downloadUrl = `collection/collection${id}.jpg`;
+            
+            // Create temporary link for download
+            const link = document.createElement('a');
+            link.href = downloadUrl;
+            link.download = `${title.replace(/\s+/g, '_')}_4K.jpg`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Visual feedback
+            const downloadBtn = event.target;
+            const originalText = downloadBtn.textContent;
+            downloadBtn.textContent = '✓ DOWNLOADED';
+            downloadBtn.style.background = 'linear-gradient(45deg, #00ff9d, #00cc66)';
+            
+            setTimeout(() => {
+                downloadBtn.textContent = originalText;
+                downloadBtn.style.background = 'linear-gradient(45deg, #00f0ff, #9d00ff)';
+            }, 2000);
+        }
+
+        // Download current lightbox image
+        function downloadCurrentImage() {
+            const art = artCollection[currentImageIndex];
+            downloadArt(art.id, art.title);
+        }
+
+        // Update stats
+        function updateStats() {
+            document.getElementById('downloadCount').textContent = downloadCount.toLocaleString();
+        }
+    </script>
+</body>
+</html>
