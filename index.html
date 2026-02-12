@@ -6,21 +6,24 @@
     
     <title>BURΔQ | Cyber River Fashion – Premium Phygital & NFT Wearables</title>
     
-    <!-- SEO & Open Graph (unchanged) -->
+    <!-- SEO & Open Graph (FULLY PRESERVED) -->
     <meta name="description" content="BURΔQ - Cyberpunk fashion meets blockchain technology. Navigate digital rivers in our premium speedboat experience with exclusive NFT fashion drops.">
     <meta name="keywords" content="cyberpunk fashion, NFT wearables, blockchain fashion, phygital clothing, digital river, speedboat experience, crypto fashion, digital collectibles, BURAQ fashion">
+    <meta name="author" content="BURΔQ Fashion">
     <meta property="og:title" content="BURΔQ | Cyber River Fashion - Premium Phygital Fashion & NFT Wearables">
     <meta property="og:description" content="Navigate the digital currents of cyberpunk fashion with BURΔQ. Exclusive NFT fashion drops and premium phygital experiences.">
     <meta property="og:image" content="rotatingphoto.png">
     <meta property="og:url" content="https://www.shopburaq.com">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="BURΔQ Fashion">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="BURΔQ | Cyber River Fashion">
     <meta name="twitter:description" content="Premium cyberpunk fashion meets blockchain technology. Exclusive NFT drops.">
     <meta name="twitter:image" content="rotatingphoto.png">
+    <meta name="twitter:site" content="@buraqfashion">
     <link rel="canonical" href="https://www.shopburaq.com">
     
-    <!-- Structured data -->
+    <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -45,10 +48,13 @@
     }
     </script>
     
-    <!-- Favicons -->
+    <!-- FAVICONS – FULL SET PRESERVED -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
     <link rel="manifest" href="site.webmanifest">
     
     <!-- Fonts & Icons -->
@@ -76,7 +82,7 @@
             position: relative;
         }
         
-        /* ----- VIDEO BACKGROUND – MP4 FOR iOS ----- */
+        /* ----- VIDEO BACKGROUND (iOS READY) ----- */
         #video-background {
             position: fixed;
             top: 0;
@@ -91,7 +97,6 @@
             -webkit-transform: translate3d(0,0,0);
             transform: translate3d(0,0,0);
         }
-        
         .video-overlay {
             position: fixed;
             top: 0;
@@ -101,7 +106,6 @@
             background: linear-gradient(45deg, rgba(0,0,0,0.9) 0%, rgba(157,0,255,0.1) 50%, rgba(0,0,0,0.9) 100%);
             z-index: 2;
         }
-        
         #three-container {
             position: fixed;
             top: 0;
@@ -160,7 +164,7 @@
             100% { width: 100%; }
         }
         
-        /* ----- NAVIGATION – TOUCH OPTIMISED ----- */
+        /* ----- NAVIGATION (DESKTOP) ----- */
         .nav {
             position: fixed;
             top: 0;
@@ -174,13 +178,11 @@
             backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(0,240,255,0.3);
         }
-        
         .logo-container {
             display: flex;
             align-items: center;
             gap: 0.8rem;
         }
-        
         .rotating-logo {
             width: 60px;
             height: 60px;
@@ -193,7 +195,6 @@
             from { transform: rotate(0deg); } 
             to { transform: rotate(360deg); } 
         }
-        
         .nav-logo {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.8rem;
@@ -204,13 +205,11 @@
             color: transparent;
             text-decoration: none;
         }
-        
         .nav-links {
             display: flex;
             gap: 1.5rem;
             align-items: center;
         }
-        
         .nav-link {
             color: white;
             text-decoration: none;
@@ -223,12 +222,11 @@
         }
         .nav-link:hover { color: #00f0ff; }
         
-        /* ----- SHOP DROPDOWN – CRYSTAL CLEAR ON ALL DEVICES ----- */
+        /* ----- SHOP DROPDOWN (DESKTOP & MOBILE) ----- */
         .shop-dropdown {
             position: relative;
             display: inline-block;
         }
-        
         .shop-dropdown-btn {
             background: transparent;
             border: none;
@@ -252,7 +250,6 @@
             border-color: #00f0ff;
             box-shadow: 0 0 20px rgba(0,240,255,0.3);
         }
-        
         .shop-dropdown-content {
             display: none;
             position: absolute;
@@ -272,7 +269,6 @@
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
         .dropdown-link {
             color: white;
             padding: 1.2rem 1.8rem;
@@ -294,14 +290,46 @@
         }
         .dropdown-link i { width: 24px; text-align: center; color: #00f0ff; }
         
-        /* Desktop hover */
+        /* Desktop hover behaviour */
         @media (hover: hover) and (pointer: fine) {
             .shop-dropdown:hover .shop-dropdown-content {
                 display: block;
             }
         }
         
-        /* ----- HERO ----- */
+        /* ----- DESKTOP STATS (BOTTOM RIGHT) ----- */
+        .stats-overlay {
+            position: fixed;
+            bottom: 5%;
+            right: 5%;
+            display: flex;
+            gap: 1.5rem;
+            z-index: 50;
+        }
+        .stat-item {
+            text-align: center;
+            background: rgba(0,0,0,0.5);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0,240,255,0.2);
+            backdrop-filter: blur(10px);
+            min-width: 120px;
+        }
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            background: linear-gradient(45deg, #00f0ff, #9d00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 0.5rem;
+        }
+        
+        /* ----- HERO SECTION ----- */
         .hero {
             position: absolute;
             top: 50%;
@@ -394,38 +422,6 @@
             100% { box-shadow: 0 0 0 0 rgba(0,240,255,0); }
         }
         
-        /* ----- STATS ----- */
-        .stats-overlay {
-            position: fixed;
-            bottom: 5%;
-            right: 5%;
-            display: flex;
-            gap: 1.5rem;
-            z-index: 50;
-        }
-        .stat-item {
-            text-align: center;
-            background: rgba(0,0,0,0.5);
-            padding: 1rem 1.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(0,240,255,0.2);
-            backdrop-filter: blur(10px);
-            min-width: 120px;
-        }
-        .stat-number {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
-            background: linear-gradient(45deg, #00f0ff, #9d00ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .stat-label {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.7);
-            margin-top: 0.5rem;
-        }
-        
         /* ----- AUDIO PLAYER ----- */
         .audio-player {
             position: fixed;
@@ -499,44 +495,163 @@
             color: transparent;
         }
         
-        /* ----- MOBILE OPTIMISATION ----- */
+        /* ============================================ */
+        /* ========== MOBILE OPTIMISATION ============ */
+        /* ============================================ */
         @media (max-width: 768px) {
+            /* Hide desktop stats overlay */
+            .stats-overlay {
+                display: none;
+            }
+            
+            /* Redesign navigation for mobile */
             .nav {
-                padding: 0.8rem 4%;
+                padding: 0.7rem 4%;
+                flex-wrap: wrap;
+            }
+            
+            .logo-container {
+                gap: 0.5rem;
             }
             .rotating-logo {
-                width: 45px;
-                height: 45px;
+                width: 40px;
+                height: 40px;
             }
             .nav-logo {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
             }
+            
+            /* Hide desktop nav links (COLLECTION, ABOUT, CONTACT) */
             .nav-links .nav-link:not(.shop-dropdown-btn) {
                 display: none;
             }
+            
+            /* ----- MOBILE STATS IN TOP BAR (NEXT TO DROPDOWN) ----- */
+            .mobile-stats {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                margin-right: 0.5rem;
+            }
+            .mobile-stat {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background: rgba(0,0,0,0.5);
+                padding: 0.3rem 0.5rem;
+                border-radius: 8px;
+                border: 1px solid rgba(0,240,255,0.2);
+                min-width: 55px;
+            }
+            .mobile-stat-number {
+                font-family: 'Orbitron', sans-serif;
+                font-size: 0.9rem;
+                font-weight: 700;
+                background: linear-gradient(45deg, #00f0ff, #9d00ff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                line-height: 1.2;
+            }
+            .mobile-stat-label {
+                font-size: 0.55rem;
+                color: rgba(255,255,255,0.7);
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+            
+            /* Shop dropdown adjustments */
             .shop-dropdown-btn {
-                padding: 0.6rem 1.2rem;
-                font-size: 1rem;
-                min-height: 48px;
-                border-width: 1.5px;
-                background: rgba(0,0,0,0.7);
+                padding: 0.5rem 0.8rem;
+                font-size: 0.9rem;
+                min-height: 44px;
             }
-            .shop-dropdown-content {
+            .shop-dropdown-btn span {
+                display: none; /* Hide "SHOP" text on very small screens, show icon only */
+            }
+            .shop-dropdown-btn i:first-child {
+                margin-right: 0;
+            }
+            
+            /* ----- HAMBURGER MENU FOR COLLECTION/ABOUT/CONTACT ----- */
+            .hamburger-menu {
+                display: block;
+                margin-left: 0.5rem;
+            }
+            .hamburger-icon {
+                width: 44px;
+                height: 44px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 6px;
+                background: rgba(0,0,0,0.5);
+                border: 1px solid rgba(0,240,255,0.3);
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+            .hamburger-icon:hover {
+                border-color: #00f0ff;
+                background: rgba(0,240,255,0.1);
+            }
+            .hamburger-icon span {
+                width: 24px;
+                height: 2px;
+                background: linear-gradient(90deg, #00f0ff, #9d00ff);
+                border-radius: 2px;
+                transition: 0.3s;
+            }
+            
+            /* Mobile slide-out menu */
+            .mobile-menu {
                 position: fixed;
-                top: auto;
-                left: 5%;
-                right: 5%;
-                width: 90%;
-                min-width: auto;
-                max-width: 400px;
-                margin-top: 10px;
-                border-radius: 20px;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                max-width: 320px;
+                height: calc(100% - 70px);
+                background: rgba(0,0,0,0.95);
+                backdrop-filter: blur(20px);
+                border-right: 2px solid rgba(0,240,255,0.3);
+                border-top: 1px solid rgba(0,240,255,0.2);
                 z-index: 10000;
+                transition: left 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+                padding: 2rem 1.5rem;
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.8);
             }
-            .dropdown-link {
-                padding: 1.2rem 1.8rem;
-                font-size: 1.1rem;
+            .mobile-menu.active {
+                left: 0;
             }
+            .mobile-menu-link {
+                color: white;
+                text-decoration: none;
+                font-family: 'Orbitron', sans-serif;
+                font-size: 1.3rem;
+                font-weight: 500;
+                padding: 0.8rem 1rem;
+                border-bottom: 1px solid rgba(0,240,255,0.2);
+                transition: all 0.3s;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+            .mobile-menu-link i {
+                width: 30px;
+                color: #00f0ff;
+                font-size: 1.3rem;
+            }
+            .mobile-menu-link:hover {
+                background: linear-gradient(90deg, rgba(0,240,255,0.1), rgba(157,0,255,0.1));
+                padding-left: 1.8rem;
+                color: #00f0ff;
+            }
+            
+            /* Hero adjustments */
             .hero {
                 left: 5%;
                 right: 5%;
@@ -552,24 +667,15 @@
                 margin-bottom: 2rem;
             }
             .button-grid {
-                max-width: 300px;
-                margin-left: auto;
-                margin-right: auto;
+                max-width: 280px;
+                margin: 0 auto;
             }
             .btn {
                 min-height: 52px;
                 font-size: 1rem;
             }
-            .stats-overlay {
-                bottom: 140px;
-                left: 5%;
-                right: 5%;
-                justify-content: space-around;
-            }
-            .stat-item {
-                padding: 0.7rem 0.8rem;
-                min-width: 90px;
-            }
+            
+            /* Audio player full width on mobile */
             .audio-player {
                 bottom: 10px;
                 left: 10px;
@@ -581,13 +687,16 @@
             .song-title { display: none; }
         }
         
+        /* Even smaller screens */
         @media (max-width: 480px) {
             .hero-title { font-size: 2rem; }
             .hero-subtitle { font-size: 0.95rem; }
-            .stats-overlay { bottom: 130px; }
-            .stat-item { min-width: 80px; }
+            .mobile-stat { min-width: 50px; }
+            .mobile-stat-number { font-size: 0.8rem; }
+            .mobile-stat-label { font-size: 0.5rem; }
         }
         
+        /* iOS video fix */
         @supports (-webkit-touch-callout: none) {
             #video-background {
                 -webkit-transform: translate3d(0,0,0);
@@ -600,7 +709,7 @@
     </style>
 </head>
 <body>
-    <!-- VIDEO BACKGROUND – MP4 FIRST FOR iOS -->
+    <!-- VIDEO BACKGROUND -->
     <video id="video-background" autoplay muted loop playsinline poster="rotatingphoto.png">
         <source src="rotating.mp4" type="video/mp4">
         <source src="rotating.webm" type="video/webm">
@@ -620,21 +729,35 @@
         </div>
     </div>
     
-    <!-- NAVIGATION – TOUCH DROPDOWN -->
+    <!-- ===== NAVIGATION – MOBILE OPTIMISED WITH STATS IN TOP BAR ===== -->
     <nav class="nav">
         <div class="logo-container">
             <img src="rotatingphoto.png" alt="BURΔQ Logo" class="rotating-logo" loading="lazy">
             <a href="https://www.shopburaq.com" class="nav-logo">BURΔQ</a>
         </div>
-        <div class="nav-links">
-            <a href="https://www.shopburaq.com/collection" class="nav-link">COLLECTION</a>
-            <a href="https://www.shopburaq.com/about" class="nav-link">ABOUT</a>
-            <a href="https://form.jotform.com/223047833165455" class="nav-link">CONTACT</a>
+        
+        <!-- Right side: Stats + Dropdown + Hamburger -->
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <!-- MOBILE STATS (visible only on mobile) -->
+            <div class="mobile-stats">
+                <div class="mobile-stat">
+                    <span class="mobile-stat-number" id="mobileNftCount">1.2K</span>
+                    <span class="mobile-stat-label">NFTs</span>
+                </div>
+                <div class="mobile-stat">
+                    <span class="mobile-stat-number" id="mobileGlobalSales">5.8K</span>
+                    <span class="mobile-stat-label">SALES</span>
+                </div>
+                <div class="mobile-stat">
+                    <span class="mobile-stat-number" id="mobileCommunity">25K</span>
+                    <span class="mobile-stat-label">COMM</span>
+                </div>
+            </div>
             
-            <!-- SHOP DROPDOWN – RESTORED & MOBILE READY -->
+            <!-- SHOP DROPDOWN -->
             <div class="shop-dropdown" id="shopDropdown">
                 <button class="nav-link shop-dropdown-btn" id="shopDropdownBtn">
-                    <i class="fas fa-store"></i> SHOP <i class="fas fa-chevron-down"></i>
+                    <i class="fas fa-store"></i> <span>SHOP</span> <i class="fas fa-chevron-down"></i>
                 </button>
                 <div class="shop-dropdown-content" id="shopDropdownContent">
                     <a href="https://www.shopburaq.com/shop" class="dropdown-link">
@@ -660,10 +783,32 @@
                     </a>
                 </div>
             </div>
+            
+            <!-- HAMBURGER MENU (mobile only) -->
+            <div class="hamburger-menu">
+                <div class="hamburger-icon" id="hamburgerIcon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
         </div>
     </nav>
     
-    <!-- HERO SECTION -->
+    <!-- MOBILE SLIDE-OUT MENU (COLLECTION, ABOUT, CONTACT) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="https://www.shopburaq.com/collection" class="mobile-menu-link">
+            <i class="fas fa-layer-group"></i> COLLECTION
+        </a>
+        <a href="https://www.shopburaq.com/about" class="mobile-menu-link">
+            <i class="fas fa-info-circle"></i> ABOUT
+        </a>
+        <a href="https://form.jotform.com/223047833165455" class="mobile-menu-link">
+            <i class="fas fa-envelope"></i> CONTACT
+        </a>
+    </div>
+    
+    <!-- HERO SECTION (unchanged) -->
     <section class="hero">
         <div class="hero-badge">PHYGITAL FASHION DROP #001</div>
         <h1 class="hero-title">RIDE THE<br>DIGITAL RIVER</h1>
@@ -682,7 +827,7 @@
         </div>
     </section>
     
-    <!-- STATS -->
+    <!-- DESKTOP STATS OVERLAY (hidden on mobile) -->
     <div class="stats-overlay">
         <div class="stat-item">
             <div class="stat-number" id="nftCount">1.2K</div>
@@ -717,13 +862,12 @@
         video.addEventListener('loadeddata', () => {
             video.play().catch(e => console.log('Video autoplay prevented, will start after user interaction'));
         });
-        // iOS often needs user gesture; try again on first touch
         document.addEventListener('touchstart', () => {
             if (video.paused) video.play();
         }, { once: true });
 
         // ============================================
-        // 2. MOBILE DROPDOWN – CRYSTAL CLEAR TOGGLE
+        // 2. MOBILE DROPDOWN TOGGLE
         // ============================================
         const dropdownBtn = document.getElementById('shopDropdownBtn');
         const dropdownContent = document.getElementById('shopDropdownContent');
@@ -733,7 +877,6 @@
             e.preventDefault();
             e.stopPropagation();
             const isVisible = dropdownContent.style.display === 'block';
-            // Close all other dropdowns
             document.querySelectorAll('.shop-dropdown-content').forEach(el => el.style.display = 'none');
             dropdownContent.style.display = isVisible ? 'none' : 'block';
             dropdownBtn.classList.toggle('active', !isVisible);
@@ -743,7 +886,6 @@
             dropdownBtn.addEventListener('click', toggleDropdown);
         }
 
-        // Close dropdown when clicking outside
         document.addEventListener('click', (e) => {
             if (!e.target.closest('.shop-dropdown')) {
                 dropdownContent.style.display = 'none';
@@ -751,7 +893,6 @@
             }
         });
 
-        // Re-check on resize
         window.addEventListener('resize', () => {
             if (window.innerWidth > 768) {
                 dropdownContent.style.display = '';
@@ -760,7 +901,27 @@
         });
 
         // ============================================
-        // 3. AUDIO PLAYER – ROBUST
+        // 3. HAMBURGER MENU TOGGLE
+        // ============================================
+        const hamburgerIcon = document.getElementById('hamburgerIcon');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        if (hamburgerIcon) {
+            hamburgerIcon.addEventListener('click', (e) => {
+                e.stopPropagation();
+                mobileMenu.classList.toggle('active');
+            });
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.hamburger-menu') && !e.target.closest('.mobile-menu')) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // ============================================
+        // 4. AUDIO PLAYER
         // ============================================
         const audio = new Audio('soundburak.mp3');
         audio.loop = true;
@@ -822,7 +983,7 @@
         });
 
         // ============================================
-        // 4. THREE.JS – FLOATING PARTICLES ONLY (NO DONUT)
+        // 5. THREE.JS – FLOATING PARTICLES ONLY (NO DONUT)
         // ============================================
         function initThreeJS() {
             try {
@@ -830,10 +991,9 @@
                 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
                 const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
                 renderer.setSize(window.innerWidth, window.innerHeight);
-                renderer.setClearColor(0x000000, 0); // transparent background
+                renderer.setClearColor(0x000000, 0);
                 document.getElementById('three-container').appendChild(renderer.domElement);
 
-                // ---- FLOATING PARTICLES (subtle) ----
                 const particlesGeometry = new THREE.BufferGeometry();
                 const particlesCount = 2000;
                 const posArray = new Float32Array(particlesCount * 3);
@@ -871,7 +1031,7 @@
         }
 
         // ============================================
-        // 5. STATS COUNTER
+        // 6. STATS COUNTER – UPDATES BOTH DESKTOP & MOBILE
         // ============================================
         function updateStatsAnimation() {
             const stats = { nftCount: 1250, globalSales: 5875, community: 25430 };
@@ -883,14 +1043,26 @@
                 currentStats.nftCount = Math.floor(easeOutQuad(step, 0, stats.nftCount, steps));
                 currentStats.globalSales = Math.floor(easeOutQuad(step, 0, stats.globalSales, steps));
                 currentStats.community = Math.floor(easeOutQuad(step, 0, stats.community, steps));
+                
+                // Desktop stats
                 document.getElementById('nftCount').textContent = formatNumber(currentStats.nftCount);
                 document.getElementById('globalSales').textContent = formatNumber(currentStats.globalSales);
                 document.getElementById('community').textContent = formatNumber(currentStats.community);
+                
+                // Mobile stats
+                document.getElementById('mobileNftCount').textContent = formatNumber(currentStats.nftCount);
+                document.getElementById('mobileGlobalSales').textContent = formatNumber(currentStats.globalSales);
+                document.getElementById('mobileCommunity').textContent = formatNumber(currentStats.community);
+                
                 if (step >= steps) {
                     clearInterval(interval);
+                    // Final formatted values
                     document.getElementById('nftCount').textContent = '1.2K';
                     document.getElementById('globalSales').textContent = '5.8K';
                     document.getElementById('community').textContent = '25K';
+                    document.getElementById('mobileNftCount').textContent = '1.2K';
+                    document.getElementById('mobileGlobalSales').textContent = '5.8K';
+                    document.getElementById('mobileCommunity').textContent = '25K';
                 }
             }, stepDuration);
             function easeOutQuad(t, b, c, d) { t /= d; return -c * t * (t - 2) + b; }
@@ -901,7 +1073,7 @@
         }
 
         // ============================================
-        // 6. PRELOADER & INIT
+        // 7. PRELOADER & INIT
         // ============================================
         window.addEventListener('load', () => {
             setTimeout(() => {
