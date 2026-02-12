@@ -6,8 +6,8 @@
     
     <!-- ====== ENHANCED SEO META TAGS ====== -->
     <title>BURΔQ SHOP | Cyberpunk Fashion & Customizable NFT Wearables</title>
-    <meta name="description" content="Customizable cyberpunk fashion at BURΔQ. Upload your art, work with artists, or choose our designs. Motorbike hoodies, vests, t-shirts - all customizable with blockchain integration.">
-    <meta name="keywords" content="cyberpunk fashion, customizable clothing, NFT wearables, upload design, artist collaboration, motorbike hoodie, tactical vest, jeans vest, hoodie, blockchain fashion">
+    <meta name="description" content="Customizable cyberpunk fashion at BURΔQ. Upload your art, work with artists, or choose our designs. Motorbike hoodies, vests, t-shirts, longsleeves - all customizable with blockchain integration.">
+    <meta name="keywords" content="cyberpunk fashion, customizable clothing, NFT wearables, upload design, artist collaboration, motorbike hoodie, tactical vest, jeans vest, hoodie, longsleeve, blockchain fashion">
     <meta name="author" content="BURΔQ Fashion">
     <meta property="og:title" content="BURΔQ SHOP | Custom Cyberpunk Fashion">
     <meta property="og:description" content="Design your own cyberpunk fashion. Upload images, collaborate with artists, or choose from our exclusive designs.">
@@ -19,7 +19,7 @@
     <meta name="twitter:description" content="Design your own cyberpunk fashion with NFT integration.">
     <link rel="canonical" href="https://shopburaq.com/shop">
     
-    <!-- ====== STRUCTURED DATA FOR SEO ====== -->
+    <!-- ====== STRUCTURED DATA FOR SEO (UPDATED WITH NEW PRODUCT) ====== -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -29,7 +29,7 @@
         "url": "https://shopburaq.com/shop",
         "mainEntity": {
             "@type": "ItemList",
-            "numberOfItems": "6",
+            "numberOfItems": "7",
             "itemListElement": [
                 {
                     "@type": "Product",
@@ -80,6 +80,15 @@
                     "@type": "Product",
                     "name": "Cyber Hoodie with LED",
                     "description": "Customizable cyber hoodie with LED lights and NFT integration",
+                    "offers": {
+                        "@type": "Offer",
+                        "availability": "https://schema.org/OutOfStock"
+                    }
+                },
+                {
+                    "@type": "Product",
+                    "name": "Longsleeve Shirt",
+                    "description": "Customizable longsleeve shirt with NFT integration",
                     "offers": {
                         "@type": "Offer",
                         "availability": "https://schema.org/OutOfStock"
@@ -302,6 +311,30 @@
             background: linear-gradient(45deg, #00f0ff, #9d00ff);
             color: black;
             border-color: transparent;
+        }
+        
+        /* ----- SIZE GUIDE BUTTON (NEW) ----- */
+        .size-guide-btn {
+            padding: 0.6rem 1.5rem;
+            background: rgba(157, 0, 255, 0.2);
+            border: 1px solid #9d00ff;
+            border-radius: 30px;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .size-guide-btn:hover {
+            background: rgba(157, 0, 255, 0.4);
+            border-color: #00f0ff;
+            box-shadow: 0 0 15px rgba(157, 0, 255, 0.5);
+            transform: translateY(-2px);
         }
         
         .search-box {
@@ -544,6 +577,117 @@
             transform: translateY(-3px);
         }
         
+        /* ===== SIZE GUIDE MODAL (NEW) ===== */
+        .size-guide-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(15px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .size-guide-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background: rgba(10,10,20,0.95);
+            border: 2px solid #00f0ff;
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 900px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 0 40px rgba(0,240,255,0.3);
+            animation: modalSlideIn 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+        }
+        
+        @keyframes modalSlideIn {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            color: #00f0ff;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            line-height: 1;
+        }
+        
+        .modal-close:hover {
+            transform: rotate(90deg);
+            color: #9d00ff;
+        }
+        
+        .modal-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            background: linear-gradient(45deg, #00f0ff, #9d00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .size-guide-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .size-image-container {
+            background: rgba(0,0,0,0.5);
+            border-radius: 15px;
+            padding: 1rem;
+            border: 1px solid rgba(0,240,255,0.3);
+            transition: all 0.3s;
+        }
+        
+        .size-image-container:hover {
+            border-color: #00f0ff;
+            box-shadow: 0 0 20px rgba(0,240,255,0.3);
+        }
+        
+        .size-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+        }
+        
+        .size-label {
+            font-family: 'Orbitron', sans-serif;
+            color: #00f0ff;
+            margin-top: 0.8rem;
+            font-size: 1.2rem;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+        
+        @media (min-width: 768px) {
+            .size-guide-gallery {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+        }
+        
         /* FOOTER */
         .footer {
             padding: 4rem 5% 2rem;
@@ -654,8 +798,27 @@
                 align-items: flex-start;
             }
             
+            .filter-buttons {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .size-guide-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
             .search-box {
                 width: 100%;
+            }
+            
+            .modal-content {
+                padding: 1.5rem;
+                width: 95%;
+            }
+            
+            .modal-title {
+                font-size: 1.6rem;
             }
         }
         
@@ -698,7 +861,6 @@
             <a href="https://www.shopburaq.com/about" class="nav-link">ABOUT</a>
             <a href="https://www.shopburaq.com/contact" class="nav-link">CONTACT</a>
         </div>
-       
     </nav>
     
     <!-- SHOP HERO -->
@@ -711,7 +873,7 @@
         </p>
     </section>
     
-    <!-- FILTER BAR -->
+    <!-- FILTER BAR WITH SIZE GUIDE BUTTON -->
     <div class="filter-bar">
         <div class="filter-container">
             <div class="filter-buttons">
@@ -719,10 +881,17 @@
                 <button class="filter-btn" data-filter="hoodie">HOODIES</button>
                 <button class="filter-btn" data-filter="vest">VESTS</button>
                 <button class="filter-btn" data-filter="tshirt">T-SHIRTS</button>
+                <button class="filter-btn" data-filter="longsleeve">LONGSLEEVES</button>
             </div>
-            <div class="search-box">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" class="search-input" placeholder="Search cyber fashion..." id="searchInput">
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <!-- NEW SIZE GUIDE BUTTON -->
+                <button class="size-guide-btn" id="sizeGuideBtn">
+                    <i class="fas fa-ruler"></i> SIZE GUIDE
+                </button>
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Search cyber fashion..." id="searchInput">
+                </div>
             </div>
         </div>
     </div>
@@ -740,7 +909,6 @@
                 <h3 class="product-title">MOTORBIKE HOODIE</h3>
                 <p class="product-description">Premium cyberpunk hoodie with reinforced stitching and NFC chip for digital identity verification.</p>
                 
-                <!-- CUSTOMIZATION TABS -->
                 <div class="customization-tabs">
                     <div class="tab-buttons">
                         <button class="tab-btn active" data-tab="pre-designed-1">PRE-DESIGNED</button>
@@ -748,7 +916,6 @@
                         <button class="tab-btn" data-tab="artist-collab-1">ARTIST COLLAB VIP</button>
                     </div>
                     
-                    <!-- PRE-DESIGNED TAB -->
                     <div class="tab-content active" id="pre-designed-1">
                         <div class="custom-option sold-out-option">
                             <h4 class="option-title">BURΔQ MOTORCYCLE DESIGN</h4>
@@ -756,7 +923,6 @@
                         </div>
                     </div>
                     
-                    <!-- CUSTOM UPLOAD TAB -->
                     <div class="tab-content" id="custom-upload-1">
                         <div class="custom-option">
                             <h4 class="option-title">UPLOAD YOUR DESIGN</h4>
@@ -768,7 +934,6 @@
                                         title="BURΔQ Custom Upload Form">
                                 </iframe>
                                 
-                                <!-- FALLBACK IF IFRAME FAILS -->
                                 <div class="jotform-alternative" id="custom-jotform-alternative-1" style="display: none;">
                                     <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
                                     <a href="https://www.jotform.com/build/260288020981457" target="_blank" class="form-link-btn">
@@ -779,7 +944,6 @@
                         </div>
                     </div>
                     
-                    <!-- ARTIST COLLABORATION TAB -->
                     <div class="tab-content" id="artist-collab-1">
                         <div class="custom-option">
                             <h4 class="option-title">COLLABORATE WITH ARTISTS</h4>
@@ -791,7 +955,6 @@
                                         title="BURΔQ Artist Collaboration Form">
                                 </iframe>
                                 
-                                <!-- FALLBACK IF IFRAME FAILS -->
                                 <div class="jotform-alternative" id="artist-jotform-alternative-1" style="display: none;">
                                     <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
                                     <a href="https://form.jotform.com/260267741162051" target="_blank" class="form-link-btn">
@@ -816,7 +979,6 @@
                 <h3 class="product-title">BLACK TACTICAL VEST</h3>
                 <p class="product-description">Military-grade tactical vest with hidden pockets, water-resistant fabric, and AR-enabled features.</p>
                 
-                <!-- CUSTOMIZATION TABS -->
                 <div class="customization-tabs">
                     <div class="tab-buttons">
                         <button class="tab-btn active" data-tab="pre-designed-2">PRE-DESIGNED</button>
@@ -824,7 +986,6 @@
                         <button class="tab-btn" data-tab="artist-collab-2">ARTIST COLLAB VIP</button>
                     </div>
                     
-                    <!-- PRE-DESIGNED TAB -->
                     <div class="tab-content active" id="pre-designed-2">
                         <div class="custom-option sold-out-option">
                             <h4 class="option-title">BURΔQ TACTICAL DESIGN</h4>
@@ -832,7 +993,6 @@
                         </div>
                     </div>
                     
-                    <!-- CUSTOM UPLOAD TAB -->
                     <div class="tab-content" id="custom-upload-2">
                         <div class="custom-option">
                             <h4 class="option-title">UPLOAD TACTICAL DESIGN</h4>
@@ -844,7 +1004,6 @@
                                         title="BURΔQ Custom Upload Form">
                                 </iframe>
                                 
-                                <!-- FALLBACK IF IFRAME FAILS -->
                                 <div class="jotform-alternative" id="custom-jotform-alternative-2" style="display: none;">
                                     <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
                                     <a href="https://www.jotform.com/build/260288020981457" target="_blank" class="form-link-btn">
@@ -855,7 +1014,6 @@
                         </div>
                     </div>
                     
-                    <!-- ARTIST COLLABORATION TAB -->
                     <div class="tab-content" id="artist-collab-2">
                         <div class="custom-option">
                             <h4 class="option-title">CUSTOM TACTICAL DESIGN</h4>
@@ -867,7 +1025,6 @@
                                         title="BURΔQ Artist Collaboration Form">
                                 </iframe>
                                 
-                                <!-- FALLBACK IF IFRAME FAILS -->
                                 <div class="jotform-alternative" id="artist-jotform-alternative-2" style="display: none;">
                                     <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
                                     <a href="https://form.jotform.com/260267741162051" target="_blank" class="form-link-btn">
@@ -892,7 +1049,6 @@
                 <h3 class="product-title">JEANS MOTORBIKE VEST</h3>
                 <p class="product-description">Classic denim vest reimagined with cyberpunk enhancements and blockchain-integrated patches.</p>
                 
-                <!-- CUSTOMIZATION TABS -->
                 <div class="customization-tabs">
                     <div class="tab-buttons">
                         <button class="tab-btn active" data-tab="pre-designed-3">PRE-DESIGNED</button>
@@ -900,7 +1056,6 @@
                         <button class="tab-btn" data-tab="artist-collab-3">ARTIST COLLAB VIP</button>
                     </div>
                     
-                    <!-- PRE-DESIGNED TAB -->
                     <div class="tab-content active" id="pre-designed-3">
                         <div class="custom-option sold-out-option">
                             <h4 class="option-title">BURΔQ DENIM ART</h4>
@@ -908,7 +1063,6 @@
                         </div>
                     </div>
                     
-                    <!-- CUSTOM UPLOAD TAB -->
                     <div class="tab-content" id="custom-upload-3">
                         <div class="custom-option">
                             <h4 class="option-title">UPLOAD PATCH DESIGNS</h4>
@@ -920,7 +1074,6 @@
                                         title="BURΔQ Custom Upload Form">
                                 </iframe>
                                 
-                                <!-- FALLBACK IF IFRAME FAILS -->
                                 <div class="jotform-alternative" id="custom-jotform-alternative-3" style="display: none;">
                                     <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
                                     <a href="https://www.jotform.com/build/260288020981457" target="_blank" class="form-link-btn">
@@ -931,7 +1084,6 @@
                         </div>
                     </div>
                     
-                    <!-- ARTIST COLLABORATION TAB -->
                     <div class="tab-content" id="artist-collab-3">
                         <div class="custom-option">
                             <h4 class="option-title">CUSTOM DENIM ART</h4>
@@ -943,7 +1095,6 @@
                                         title="BURΔQ Artist Collaboration Form">
                                 </iframe>
                                 
-                                <!-- FALLBACK IF IFRAME FAILS -->
                                 <div class="jotform-alternative" id="artist-jotform-alternative-3" style="display: none;">
                                     <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
                                     <a href="https://form.jotform.com/260267741162051" target="_blank" class="form-link-btn">
@@ -968,7 +1119,6 @@
                 <h3 class="product-title">BLACK T-SHIRT</h3>
                 <p class="product-description">Premium cotton t-shirt with cyberpunk artwork options. Perfect canvas for your digital identity.</p>
                 
-                <!-- CUSTOMIZATION TABS -->
                 <div class="customization-tabs">
                     <div class="tab-buttons">
                         <button class="tab-btn active" data-tab="pre-designed-4">PRE-DESIGNED</button>
@@ -976,7 +1126,6 @@
                         <button class="tab-btn" data-tab="artist-collab-4">ARTIST COLLAB VIP</button>
                     </div>
                     
-                    <!-- PRE-DESIGNED TAB -->
                     <div class="tab-content active" id="pre-designed-4">
                         <div class="custom-option sold-out-option">
                             <h4 class="option-title">BURΔQ CIRCUIT DESIGN</h4>
@@ -984,7 +1133,6 @@
                         </div>
                     </div>
                     
-                    <!-- CUSTOM UPLOAD TAB -->
                     <div class="tab-content" id="custom-upload-4">
                         <div class="custom-option">
                             <h4 class="option-title">UPLOAD T-SHIRT ART</h4>
@@ -996,7 +1144,6 @@
                                         title="BURΔQ Custom Upload Form">
                                 </iframe>
                                 
-                                <!-- FALLBACK IF IFRAME FAILS -->
                                 <div class="jotform-alternative" id="custom-jotform-alternative-4" style="display: none;">
                                     <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
                                     <a href="https://www.jotform.com/build/260288020981457" target="_blank" class="form-link-btn">
@@ -1007,7 +1154,6 @@
                         </div>
                     </div>
                     
-                    <!-- ARTIST COLLABORATION TAB -->
                     <div class="tab-content" id="artist-collab-4">
                         <div class="custom-option">
                             <h4 class="option-title">CUSTOM T-SHIRT ART</h4>
@@ -1019,7 +1165,6 @@
                                         title="BURΔQ Artist Collaboration Form">
                                 </iframe>
                                 
-                                <!-- FALLBACK IF IFRAME FAILS -->
                                 <div class="jotform-alternative" id="artist-jotform-alternative-4" style="display: none;">
                                     <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
                                     <a href="https://form.jotform.com/260267741162051" target="_blank" class="form-link-btn">
@@ -1044,7 +1189,6 @@
                 <h3 class="product-title">WHITE T-SHIRT</h3>
                 <p class="product-description">Crisp white premium cotton t-shirt. Perfect blank canvas for vibrant cyberpunk artwork.</p>
                 
-                <!-- CUSTOMIZATION TABS -->
                 <div class="customization-tabs">
                     <div class="tab-buttons">
                         <button class="tab-btn active" data-tab="pre-designed-5">PRE-DESIGNED</button>
@@ -1052,7 +1196,6 @@
                         <button class="tab-btn" data-tab="artist-collab-5">ARTIST COLLAB VIP</button>
                     </div>
                     
-                    <!-- PRE-DESIGNED TAB -->
                     <div class="tab-content active" id="pre-designed-5">
                         <div class="custom-option sold-out-option">
                             <h4 class="option-title">BURΔQ NEO-TOKYO</h4>
@@ -1060,7 +1203,6 @@
                         </div>
                     </div>
                     
-                    <!-- CUSTOM UPLOAD TAB -->
                     <div class="tab-content" id="custom-upload-5">
                         <div class="custom-option">
                             <h4 class="option-title">UPLOAD VIBRANT ART</h4>
@@ -1072,7 +1214,6 @@
                                         title="BURΔQ Custom Upload Form">
                                 </iframe>
                                 
-                                <!-- FALLBACK IF IFRAME FAILS -->
                                 <div class="jotform-alternative" id="custom-jotform-alternative-5" style="display: none;">
                                     <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
                                     <a href="https://www.jotform.com/build/260288020981457" target="_blank" class="form-link-btn">
@@ -1083,7 +1224,6 @@
                         </div>
                     </div>
                     
-                    <!-- ARTIST COLLABORATION TAB -->
                     <div class="tab-content" id="artist-collab-5">
                         <div class="custom-option">
                             <h4 class="option-title">CUSTOM WHITE TEE ART</h4>
@@ -1095,7 +1235,6 @@
                                         title="BURΔQ Artist Collaboration Form">
                                 </iframe>
                                 
-                                <!-- FALLBACK IF IFRAME FAILS -->
                                 <div class="jotform-alternative" id="artist-jotform-alternative-5" style="display: none;">
                                     <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
                                     <a href="https://form.jotform.com/260267741162051" target="_blank" class="form-link-btn">
@@ -1120,7 +1259,6 @@
                 <h3 class="product-title">CYBER HOODIE WITH LED</h3>
                 <p class="product-description">Heavyweight cyber hoodie with integrated LED lighting system and augmented reality features.</p>
                 
-                <!-- CUSTOMIZATION TABS -->
                 <div class="customization-tabs">
                     <div class="tab-buttons">
                         <button class="tab-btn active" data-tab="pre-designed-6">PRE-DESIGNED</button>
@@ -1128,7 +1266,6 @@
                         <button class="tab-btn" data-tab="artist-collab-6">ARTIST COLLAB VIP</button>
                     </div>
                     
-                    <!-- PRE-DESIGNED TAB -->
                     <div class="tab-content active" id="pre-designed-6">
                         <div class="custom-option sold-out-option">
                             <h4 class="option-title">BURΔQ AR HOODIE</h4>
@@ -1136,7 +1273,6 @@
                         </div>
                     </div>
                     
-                    <!-- CUSTOM UPLOAD TAB -->
                     <div class="tab-content" id="custom-upload-6">
                         <div class="custom-option">
                             <h4 class="option-title">UPLOAD AR PATTERNS</h4>
@@ -1148,7 +1284,6 @@
                                         title="BURΔQ Custom Upload Form">
                                 </iframe>
                                 
-                                <!-- FALLBACK IF IFRAME FAILS -->
                                 <div class="jotform-alternative" id="custom-jotform-alternative-6" style="display: none;">
                                     <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
                                     <a href="https://www.jotform.com/build/260288020981457" target="_blank" class="form-link-btn">
@@ -1159,7 +1294,6 @@
                         </div>
                     </div>
                     
-                    <!-- ARTIST COLLABORATION TAB -->
                     <div class="tab-content" id="artist-collab-6">
                         <div class="custom-option">
                             <h4 class="option-title">CUSTOM AR HOODIE</h4>
@@ -1171,7 +1305,6 @@
                                         title="BURΔQ Artist Collaboration Form">
                                 </iframe>
                                 
-                                <!-- FALLBACK IF IFRAME FAILS -->
                                 <div class="jotform-alternative" id="artist-jotform-alternative-6" style="display: none;">
                                     <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
                                     <a href="https://form.jotform.com/260267741162051" target="_blank" class="form-link-btn">
@@ -1181,6 +1314,106 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ===== NEW PRODUCT: LONGSLEEVE SHIRT ===== -->
+        <div class="product-card" data-category="longsleeve">
+            <div class="product-image">
+                <img src="longsleeve.jpeg" alt="Longsleeve Shirt" class="product-img">
+                <div class="product-badge">EXTENDED CANVAS</div>
+                <div class="sold-out-badge">ONLY CUSTOM AND ART AVAILABLE</div>
+            </div>
+            <div class="product-content">
+                <h3 class="product-title">LONGSLEEVE SHIRT</h3>
+                <p class="product-description">Premium cotton longsleeve with extended arm canvas for full-sleeve artwork. Perfect for intricate cyberpunk designs and digital identity expression.</p>
+                
+                <div class="customization-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="pre-designed-7">PRE-DESIGNED</button>
+                        <button class="tab-btn" data-tab="custom-upload-7">CUSTOM UPLOAD</button>
+                        <button class="tab-btn" data-tab="artist-collab-7">ARTIST COLLAB VIP</button>
+                    </div>
+                    
+                    <div class="tab-content active" id="pre-designed-7">
+                        <div class="custom-option sold-out-option">
+                            <h4 class="option-title">BURΔQ FULL SLEEVE DESIGN</h4>
+                            <p class="option-description">End-to-end cyberpunk sleeve artwork with BURΔQ circuit patterns and holographic elements.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="custom-upload-7">
+                        <div class="custom-option">
+                            <h4 class="option-title">UPLOAD SLEEVE ARTWORK</h4>
+                            <p class="option-description">Upload your own full-sleeve design or individual arm art. We'll print with premium, fade-resistant inks.</p>
+                            <div class="artist-form-container">
+                                <iframe src="https://www.jotform.com/build/260288020981457" 
+                                        class="jotform-embed" 
+                                        id="custom-jotform-7"
+                                        title="BURΔQ Custom Upload Form">
+                                </iframe>
+                                
+                                <div class="jotform-alternative" id="custom-jotform-alternative-7" style="display: none;">
+                                    <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
+                                    <a href="https://www.jotform.com/build/260288020981457" target="_blank" class="form-link-btn">
+                                        <i class="fas fa-external-link-alt"></i> OPEN CUSTOM UPLOAD FORM
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" id="artist-collab-7">
+                        <div class="custom-option">
+                            <h4 class="option-title">CUSTOM SLEEVE ART</h4>
+                            <p class="option-description">Collaborate with our artists to create bespoke sleeve designs that flow from shoulder to cuff.</p>
+                            <div class="artist-form-container">
+                                <iframe src="https://form.jotform.com/260267741162051" 
+                                        class="jotform-embed" 
+                                        id="artist-jotform-7"
+                                        title="BURΔQ Artist Collaboration Form">
+                                </iframe>
+                                
+                                <div class="jotform-alternative" id="artist-jotform-alternative-7" style="display: none;">
+                                    <p><i class="fas fa-exclamation-triangle"></i> Form could not be loaded. Please click the button below to open the form in a new window.</p>
+                                    <a href="https://form.jotform.com/260267741162051" target="_blank" class="form-link-btn">
+                                        <i class="fas fa-external-link-alt"></i> OPEN ARTIST FORM
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ===== SIZE GUIDE MODAL ===== -->
+    <div class="size-guide-modal" id="sizeGuideModal">
+        <div class="modal-content">
+            <span class="modal-close" id="closeModalBtn">&times;</span>
+            <h2 class="modal-title">SIZE GUIDE</h2>
+            <div class="size-guide-gallery">
+                <div class="size-image-container">
+                    <img src="M.jpeg" alt="Size M" class="size-image" onerror="this.src='https://via.placeholder.com/300x400?text=Size+M'">
+                    <div class="size-label">SIZE M</div>
+                </div>
+                <div class="size-image-container">
+                    <img src="L.JPEG" alt="Size L" class="size-image" onerror="this.src='https://via.placeholder.com/300x400?text=Size+L'">
+                    <div class="size-label">SIZE L</div>
+                </div>
+                <div class="size-image-container">
+                    <img src="XL.jpeg" alt="Size XL" class="size-image" onerror="this.src='https://via.placeholder.com/300x400?text=Size+XL'">
+                    <div class="size-label">SIZE XL</div>
+                </div>
+                <div class="size-image-container">
+                    <img src="XXL.jpeg" alt="Size XXL" class="size-image" onerror="this.src='https://via.placeholder.com/300x400?text=Size+XXL'">
+                    <div class="size-label">SIZE XXL</div>
+                </div>
+                <div class="size-image-container">
+                    <img src="XXXL.jpeg" alt="Size XXXL" class="size-image" onerror="this.src='https://via.placeholder.com/300x400?text=Size+XXXL'">
+                    <div class="size-label">SIZE XXXL</div>
                 </div>
             </div>
         </div>
@@ -1219,7 +1452,7 @@
                     <li><a href="#">FAQ</a></li>
                     <li><a href="#">Shipping Info</a></li>
                     <li><a href="#">Returns & Exchanges</a></li>
-                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#" id="footerSizeGuideLink">Size Guide</a></li>
                     <li><a href="#">Customization Help</a></li>
                 </ul>
             </div>
@@ -1245,32 +1478,29 @@
             createFloatingShapes();
             setupEventListeners();
             checkJotFormFrames();
+            initSizeGuideModal();
         });
         
         // Create floating background shapes
         function createFloatingShapes() {
             const container = document.getElementById('floatingShapes');
+            if (!container) return;
             
             for (let i = 0; i < 15; i++) {
                 const shape = document.createElement('div');
                 shape.classList.add('shape');
                 
-                // Random size
                 const size = Math.random() * 100 + 20;
                 shape.style.width = `${size}px`;
                 shape.style.height = `${size}px`;
-                
-                // Random position
                 shape.style.left = `${Math.random() * 100}%`;
                 shape.style.top = `${Math.random() * 100}%`;
                 
-                // Random animation
                 const duration = Math.random() * 30 + 20;
                 const delay = Math.random() * 5;
                 shape.style.animationDuration = `${duration}s`;
                 shape.style.animationDelay = `${delay}s`;
                 
-                // Random border color
                 const colors = ['rgba(0, 240, 255, 0.1)', 'rgba(157, 0, 255, 0.1)', 'rgba(0, 255, 157, 0.1)'];
                 shape.style.borderColor = colors[Math.floor(Math.random() * colors.length)];
                 
@@ -1286,11 +1516,9 @@
                     const tabId = this.getAttribute('data-tab');
                     const parent = this.closest('.customization-tabs');
                     
-                    // Remove active class from all tabs in this group
                     parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
                     parent.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
                     
-                    // Add active class to clicked tab
                     this.classList.add('active');
                     document.getElementById(tabId).classList.add('active');
                 });
@@ -1308,33 +1536,18 @@
             });
             
             // Search functionality
-            document.getElementById('searchInput').addEventListener('input', function() {
-                searchProducts(this.value);
-            });
-            
-            // Wallet connect
-            document.getElementById('connectWallet').addEventListener('click', function() {
-                const originalText = this.innerHTML;
-                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> CONNECTING...';
-                this.style.opacity = '0.8';
-                
-                setTimeout(() => {
-                    this.innerHTML = '<i class="fas fa-check"></i> CONNECTED';
-                    this.style.background = 'linear-gradient(45deg, #00ff9d, #00f0ff)';
-                    
-                    setTimeout(() => {
-                        this.innerHTML = originalText;
-                        this.style.opacity = '1';
-                        this.style.background = 'linear-gradient(45deg, #00f0ff, #9d00ff)';
-                    }, 3000);
-                }, 1500);
-            });
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    searchProducts(this.value);
+                });
+            }
         }
         
         // Filter products by category
         function filterProducts(category) {
             const products = document.querySelectorAll('.product-card');
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const searchTerm = document.getElementById('searchInput')?.value.toLowerCase() || '';
             
             products.forEach(product => {
                 const productCategory = product.getAttribute('data-category');
@@ -1343,12 +1556,10 @@
                 
                 let shouldShow = true;
                 
-                // Apply category filter
                 if (category !== 'all' && productCategory !== category) {
                     shouldShow = false;
                 }
                 
-                // Apply search filter if there's a search term
                 if (searchTerm && !title.includes(searchTerm) && !description.includes(searchTerm)) {
                     shouldShow = false;
                 }
@@ -1359,21 +1570,14 @@
         
         // Search products
         function searchProducts(term) {
-            term = term.toLowerCase();
-            const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+            const activeFilter = document.querySelector('.filter-btn.active')?.getAttribute('data-filter') || 'all';
             filterProducts(activeFilter);
         }
         
         // Check if JotForm iframes loaded successfully
         function checkJotFormFrames() {
-            // Check custom upload forms
             document.querySelectorAll('iframe[id^="custom-jotform-"]').forEach((iframe, index) => {
-                iframe.onload = function() {
-                    console.log(`Custom JotForm iframe ${index + 1} loaded successfully`);
-                };
-                
                 iframe.onerror = function() {
-                    console.log(`Custom JotForm iframe ${index + 1} failed to load`);
                     const altId = iframe.id.replace('custom-jotform-', 'custom-jotform-alternative-');
                     const alternative = document.getElementById(altId);
                     if (alternative) {
@@ -1383,14 +1587,8 @@
                 };
             });
             
-            // Check artist collaboration forms
             document.querySelectorAll('iframe[id^="artist-jotform-"]').forEach((iframe, index) => {
-                iframe.onload = function() {
-                    console.log(`Artist JotForm iframe ${index + 1} loaded successfully`);
-                };
-                
                 iframe.onerror = function() {
-                    console.log(`Artist JotForm iframe ${index + 1} failed to load`);
                     const altId = iframe.id.replace('artist-jotform-', 'artist-jotform-alternative-');
                     const alternative = document.getElementById(altId);
                     if (alternative) {
@@ -1398,6 +1596,53 @@
                         iframe.style.display = 'none';
                     }
                 };
+            });
+        }
+        
+        // ===== SIZE GUIDE MODAL FUNCTIONALITY =====
+        function initSizeGuideModal() {
+            const modal = document.getElementById('sizeGuideModal');
+            const sizeGuideBtn = document.getElementById('sizeGuideBtn');
+            const closeBtn = document.getElementById('closeModalBtn');
+            const footerSizeGuideLink = document.getElementById('footerSizeGuideLink');
+            
+            function openModal() {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+            
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+            
+            if (sizeGuideBtn) {
+                sizeGuideBtn.addEventListener('click', openModal);
+            }
+            
+            if (footerSizeGuideLink) {
+                footerSizeGuideLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openModal();
+                });
+            }
+            
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeModal);
+            }
+            
+            // Close modal when clicking outside the content
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
             });
         }
     </script>
