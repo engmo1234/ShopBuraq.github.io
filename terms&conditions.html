@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    
+    <title>BURΔQ | Terms & Conditions – Cyber River Fashion</title>
+    
+    <!-- SEO & Open Graph -->
+    <meta name="description" content="Terms and Conditions for BURΔQ - Cyberpunk fashion. Read about our payment policy, international shipping, and buyer responsibilities.">
+    <meta name="keywords" content="terms and conditions, cyberpunk fashion terms, NFT wearables terms, international shipping policy, BURAQ terms">
+    <meta property="og:title" content="BURΔQ | Terms & Conditions">
+    <meta property="og:description" content="Read the terms for purchasing phygital fashion from BURΔQ.">
+    <meta property="og:image" content="rotatingphoto.png">
+    <meta property="og:url" content="https://www.shopburaq.com/terms">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- FAVICONS -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <style>
+        /* ----- RESET & BASE (same as homepage) ----- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { 
+            width: 100%; 
+            min-height: 100%;
+            overflow-x: hidden; 
+            -webkit-tap-highlight-color: transparent;
+        }
+        body { 
+            font-family: 'Rajdhani', sans-serif;
+            background: #000;
+            color: white;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        /* ----- VIDEO BACKGROUND ----- */
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.6;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0,0,0,0.95) 0%, rgba(157,0,255,0.2) 50%, rgba(0,0,0,0.95) 100%);
+            z-index: 2;
+        }
+        #three-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+        }
+        
+        /* ----- PRELOADER ----- */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s;
+        }
+        .preloader-content { text-align: center; }
+        .preloader-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00f0ff, #9d00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 2rem;
+            animation: logoGlow 2s ease-in-out infinite alternate;
+        }
+        @keyframes logoGlow {
+            from { filter: drop-shadow(0 0 10px rgba(0,240,255,0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(157,0,255,0.7)); }
+        }
+        .loading-bar {
+            width: 300px;
+            height: 3px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .loading-progress {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #00f0ff, #9d00ff);
+            animation: loading 2s ease-in-out forwards;
+        }
+        @keyframes loading {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        
+        /* ----- NAVIGATION (same as homepage) ----- */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0,240,255,0.3);
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .rotating-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: contain;
+            animation: rotateLogo 20s linear infinite;
+            filter: drop-shadow(0 0 15px rgba(0,240,255,0.5));
+        }
+        @keyframes rotateLogo { 
+            from { transform: rotate(0deg); } 
+            to { transform: rotate(360deg); } 
+        }
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00f0ff, #9d00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+            position: relative;
+        }
+        .nav-link:hover { color: #00f0ff; }
+        
+        /* ----- SHOP DROPDOWN (same as homepage) ----- */
+        .shop-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .shop-dropdown-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1rem;
+            border-radius: 50px;
+            transition: all 0.3s;
+            border: 1px solid rgba(0,240,255,0.3);
+            background: rgba(0,0,0,0.4);
+        }
+        .shop-dropdown-btn:hover,
+        .shop-dropdown-btn.active {
+            background: rgba(0,240,255,0.15);
+            border-color: #00f0ff;
+            box-shadow: 0 0 20px rgba(0,240,255,0.3);
+        }
+        .shop-dropdown-content {
+            display: none;
+            position: absolute;
+            top: 120%;
+            left: 0;
+            background: rgba(0,0,0,0.96);
+            backdrop-filter: blur(20px);
+            min-width: 260px;
+            border-radius: 16px;
+            border: 1px solid rgba(0,240,255,0.5);
+            box-shadow: 0 25px 40px rgba(0,0,0,0.8), 0 0 0 1px rgba(0,240,255,0.1);
+            z-index: 1000;
+            overflow: hidden;
+            animation: dropdownSlide 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+        }
+        @keyframes dropdownSlide {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .dropdown-link {
+            color: white;
+            padding: 1.2rem 1.8rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+            transition: all 0.25s;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            font-size: 1rem;
+        }
+        .dropdown-link:last-child { border-bottom: none; }
+        .dropdown-link:hover {
+            background: linear-gradient(90deg, rgba(0,240,255,0.2), rgba(157,0,255,0.2));
+            color: #00f0ff;
+            padding-left: 2.2rem;
+        }
+        .dropdown-link i { width: 24px; text-align: center; color: #00f0ff; }
+        
+        /* Desktop hover */
+        @media (hover: hover) and (pointer: fine) {
+            .shop-dropdown:hover .shop-dropdown-content {
+                display: block;
+            }
+        }
+        
+        /* ----- MOBILE STATS / HAMBURGER (copied from homepage) ----- */
+        .mobile-stats {
+            display: none;
+        }
+        .hamburger-menu {
+            display: none;
+        }
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            left: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: calc(100% - 70px);
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(20px);
+            border-right: 2px solid rgba(0,240,255,0.3);
+            border-top: 1px solid rgba(0,240,255,0.2);
+            z-index: 10000;
+            transition: left 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+        }
+        .mobile-menu.active {
+            left: 0;
+        }
+        .mobile-menu-link {
+            color: white;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid rgba(0,240,255,0.2);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .mobile-menu-link i {
+            width: 30px;
+            color: #00f0ff;
+            font-size: 1.3rem;
+        }
+        .mobile-menu-link:hover {
+            background: linear-gradient(90deg, rgba(0,240,255,0.1), rgba(157,0,255,0.1));
+            padding-left: 1.8rem;
+            color: #00f0ff;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links .nav-link:not(.shop-dropdown-btn) {
+                display: none;
+            }
+            .mobile-stats {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                margin-right: 0.5rem;
+            }
+            .mobile-stat {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background: rgba(0,0,0,0.5);
+                padding: 0.3rem 0.5rem;
+                border-radius: 8px;
+                border: 1px solid rgba(0,240,255,0.2);
+                min-width: 55px;
+            }
+            .mobile-stat-number {
+                font-family: 'Orbitron', sans-serif;
+                font-size: 0.9rem;
+                font-weight: 700;
+                background: linear-gradient(45deg, #00f0ff, #9d00ff);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                line-height: 1.2;
+            }
+            .mobile-stat-label {
+                font-size: 0.55rem;
+                color: rgba(255,255,255,0.7);
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+            .shop-dropdown-btn span {
+                display: none;
+            }
+            .hamburger-menu {
+                display: block;
+                margin-left: 0.5rem;
+            }
+            .hamburger-icon {
+                width: 44px;
+                height: 44px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 6px;
+                background: rgba(0,0,0,0.5);
+                border: 1px solid rgba(0,240,255,0.3);
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+            .hamburger-icon:hover {
+                border-color: #00f0ff;
+                background: rgba(0,240,255,0.1);
+            }
+            .hamburger-icon span {
+                width: 24px;
+                height: 2px;
+                background: linear-gradient(90deg, #00f0ff, #9d00ff);
+                border-radius: 2px;
+                transition: 0.3s;
+            }
+        }
+        
+        /* ----- TERMS CONTENT (main addition) ----- */
+        .terms-container {
+            position: relative;
+            z-index: 50;
+            max-width: 1000px;
+            margin: 120px auto 60px;
+            padding: 2rem 2.5rem;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0,240,255,0.3);
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 0 1px rgba(0,240,255,0.1);
+            color: #e0e0e0;
+            font-size: 1.1rem;
+        }
+        .terms-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #00f0ff, #9d00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .terms-section {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(0,240,255,0.2);
+            padding-bottom: 1.5rem;
+        }
+        .terms-section:last-child {
+            border-bottom: none;
+        }
+        .terms-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: #00f0ff;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .terms-section h2 i {
+            color: #9d00ff;
+            font-size: 2rem;
+        }
+        .terms-section p, .terms-section li {
+            margin-bottom: 0.8rem;
+            color: rgba(255,255,255,0.9);
+        }
+        .terms-section ul, .terms-section ol {
+            padding-left: 2rem;
+            margin: 1rem 0;
+        }
+        .terms-section li {
+            margin-bottom: 0.5rem;
+        }
+        .highlight {
+            color: #00f0ff;
+            font-weight: 600;
+            background: rgba(0,240,255,0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+        }
+        .important-note {
+            background: rgba(157,0,255,0.15);
+            border-left: 5px solid #9d00ff;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            font-weight: 500;
+        }
+        
+        /* ----- AUDIO PLAYER (same as homepage) ----- */
+        .audio-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(10px);
+            border: 2px solid #00f0ff;
+            border-radius: 50px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 5px 25px rgba(0,240,255,0.3);
+            transition: all 0.3s;
+        }
+        .audio-player:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(0,240,255,0.5);
+        }
+        .play-btn {
+            background: linear-gradient(45deg, #00f0ff, #9d00ff);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            color: black;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0,240,255,0.7);
+        }
+        .volume-slider {
+            width: 100px;
+            height: 5px;
+            -webkit-appearance: none;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            outline: none;
+        }
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #00f0ff;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0,240,255,0.5);
+        }
+        .time-display {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: #00f0ff;
+            min-width: 80px;
+            text-shadow: 0 0 10px rgba(0,240,255,0.5);
+        }
+        .song-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: white;
+            background: linear-gradient(45deg, #00f0ff, #9d00ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        @media (max-width: 768px) {
+            .terms-container {
+                margin: 100px 5% 60px;
+                padding: 1.5rem;
+            }
+            .terms-title {
+                font-size: 2.2rem;
+            }
+            .terms-section h2 {
+                font-size: 1.4rem;
+            }
+            .audio-player {
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+                width: auto;
+                padding: 8px 15px;
+                gap: 8px;
+            }
+            .song-title { display: none; }
+        }
+        
+        ::-webkit-scrollbar { width: 8px; background: rgba(0,0,0,0.5); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(45deg, #00f0ff, #9d00ff); border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <!-- VIDEO BACKGROUND -->
+    <video id="video-background" autoplay muted loop playsinline poster="rotatingphoto.png">
+        <source src="rotating.mp4" type="video/mp4">
+        <source src="rotating.webm" type="video/webm">
+    </video>
+    <div class="video-overlay"></div>
+    <div id="three-container"></div>
+    
+    <!-- PRELOADER -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">BURΔQ</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- NAVIGATION (identical to homepage) -->
+    <nav class="nav">
+        <div class="logo-container">
+            <img src="rotatingphoto.png" alt="BURΔQ Logo" class="rotating-logo" loading="lazy">
+            <a href="https://www.shopburaq.com" class="nav-logo">BURΔQ</a>
+        </div>
+        
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <!-- Mobile stats -->
+            <div class="mobile-stats">
+                <div class="mobile-stat">
+                    <span class="mobile-stat-number" id="mobileNftCount">1.2K</span>
+                    <span class="mobile-stat-label">NFTs</span>
+                </div>
+                <div class="mobile-stat">
+                    <span class="mobile-stat-number" id="mobileGlobalSales">5.8K</span>
+                    <span class="mobile-stat-label">SALES</span>
+                </div>
+                <div class="mobile-stat">
+                    <span class="mobile-stat-number" id="mobileCommunity">25K</span>
+                    <span class="mobile-stat-label">COMM</span>
+                </div>
+            </div>
+            
+            <!-- SHOP DROPDOWN -->
+            <div class="shop-dropdown" id="shopDropdown">
+                <button class="nav-link shop-dropdown-btn" id="shopDropdownBtn">
+                    <i class="fas fa-store"></i> <span>SHOP</span> <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="shop-dropdown-content" id="shopDropdownContent">
+                    <a href="https://www.shopburaq.com/shop" class="dropdown-link"><i class="fas fa-vest"></i> JACKETS</a>
+                    <a href="https://www.shopburaq.com/shop" class="dropdown-link"><i class="fas fa-tshirt"></i> T-SHIRTS</a>
+                    <a href="https://www.shopburaq.com/shop" class="dropdown-link"><i class="fas fa-user"></i> PANTS</a>
+                    <a href="https://www.shopburaq.com/shop/accessories" class="dropdown-link"><i class="fas fa-glasses"></i> ACCESSORIES</a>
+                    <a href="https://www.shopburaq.com/nft-collection" class="dropdown-link"><i class="fas fa-coins"></i> NFT COLLECTION</a>
+                    <a href="https://www.shopburaq.com/shop" class="dropdown-link"><i class="fas fa-star"></i> NEW ARRIVALS</a>
+                    <a href="https://www.shopburaq.com/shop" class="dropdown-link"><i class="fas fa-tag"></i> SALE</a>
+                </div>
+            </div>
+            
+            <!-- HAMBURGER MENU -->
+            <div class="hamburger-menu">
+                <div class="hamburger-icon" id="hamburgerIcon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="https://www.shopburaq.com/collection" class="mobile-menu-link"><i class="fas fa-layer-group"></i> COLLECTION</a>
+        <a href="https://www.shopburaq.com/about" class="mobile-menu-link"><i class="fas fa-info-circle"></i> ABOUT</a>
+        <a href="https://form.jotform.com/223047833165455" class="mobile-menu-link"><i class="fas fa-envelope"></i> CONTACT</a>
+    </div>
+    
+    <!-- MAIN TERMS CONTENT -->
+    <div class="terms-container">
+        <h1 class="terms-title">TERMS & CONDITIONS</h1>
+        <p style="text-align: center; margin-bottom: 2rem; color: #00f0ff;">Last updated: February 2026</p>
+        
+        <div class="important-note">
+            <i class="fas fa-exclamation-triangle" style="color: #9d00ff; margin-right: 10px;"></i>
+            <strong>IMPORTANT:</strong> By placing an order with BURΔQ, you acknowledge that you have read, understood, and agree to be bound by these Terms. The contract is only formed when we receive full payment from you.
+        </div>
+        
+        <!-- Section 1: Contract Formation -->
+        <div class="terms-section">
+            <h2><i class="fas fa-file-signature"></i> 1. Formation of Contract</h2>
+            <p>1.1. Any order placed through our website constitutes an offer by you to purchase goods from BURΔQ. <span class="highlight">The contract between you and BURΔQ is only formed when we receive full payment</span> for your order and dispatch confirmation is sent.</p>
+            <p>1.2. If payment is not completed, no agreement exists, and we reserve the right to cancel the order without liability.</p>
+        </div>
+        
+        <!-- Section 2: Nature of Goods (Used) -->
+        <div class="terms-section">
+            <h2><i class="fas fa-tag"></i> 2. Pre‑Owned / Second‑Hand Goods</h2>
+            <p>2.1. All products sold on shopburaq.com are <span class="highlight">pre‑owned (second‑hand) vintage or curated clothing</span>Thx</p>
+            <p>2.2. Each item may show signs of gentle wear consistent with its age and history. We describe all items honestly and provide detailed photos, but you acknowledge that used goods are not in “new” condition.</p>
+            <p>2.3. By purchasing, you confirm that you understand and accept the nature of second‑hand apparel.</p>
+        </div>
+        
+        <!-- Section 3: Buyer's Responsibilities for Import -->
+        <div class="terms-section">
+            <h2><i class="fas fa-globe"></i> 3. International Shipping & Import Compliance</h2>
+            <p>3.1. If you are located outside the United Kingdom, you are solely responsible for:</p>
+            <ul>
+                <li>Understanding and complying with all import laws, regulations, and restrictions of your destination country (including any bans on used textiles).</li>
+                <li>Paying any and all import duties, taxes, VAT, customs fees, or brokerage charges levied by your country.</li>
+                <li>Ensuring the items are permitted entry into your country.</li>
+            </ul>
+            <p>3.2. BURΔQ will declare the correct value and commodity code (6309 00 00 00 for worn clothing) on all customs forms. We cannot mark items as “gifts” or undervalue them.</p>
+            <p>3.3. If your package is seized, delayed, or destroyed by customs due to your failure to comply with local laws, BURΔQ is not liable and will not issue a refund.</p>
+        </div>
+        
+        <!-- Section 4: Indemnity Clause (Crucial) -->
+        <div class="terms-section">
+            <h2><i class="fas fa-shield-alt"></i> 4. Indemnity</h2>
+            <p>4.1. You agree to <span class="highlight">indemnify and hold BURΔQ (including its owners, employees, and affiliates) harmless</span> from any and all claims, losses, liabilities, costs, and expenses (including, but not limited to, customs fines, storage fees, return shipping costs, legal fees, or destruction charges) arising from:</p>
+            <ul>
+                <li>Your failure to comply with the import laws and regulations of your country;</li>
+                <li>Your refusal or neglect to pay any applicable import duties or taxes;</li>
+                <li>Any misrepresentation by you regarding your eligibility to receive the goods.</li>
+            </ul>
+            <p>4.2. This indemnity survives the termination of these Terms and any transaction between us.</p>
+        </div>
+        
+        <!-- Section 5: Risk and Title -->
+        <div class="terms-section">
+            <h2><i class="fas fa-truck"></i> 5. Risk and Title</h2>
+            <p>5.1. <span class="highlight">Risk of loss or damage</span> to the goods passes to you upon delivery of the package by BURΔQ to the shipping carrier.</p>
+            <p>5.2. <span class="highlight">Legal title</span> to the goods remains with BURΔQ until full payment has been received and cleared. After full payment, title passes to you, subject to the risk provisions above.</p>
+        </div>
+        
+        <!-- Section 6: Returns & Refunds -->
+        <div class="terms-section">
+            <h2><i class="fas fa-undo-alt"></i> 6. Returns & Refunds</h2>
+            <p>6.1. Due to the nature of pre‑owned goods, all sales are final unless the item arrives damaged or significantly not as described. You must notify us within 7 days of delivery with photographic evidence.</p>
+            <p>6.2. Return shipping costs for approved returns are your responsibility. We recommend using a tracked service.</p>
+            <p>6.3. Refunds, if issued, will be processed to the original payment method within 14 days of receiving the returned item in its original condition.</p>
+            <p>6.4. <span class="highlight">No refunds will be issued for items refused or seized by customs.</span></p>
+        </div>
+        
+        <!-- Section 7: Payment -->
+        <div class="terms-section">
+            <h2><i class="fas fa-credit-card"></i> 7. Payment</h2>
+            <p>7.1. Full payment is required before any goods are shipped. We accept major credit/debit cards and selected cryptocurrencies (as indicated at checkout).</p>
+            <p>7.2. In the event of a chargeback or payment dispute, we reserve the right to pursue legal remedies and recover all associated costs.</p>
+        </div>
+        
+        <!-- Section 8: Governing Law -->
+        <div class="terms-section">
+            <h2><i class="fas fa-gavel"></i> 8. Governing Law</h2>
+            <p>8.1. These Terms and any dispute arising from them shall be governed by the laws of England and Wales. You agree to submit to the exclusive jurisdiction of the courts of England and Wales.</p>
+        </div>
+        
+        <!-- Section 9: Contact -->
+        <div class="terms-section">
+            <h2><i class="fas fa-envelope"></i> 9. Contact Us</h2>
+            <p>If you have any questions about these Terms, please contact us via our <a href="https://form.jotform.com/223047833165455" style="color: #00f0ff; text-decoration: underline;">contact form</a> or email support@shopburaq.com.</p>
+        </div>
+        
+        <p style="margin-top: 3rem; text-align: center; color: rgba(255,255,255,0.5); font-size: 0.9rem;">By completing a purchase, you acknowledge that you have read, understood, and agree to these Terms and Conditions.</p>
+    </div>
+    
+    <!-- AUDIO PLAYER (same as homepage) -->
+    <div class="audio-player" id="audioPlayer">
+        <div class="song-title">BURΔQ Soundtrack</div>
+        <div class="time-display" id="timeDisplay">0:00 / 0:00</div>
+        <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="30">
+        <button class="play-btn" id="playButton">
+            <i class="fas fa-play" id="playIcon"></i>
+        </button>
+    </div>
+
+    <script>
+        // ========== SAME FUNCTIONALITY AS HOMEPAGE ==========
+        const video = document.getElementById('video-background');
+        video.playbackRate = 0.8;
+        video.addEventListener('loadeddata', () => {
+            video.play().catch(e => console.log('Video autoplay prevented'));
+        });
+        document.addEventListener('touchstart', () => {
+            if (video.paused) video.play();
+        }, { once: true });
+
+        // Dropdown toggle
+        const dropdownBtn = document.getElementById('shopDropdownBtn');
+        const dropdownContent = document.getElementById('shopDropdownContent');
+        const isMobile = window.innerWidth <= 768;
+
+        function toggleDropdown(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const isVisible = dropdownContent.style.display === 'block';
+            document.querySelectorAll('.shop-dropdown-content').forEach(el => el.style.display = 'none');
+            dropdownContent.style.display = isVisible ? 'none' : 'block';
+            dropdownBtn.classList.toggle('active', !isVisible);
+        }
+        if (isMobile) {
+            dropdownBtn.addEventListener('click', toggleDropdown);
+        }
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.shop-dropdown')) {
+                dropdownContent.style.display = 'none';
+                dropdownBtn.classList.remove('active');
+            }
+        });
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                dropdownContent.style.display = '';
+                dropdownBtn.classList.remove('active');
+            }
+        });
+
+        // Hamburger menu
+        const hamburgerIcon = document.getElementById('hamburgerIcon');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (hamburgerIcon) {
+            hamburgerIcon.addEventListener('click', (e) => {
+                e.stopPropagation();
+                mobileMenu.classList.toggle('active');
+            });
+        }
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.hamburger-menu') && !e.target.closest('.mobile-menu')) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Audio player
+        const audio = new Audio('soundburak.mp3');
+        audio.loop = true;
+        audio.volume = 0.3;
+        const playButton = document.getElementById('playButton');
+        const playIcon = document.getElementById('playIcon');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const timeDisplay = document.getElementById('timeDisplay');
+
+        let isPlaying = false;
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+        function updateTimeDisplay() {
+            timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+        }
+        audio.addEventListener('timeupdate', updateTimeDisplay);
+        audio.addEventListener('loadedmetadata', updateTimeDisplay);
+
+        function togglePlayPause() {
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                playIcon.className = 'fas fa-play';
+                playButton.style.background = 'linear-gradient(45deg, #00f0ff, #9d00ff)';
+            } else {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    playIcon.className = 'fas fa-pause';
+                    playButton.style.background = 'linear-gradient(45deg, #00ff9d, #00f0ff)';
+                }).catch(e => {
+                    alert('Tap again to enable audio.');
+                    audio.play().catch(console.log);
+                });
+            }
+        }
+        playButton.addEventListener('click', togglePlayPause);
+        volumeSlider.addEventListener('input', function() {
+            audio.volume = this.value / 100;
+        });
+
+        // Three.js particles (copy from homepage)
+        function initThreeJS() {
+            try {
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setClearColor(0x000000, 0);
+                document.getElementById('three-container').appendChild(renderer.domElement);
+
+                const particlesGeometry = new THREE.BufferGeometry();
+                const particlesCount = 2000;
+                const posArray = new Float32Array(particlesCount * 3);
+                for(let i = 0; i < particlesCount * 3; i++) {
+                    posArray[i] = (Math.random() - 0.5) * 100;
+                }
+                particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+                const particlesMaterial = new THREE.PointsMaterial({
+                    size: 0.1,
+                    color: 0x00f0ff,
+                    transparent: true,
+                    opacity: 0.5
+                });
+                const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+                scene.add(particlesMesh);
+                
+                camera.position.z = 20;
+                function animate() {
+                    requestAnimationFrame(animate);
+                    particlesMesh.rotation.x += 0.0005;
+                    particlesMesh.rotation.y += 0.001;
+                    renderer.render(scene, camera);
+                }
+                animate();
+
+                window.addEventListener('resize', () => {
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                });
+            } catch (e) { 
+                console.log('Three.js init error:', e); 
+            }
+        }
+
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('preloader').style.display = 'none';
+                    initThreeJS();
+                    // Stats animation (optional)
+                    document.getElementById('mobileNftCount').innerText = '1.2K';
+                    document.getElementById('mobileGlobalSales').innerText = '5.8K';
+                    document.getElementById('mobileCommunity').innerText = '25K';
+                }, 500);
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
